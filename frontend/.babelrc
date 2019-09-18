@@ -1,0 +1,23 @@
+{
+  "presets": [
+    [
+      "next/babel",
+      {
+        "preset-env": {},
+        "transform-runtime": {},
+        "class-properties": {},
+        "styled-jsx": {
+          "plugins": [
+            [
+              "styled-jsx-plugin-sass",
+              {
+                "sassOptions": {}
+              }
+            ]
+          ]
+        }
+      }
+    ]
+  ],
+  "plugins": []
+}
