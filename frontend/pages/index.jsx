@@ -1,8 +1,8 @@
 import React from "react";
 import Error from "next/error";
-import Head from "next/head";
 
 import { getInitialData } from "../utilities/api-helper";
+import Layout from "../components/layout";
 
 const Index = props => {
   const { data, error } = props;
@@ -11,14 +11,12 @@ const Index = props => {
 
   return (
     <>
-      {/* <Layout slideInFrom='left' /> */}
-      <Head>
-        <title>Front Page</title>
-      </Head>
-      <div className="index">
-        HELLO CONTENT
-        <div className="index__heading">heading</div>
-      </div>
+      <Layout title="front page">
+        <div className="index">
+          HELLO CONTENT
+          <div className="index__heading">heading</div>
+        </div>
+      </Layout>
       <style jsx>{`
         .index {
           &__heading {
