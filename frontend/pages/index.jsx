@@ -7,7 +7,7 @@ import Layout from "../components/layout";
 const Index = props => {
   const { data, error } = props;
 
-  // if (error) return <Error {...error} />;
+  if (error) return <Error {...error} />;
 
   return (
     <>
