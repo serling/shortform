@@ -1,0 +1,23 @@
+{
+  "name": "shortform",
+  "version": "1.0.0",
+  "description": "short form games compendium",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "keywords": [
+    "improv",
+    "blog",
+    "compendium"
+  ],
+  "author": "Thomas Christoffersen",
+  "license": "ISC",
+  "dependencies": {
+    "next": "^9.0.6",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  }
+}
