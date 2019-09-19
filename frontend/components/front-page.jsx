@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import Layout from "../components/layout";
-import Content from "../components/content";
-import List from "../components/list";
-import Game from "../components/game";
+import Layout from "./layout";
+import Content from "./content";
+import List from "./list";
+import Game from "./game";
 
 const FrontPage = props => {
   const { pageTitle, heading, highlightedGames, allGames } = props;

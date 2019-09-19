@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import cn from 'classnames';
+import React from "react";
+import PropTypes from "prop-types";
+import cn from "classnames";
 
 const sizes = {
-  tiny: 'tiny',
-  small: 'small',
-  medium: 'medium',
-  large: 'large'
+  tiny: "tiny",
+  small: "small",
+  medium: "medium",
+  large: "large"
 };
 
 const Icon = ({ className, name, size }) =>
@@ -14,7 +14,7 @@ const Icon = ({ className, name, size }) =>
     <>
       <div
         className={cn(
-          'icon',
+          "icon",
           `icon--${name}`,
           {
             [`icon--${sizes[size]}`]: sizes[size]
@@ -26,12 +26,9 @@ const Icon = ({ className, name, size }) =>
       </div>
       <style jsx>{`
         $icons: (
-          icon-missing: '../../static/icons/icon-missing.svg',
-          hamburger: '../../static/icons/hamburger.svg',
-          close: '../../static/icons/close.svg',
-          info: '../../static/icons/icon-missing.svg',
-          expand: '../../static/icons/icon-missing.svg',
-          download: '../../static/icons/icon-missing.svg'
+          icon-missing: "../../static/icons/icon-missing.svg",
+          hamburger: "../../static/icons/hamburger.svg",
+          close: "../../static/icons/close.svg"
         );
 
         .icon {

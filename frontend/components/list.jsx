@@ -6,10 +6,11 @@ const themes = {
   unordered: "unordered"
 };
 
-const List = ({ children, theme }) => {
+const List = ({ children, theme, isInline }) => {
   return (
     <ul
       className={cn("list", {
+        "list--inline": isInline,
         [`list--${themes[theme]}`]: themes[theme]
       })}
     >
@@ -26,9 +27,16 @@ const List = ({ children, theme }) => {
 
             &__item {
               margin-top: 1rem;
+            }
 
-              @media screen and (min-width: $break-at-sm) {
-                flex: 0 0 calc(100% / 2 - 0.5rem);
+            &--inline {
+              #{$self}__item {
+                display: inline-block;
+                margin: 0 0 0 0.5rem;
+
+                &:first-child {
+                  margin-left: 0;
+                }
               }
             }
 

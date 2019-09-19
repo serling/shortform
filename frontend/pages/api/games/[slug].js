@@ -18,6 +18,12 @@ export default async (req, res) => {
       `*
     [_type == "game" && slug.current == "${query.slug}"] { 
       title,
+      description,
+      playerCount,
+      alternateTitles,
+      setup,
+      publishedAt,
+      notes,
       categories[]-> { title, "slug": slug.current },
       contributors[]->{ name, "slug": slug.current },
     }[0]`

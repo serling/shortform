@@ -1,3 +1,4 @@
+//fields: requiresPreperation
 export default {
   name: "game",
   title: "Game",
@@ -6,6 +7,7 @@ export default {
     {
       name: "title",
       title: "Title",
+      description: "Name of the game.",
       type: "string"
     },
     {
@@ -18,8 +20,16 @@ export default {
       }
     },
     {
+      name: "alternateTitles",
+      title: "Alternate titles",
+      description: "Games may have different names in different communities.",
+      type: "array",
+      of: [{ type: "string" }]
+    },
+    {
       name: "contributors",
       title: "Contributors",
+      description: "The people who have contributed to this article.",
       type: "array",
       of: [{ type: "reference", to: { type: "author" } }]
     },
@@ -27,6 +37,7 @@ export default {
       name: "mainImage",
       title: "Main image",
       type: "image",
+      hidden: true,
       options: {
         hotspot: true
       }
@@ -34,6 +45,7 @@ export default {
     {
       name: "categories",
       title: "Categories",
+      description: "Tags we can categorize this game under.",
       type: "array",
       of: [{ type: "reference", to: { type: "category" } }]
     },
@@ -43,13 +55,27 @@ export default {
       type: "datetime"
     },
     {
-      name: "description",
-      title: "Description",
+      name: "playerCount",
+      title: "Player Count",
+      description: "Free text, e.g. '4', '4+', 'Between 4 and 6'",
       type: "string"
     },
     {
-      name: "body",
-      title: "Body",
+      name: "description",
+      title: "Description",
+      description: "A short summary or pitch of the game",
+      type: "string"
+    },
+    {
+      name: "setup",
+      title: "Setup",
+      description: "How do you set up and play this game?",
+      type: "blockContent"
+    },
+    {
+      name: "notes",
+      title: "Notes",
+      description: "Usefull observations made playing this game.",
       type: "blockContent"
     }
   ],

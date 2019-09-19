@@ -8,8 +8,6 @@ const Layout = ({ children, title }) => {
     <React.Fragment>
       <Head>
         <title>{title}</title>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       {/* <Header /> */}
       <div className="layout__content">{children}</div>
@@ -32,6 +30,7 @@ const Layout = ({ children, title }) => {
             -moz-osx-font-smoothing: grayscale;
 
             background-color: #f9f8f3fc;
+            font-family: "Manjari", sans-serif;
           }
 
           html {
