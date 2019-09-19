@@ -18,10 +18,10 @@ export default {
       }
     },
     {
-      name: "author",
-      title: "Author",
-      type: "reference",
-      to: { type: "author" }
+      name: "contributors",
+      title: "Contributors",
+      type: "array",
+      of: [{ type: "reference", to: { type: "author" } }]
     },
     {
       name: "mainImage",
