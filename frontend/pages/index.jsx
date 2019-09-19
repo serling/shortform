@@ -1,31 +1,16 @@
 import React from "react";
 import Error from "next/error";
+import PropTypes from "prop-types";
 
 import { getInitialData } from "../utilities/api-helper";
-import Layout from "../components/layout";
+import FrontPage from "../components/front-page";
 
 const Index = props => {
   const { data, error } = props;
 
   if (error) return <Error {...error} />;
 
-  return (
-    <>
-      <Layout title="front page">
-        <div className="index">
-          HELLO CONTENT
-          <div className="index__heading">heading</div>
-        </div>
-      </Layout>
-      <style jsx>{`
-        .index {
-          &__heading {
-            color: red;
-          }
-        }
-      `}</style>
-    </>
-  );
+  return <FrontPage {...data} />;
 };
 
 Index.getInitialProps = async ctx => {
@@ -34,6 +19,11 @@ Index.getInitialProps = async ctx => {
   const { payload, error } = await getInitialData(req, "/api/index");
 
   return { data: payload, error };
+};
+
+Index.propTypes = {
+  data: PropTypes.object.isRequired,
+  error: PropTypes.object
 };
 
 export default Index;
