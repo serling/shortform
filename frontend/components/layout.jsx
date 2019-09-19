@@ -46,23 +46,25 @@ const Layout = ({ children, title }) => {
             width: 100%;
           }
 
-          :global(.remove-list-styles) {
+          ul,
+          menu {
             list-style: none;
             padding: 0;
             margin: 0;
           }
 
-          :global(.remove-link-styles) {
-            text-decoration: none;
-            color: inherit;
-          }
-
-          :global(.remove-button-styles) {
+          button,
+          input[type="button"] {
             appearance: none;
             background: transparent;
             border: none;
             border-radius: 0;
             padding: 0;
+          }
+
+          a {
+            text-decoration: none;
+            color: inherit;
           }
 
           :global(.cf) {
@@ -77,6 +79,18 @@ const Layout = ({ children, title }) => {
             &:after {
               clear: both;
             }
+          }
+
+          h1,
+          h2,
+          h3,
+          h4,
+          h5,
+          h6,
+          p {
+            margin: 0;
+            padding: 0;
+            font-size: 1rem;
           }
         `}
       </style>
