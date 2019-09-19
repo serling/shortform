@@ -25,6 +25,13 @@ export default async (req, res) => {
         title, 
         description, 
         categories[]->
+      },
+      "allGames": *[_type == "game"] {
+        _id,
+        title,
+        description,
+        "slug": slug.current,
+        categories[]->
       }
     }[0]`
     )

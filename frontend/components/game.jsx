@@ -8,18 +8,25 @@ const themes = {
 
 //TODO: help icon with alternate names, description, categories
 
-const Game = ({ theme, title, description }) => {
+const Game = ({ theme, title, slug, description }) => {
   return (
     <div
       className={cn("game", {
         [`game--${themes[theme]}`]: themes[theme]
       })}
     >
-      <h2>{title}</h2>
-      <p>{description}</p>
+      <h2 className="game__title">
+        <a href={`/games/${slug}`}>{title}</a>
+      </h2>
+      <p className="game__description">{description}</p>
       <style jsx>
         {`
           .game {
+            &__title {
+            }
+
+            &__description {
+            }
           }
         `}
       </style>

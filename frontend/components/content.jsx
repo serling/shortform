@@ -23,6 +23,10 @@ const Content = ({ theme, children }) => (
           $self: &;
           max-width: 100%;
 
+          + #{$self} {
+            margin-top: 2rem;
+          }
+
           &--wide {
             > #{$self}__inner {
               max-width: 1240px;
