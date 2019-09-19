@@ -4,7 +4,7 @@ import imageUrlBuilder from "@sanity/image-url";
 const client = sanityClient({
   projectId: "vhzzgrn0",
   dataset: "production",
-  useCdn: false
+  useCdn: false // TODO
 });
 
 const builder = imageUrlBuilder(client);

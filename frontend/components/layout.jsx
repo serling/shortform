@@ -64,6 +64,10 @@ const Layout = ({ children, title }) => {
           a {
             text-decoration: none;
             color: inherit;
+
+            &[href*='//'] {
+              color: red;
+            }
           }
 
           :global(.cf) {
