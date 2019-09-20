@@ -1,3 +1,5 @@
+import Image from "../components/image";
+
 const defaultSerializers = {
   marks: {},
   types: {
@@ -10,6 +12,12 @@ const defaultSerializers = {
       }
 
       return children;
+    },
+    image: data => {
+      const { node } = data;
+      const { align } = node;
+
+      return <Image image={node} />;
     }
   }
 };

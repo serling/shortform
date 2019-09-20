@@ -47,8 +47,6 @@ const Content = ({ theme, children }) => (
 
           &__inner {
             margin: 0 auto;
-            padding: 0 1rem;
-            position: relative;
           }
         }
       `}

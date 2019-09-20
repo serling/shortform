@@ -13,12 +13,12 @@ const Panel = ({ children, isFloated }) => {
           box-shadow: 2px 2px 5px 0px black;
           border-radius: 0.2rem;
           background-color: white;
-          padding: 1rem;
+          padding: 1.5rem;
 
           &--float {
-            float: left;
+            float: right;
             width: 40%;
-            margin: 0 1rem 0 0;
+            margin: 0 0 0.5rem 1rem;
           }
         }
       `}</style>

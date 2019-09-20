@@ -19,7 +19,6 @@ const BlockContent = ({ content }) => {
           .block--normal {
             max-width: 980px;
             margin: 0 auto;
-            padding: 0 1rem;
           }
         }
       `}</style>

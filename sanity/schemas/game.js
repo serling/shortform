@@ -27,13 +27,6 @@ export default {
       of: [{ type: "string" }]
     },
     {
-      name: "contributors",
-      title: "Contributors",
-      description: "The people who have contributed to this article.",
-      type: "array",
-      of: [{ type: "reference", to: { type: "author" } }]
-    },
-    {
       name: "mainImage",
       title: "Main image",
       type: "image",
