@@ -26,19 +26,21 @@ const GamePage = props => {
         <div className="game-page">
           <div className="game-page__header">
             <h1 className="game-page__heading">{title}</h1>
-            <div className="game-page__categories">
-              <List isInline={true}>
-                {categories.map(({ slug, title }) => (
-                  <Link
-                    href={`/categories/${slug}`}
-                    key={title}
-                    theme={Link.themes.label}
-                  >
-                    {title}
-                  </Link>
-                ))}
-              </List>
-            </div>
+            {categories && (
+              <div className="game-page__categories">
+                <List isInline={true}>
+                  {categories.map(({ slug, title }) => (
+                    <Link
+                      href={`/categories/${slug}`}
+                      key={title}
+                      theme={Link.themes.label}
+                    >
+                      {title}
+                    </Link>
+                  ))}
+                </List>
+              </div>
+            )}
           </div>
           <div className="game-page__body">
             <h2 className="game-page__subheading">Description</h2>
@@ -51,14 +53,16 @@ const GamePage = props => {
                     <span className="game-page__aside-label">
                       Player Count:
                     </span>
-                    <span>{playerCount}</span>
+                    <span className="game-page__aside-value">
+                      {playerCount}
+                    </span>
                   </li>
                   {alternateTitles && (
                     <li className="game-page__aside-item">
                       <span className="game-page__aside-label">
                         Also known as:
                       </span>
-                      <span>
+                      <span className="game-page__aside-value">
                         {alternateTitles.map((title, index, array) => {
                           return (
                             <React.Fragment key={title}>
@@ -109,13 +113,10 @@ const GamePage = props => {
 
             &__aside-description {
               margin-bottom: 1rem;
+              font-size: 0.8rem;
             }
 
             &__aside-item {
-              display: flex;
-              align-items: center;
-              flex-wrap: wrap;
-
               &:before {
                 content: "•";
                 font-size: 1.5rem;
@@ -142,6 +143,10 @@ const GamePage = props => {
               text-transform: uppercase;
               font-size: 0.8rem;
               margin-right: 0.5rem;
+            }
+
+            &__aside-value {
+              font-size: 0.8rem;
             }
 
             &__description {
