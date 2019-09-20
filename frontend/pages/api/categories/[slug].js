@@ -2,7 +2,7 @@ import { client } from "../../../utilities/client.js";
 
 const fatalErrorObject = {
   statusCode: 404,
-  title: "Could not find game -- or something"
+  title: "Could not find category -- or something"
 };
 
 const dataErrorObject = {
@@ -16,20 +16,21 @@ export default async (req, res) => {
   await client
     .fetch(
       `*
-    [_type == "game" && slug.current == "${query.slug}"] { 
-      title,
-      description,
-      playerCount,
-      alternateTitles,
-      setup,
-      publishedAt,
-      notes,
-      categories[]-> { title, "slug": slug.current },
-    }[0]`
+    [_type == "game" && "${query.slug}" in categories[]->slug.current] { 
+        _id, 
+        "slug": slug.current, 
+        title, 
+        alternateTitles,
+        description, 
+        categories[]->
+
+    }`
     )
     .then(response => {
+      console.log("found category!!", response);
+
       if (response) {
-        res.status(200).json({ success: true, payload: response });
+        res.status(200).json({ success: true, payload: { games: response } });
         return;
       }
 

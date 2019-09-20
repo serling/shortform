@@ -1,8 +1,10 @@
-import { client } from "../../../utilities/client.js";
+import { client } from "../../utilities/client";
+
+///api/category?slug=slug-title
 
 const fatalErrorObject = {
   statusCode: 404,
-  title: "Could not find game -- or something"
+  title: "Could not find category -- or something"
 };
 
 const dataErrorObject = {
@@ -16,18 +18,11 @@ export default async (req, res) => {
   await client
     .fetch(
       `*
-    [_type == "game" && slug.current == "${query.slug}"] { 
-      title,
-      description,
-      playerCount,
-      alternateTitles,
-      setup,
-      publishedAt,
-      notes,
-      categories[]-> { title, "slug": slug.current },
-    }[0]`
+    [_type == "category" && slug.current == "${query.slug}"][0]`
     )
     .then(response => {
+      console.log("api call for category:", response);
+
       if (response) {
         res.status(200).json({ success: true, payload: response });
         return;
