@@ -7,13 +7,16 @@ import List from "./list";
 import Game from "./game";
 
 const ListPage = props => {
-  const { games, pageTitle = "ehelo", title = "whatsup" } = props;
+  console.log("props in list", props);
+  const { pageTitle = "category page", games } = props;
+  const heading = games[0].heading.title;
 
   return (
     <Layout title={pageTitle}>
       <div className="front-page">
         <Content>
-          <h2 className="front-page__heading">CATEGORY HERE</h2>
+          <span>Category:</span>
+          <h2 className="front-page__heading">{heading}</h2>
           <List>
             {games.map(game => {
               const { _id } = game;

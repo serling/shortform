@@ -13,24 +13,30 @@ const dataErrorObject = {
 export default async (req, res) => {
   const { query } = req;
 
+  //TODO: fix this query so data is nested in a "games" property
   await client
     .fetch(
       `*
     [_type == "game" && "${query.slug}" in categories[]->slug.current] { 
         _id, 
-        "slug": slug.current, 
+        "slug": slug.current,
         title, 
         alternateTitles,
         description, 
-        categories[]->
-
+        categories[]->,  
+        "heading": *[_type == "category" && slug.current == "${query.slug}"] {
+            title
+        }[0],
     }`
     )
     .then(response => {
-      console.log("found category!!", response);
+      //   console.log("found category!!", response);
 
       if (response) {
-        res.status(200).json({ success: true, payload: { games: response } });
+        res.status(200).json({
+          success: true,
+          payload: { games: response }
+        });
         return;
       }
 
