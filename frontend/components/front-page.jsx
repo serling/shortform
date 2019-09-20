@@ -35,6 +35,8 @@ const FrontPage = props => {
       </div>
       <style jsx>{`
         .front-page {
+          min-height: 100vh;
+
           &__heading {
             font-size: 3rem;
             margin-bottom: 1rem;

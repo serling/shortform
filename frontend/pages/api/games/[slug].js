@@ -25,7 +25,6 @@ export default async (req, res) => {
       publishedAt,
       notes,
       categories[]-> { title, "slug": slug.current },
-      contributors[]->{ name, "slug": slug.current },
     }[0]`
     )
     .then(response => {

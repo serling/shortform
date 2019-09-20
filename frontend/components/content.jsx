@@ -21,7 +21,7 @@ const Content = ({ theme, children }) => (
       {`
         .content {
           $self: &;
-          max-width: 100%;
+          width: 100%;
 
           + #{$self} {
             margin-top: 2rem;

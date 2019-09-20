@@ -1,7 +1,7 @@
 import Head from "next/head";
 
-// import Header from '../header/header';
-// import Footer from '../footer/footer';
+import Header from "./header";
+import Footer from "./footer";
 
 const Layout = ({ children, title }) => {
   return (
@@ -9,9 +9,9 @@ const Layout = ({ children, title }) => {
       <Head>
         <title>{title}</title>
       </Head>
-      {/* <Header /> */}
+      <Header />
       <div className="layout__content">{children}</div>
-      {/* <Footer /> */}
+      <Footer />
       <style jsx global>
         {`
           *,
