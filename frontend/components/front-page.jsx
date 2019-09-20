@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 import Layout from "./layout";
@@ -6,8 +6,19 @@ import Content from "./content";
 import List from "./list";
 import Game from "./game";
 
+const pageTransitionDelayEnter = true;
+
 const FrontPage = props => {
+  const [hasLoaded, setHasLoaded] = useState(false);
+
+  useEffect(() => {
+    setHasLoaded(true);
+    props.pageTransitionReadyToEnter();
+  }, [hasLoaded]);
+
   const { pageTitle, heading, highlightedGames, allGames } = props;
+
+  if (!hasLoaded) return null;
 
   return (
     <Layout title={pageTitle}>
@@ -46,6 +57,8 @@ const FrontPage = props => {
     </Layout>
   );
 };
+
+FrontPage.pageTransitionDelayEnter = pageTransitionDelayEnter;
 
 FrontPage.propTypes = {
   pageTitle: PropTypes.string.isRequired,
