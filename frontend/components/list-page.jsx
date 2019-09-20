@@ -7,9 +7,8 @@ import List from "./list";
 import Game from "./game";
 
 const ListPage = props => {
-  console.log("props in list", props);
   const { pageTitle = "category page", games } = props;
-  const heading = games[0].heading.title;
+  const heading = games[0].heading.title; //TODO: json from query is not properly nested so each element has the heading property
 
   return (
     <Layout title={pageTitle}>

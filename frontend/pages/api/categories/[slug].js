@@ -30,8 +30,6 @@ export default async (req, res) => {
     }`
     )
     .then(response => {
-      //   console.log("found category!!", response);
-
       if (response) {
         res.status(200).json({
           success: true,
