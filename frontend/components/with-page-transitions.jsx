@@ -1,16 +1,25 @@
 import PropTypes from "prop-types";
+import cn from "classnames";
 import { PageTransition } from "next-page-transitions";
 
 import PageLoader from "./page-loader";
 
 const TIMEOUT = 400;
 
+//TODO: implement animations
+const themes = {
+  left: "left",
+  right: "right"
+};
+
 // https://github.com/illinois/next-page-transitions/tree/master/examples/delayed-enter
-const WithPageTransition = ({ children }) => (
+const WithPageTransition = ({ children, theme }) => (
   <>
     <PageTransition
       timeout={TIMEOUT}
-      classNames="page-transition"
+      classNames={cn("page-transition", {
+        [`page-transition--${themes[theme]}`]: themes[theme]
+      })}
       loadingComponent={<PageLoader />}
       loadingDelay={0}
       loadingTimeout={{
@@ -25,7 +34,7 @@ const WithPageTransition = ({ children }) => (
     <style jsx global>{`
       .page-transition-enter {
         opacity: 0;
-        transform: translate3d(0, 20px, 0);
+        transform: translate3d(-20px, 0, 0);
       }
       .page-transition-enter-active {
         opacity: 1;
@@ -53,7 +62,8 @@ const WithPageTransition = ({ children }) => (
 );
 
 WithPageTransition.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
+  theme: PropTypes.string
 };
 
 export default WithPageTransition;
