@@ -3,8 +3,7 @@ import PropTypes from "prop-types";
 
 import Layout from "./layout";
 import Content from "./content";
-import List from "./list";
-import Game from "./game";
+import FilteredList from "./filtered-list";
 
 const ListPage = props => {
   const { pageTitle = "category page", games } = props;
@@ -12,23 +11,17 @@ const ListPage = props => {
 
   return (
     <Layout title={pageTitle}>
-      <div className="front-page">
+      <div className="list-page">
         <Content>
           <span>Category:</span>
-          <h2 className="front-page__heading">{heading}</h2>
-          <List>
-            {games.map(game => {
-              const { _id } = game;
-
-              return <Game key={_id} {...game} />;
-            })}
-          </List>
+          <h2 className="list-page__heading">{heading}</h2>
+          <div className="list-page__list">
+            <FilteredList games={games} />
+          </div>
         </Content>
       </div>
       <style jsx>{`
-        .front-page {
-          min-height: 100vh;
-
+        .list-page {
           &__heading {
             font-size: 3rem;
             margin-bottom: 1rem;
