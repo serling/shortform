@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import cn from 'classnames';
+import React from "react";
+import PropTypes from "prop-types";
+import cn from "classnames";
 
-import Icon from '../icon/icon';
-import VisuallyHidden from '../visually-hidden/visually-hidden';
+import Icon from "./icon";
+import VisuallyHidden from "./visually-hidden";
 
 const themes = {
-  primary: 'primary'
+  primary: "primary"
 };
 
 const iconSizes = Icon.sizes;
@@ -28,7 +28,7 @@ const Button = ({
     <>
       <button
         className={cn(
-          'button',
+          "button",
           {
             [`button--${themes[theme]}`]: themes[theme]
           },
@@ -39,17 +39,17 @@ const Button = ({
       >
         {iconName && (
           <div
-            className={cn('button__icon', {
-              'button--active': isActive,
+            className={cn("button__icon", {
+              "button--active": isActive,
               [`button__icon--${Icon.sizes[iconSize]}`]: Icon.sizes[iconSize]
             })}
           >
             {activeIconName && (
-              <div className={cn('button__active-icon')}>
+              <div className={cn("button__active-icon")}>
                 <Icon name={activeIconName} size={iconSize} />
               </div>
             )}
-            <div className={cn('button__inactive-icon')}>
+            <div className={cn("button__inactive-icon")}>
               <Icon name={iconName} size={iconSize} />
             </div>
             {textIsHidden && (
