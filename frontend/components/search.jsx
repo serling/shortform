@@ -1,19 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 import Icon from "./icon";
+import Button from "./button";
 
 const Search = ({ onChange }) => {
+  const [value, setValue] = useState("");
+
+  const handleOnClick = () => {
+    setValue("");
+  };
+
   return (
     <div className="search">
       <div className="search__wrapper">
         <div className="search__icon">
-          <Icon name="close" />
+          <Icon name="icon-missing" />
         </div>
-        <input type="text" onChange={onChange} className="search__input" />
+        <div className="search__field">
+          <input
+            type="text"
+            onChange={onChange}
+            className="search__input"
+            placeholder="find game..."
+          />
+        </div>
+      </div>
+      <div className="search__button">
+        <Button iconName="close" onClick={handleOnClick} />
       </div>
       <style jsx>{`
         .search {
+          display: flex;
+          align-items: center;
+
           &__input {
             padding: 0.5rem 0.5rem 0.5rem 2rem;
           }

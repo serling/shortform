@@ -43,6 +43,13 @@ export default {
       of: [{ type: "reference", to: { type: "category" } }]
     },
     {
+      name: "isExperimental",
+      title: "Improlab",
+      description:
+        "Experimental. Considered part of the improv lab. Not tested yet.",
+      type: "boolean"
+    },
+    {
       name: "publishedAt",
       title: "Published at",
       type: "datetime"

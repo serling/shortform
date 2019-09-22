@@ -21,6 +21,7 @@ export default async (req, res) => {
         _id, 
         "slug": slug.current,
         title, 
+        playerCount,
         alternateTitles,
         description, 
         categories[]->,  

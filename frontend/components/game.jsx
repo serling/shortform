@@ -8,7 +8,14 @@ const themes = {
   default: "default"
 };
 
-const Game = ({ theme, title, slug, description, alternateTitles }) => {
+const Game = ({
+  theme,
+  title,
+  slug,
+  description,
+  alternateTitles,
+  playerCount
+}) => {
   return (
     <div
       className={cn("game", {
@@ -59,6 +66,7 @@ Game.defaultProps = {
 Game.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
+  playerCount: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
   alternateTitles: PropTypes.array,
   theme: PropTypes.oneOf(Object.keys(themes).map(key => themes[key]))
