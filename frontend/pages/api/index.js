@@ -28,7 +28,7 @@ export default async (req, res) => {
         description, 
         categories[]->
       },
-      "allGames": *[_type == "game"] {
+      "games": *[_type == "game"] {
         _id,
         title,
         alternateTitles,
@@ -36,7 +36,13 @@ export default async (req, res) => {
         isExperimental,
         "slug": slug.current,
         categories[]->
-      }
+      }[0...10],
+      "categories": *[_type == "category"] {
+        _id,
+        title,
+        description,
+        "slug": slug.current
+      }[0...5]
     }[0]`
     )
     .then(response => {

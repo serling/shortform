@@ -2,9 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
 
-import List from "./list";
 import Link from "./link";
-import ButtonWithModal from "./button-with-modal";
 
 const themes = {
   default: "default"

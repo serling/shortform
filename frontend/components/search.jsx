@@ -27,7 +27,13 @@ const Search = ({ onChange }) => {
         </div>
       </div>
       <div className="search__button">
-        <Button iconName="close" onClick={handleOnClick} iconSize="tiny" />
+        <Button
+          iconName="close"
+          onClick={handleOnClick}
+          iconSize="tiny"
+          textIsHidden={true}
+          text="delete search string"
+        />
       </div>
       <style jsx>{`
         .search {

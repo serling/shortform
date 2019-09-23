@@ -3,13 +3,13 @@ import Link from "./link";
 const Breadcrumbs = ({ links }) => (
   <>
     <div className="breadcrumbs">
-      <menu className="breadcrumbs__list">
+      <ul className="breadcrumbs__list">
         {links.map((link, index) => (
           <li key={index} className="breadcrumbs__item">
             <Link {...link} />
           </li>
         ))}
-      </menu>
+      </ul>
     </div>
     <style jsx>
       {`

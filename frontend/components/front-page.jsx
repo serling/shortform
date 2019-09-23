@@ -4,7 +4,9 @@ import PropTypes from "prop-types";
 import Layout from "./layout";
 import Content from "./content";
 import List from "./list";
+import Link from "./link";
 import Game from "./game";
+import CategoriesList from "./categories-list";
 
 const pageTransitionDelayEnter = true;
 
@@ -16,7 +18,7 @@ const FrontPage = props => {
     props.pageTransitionReadyToEnter();
   }, [hasLoaded]);
 
-  const { pageTitle, heading, highlightedGames, allGames } = props;
+  const { pageTitle, heading, highlightedGames, games, categories } = props;
 
   if (!hasLoaded) return null;
 
@@ -25,6 +27,9 @@ const FrontPage = props => {
       <div className="front-page">
         <Content>
           <h1 className="front-page__heading">{heading}</h1>
+        </Content>
+        <Content>
+          <h2 className="front-page__heading">Some highlights</h2>
           <List>
             {highlightedGames.map(game => {
               const { _id } = game;
@@ -34,14 +39,29 @@ const FrontPage = props => {
           </List>
         </Content>
         <Content>
-          <h2 className="front-page__heading">More</h2>
+          <h2 className="front-page__heading">Check out some categories</h2>
+          <CategoriesList categories={categories} />
+          <div className="front-page__actions">
+            <Link text="Browse more categories" href="/categories" />
+          </div>
+        </Content>
+        <Content>
+          <h2 className="front-page__heading">Or just browse some games...</h2>
           <List>
-            {allGames.map(game => {
+            {games.map(game => {
               const { _id } = game;
 
               return <Game key={_id} {...game} />;
             })}
           </List>
+          <div className="front-page__actions">
+            <Link text="Browse more games" href="/games" />
+          </div>
+        </Content>
+        <Content>
+          <div className="front-page__cta">
+            <Link text="Check out the lab" href="/experimental" />
+          </div>
         </Content>
       </div>
       <style jsx>{`
@@ -51,6 +71,15 @@ const FrontPage = props => {
           &__heading {
             font-size: 3rem;
             margin-bottom: 1rem;
+          }
+
+          &__actions {
+            margin-top: 2rem;
+            text-align: right;
+          }
+
+          &__cta {
+            font-size: 3rem;
           }
         }
       `}</style>
@@ -64,7 +93,16 @@ FrontPage.propTypes = {
   pageTitle: PropTypes.string.isRequired,
   heading: PropTypes.string.isRequired,
   highlightedGames: PropTypes.array.isRequired,
-  allGames: PropTypes.array.isRequired
+  games: PropTypes.array.isRequired,
+  categories: PropTypes.array.isRequired
+};
+
+FrontPage.defaultProps = {
+  pageTitle: "front page",
+  heading: "Front Page",
+  highlightedGames: [],
+  games: [],
+  categories: []
 };
 
 export default FrontPage;
