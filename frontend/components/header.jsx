@@ -62,6 +62,10 @@ const Header = () => (
             &:first-child {
               margin-left: 0;
             }
+
+            &:last-child {
+              margin-left: auto;
+            }
           }
         }
       `}
