@@ -17,7 +17,7 @@ const Header = () => (
             <Link href="/experimental">
               <div className="header__link">
                 <div className="header__icon">
-                  <Icon name="icon-missing" />
+                  <Icon name="beaker" />
                 </div>
                 <div className="header__text">Improlab</div>
               </div>

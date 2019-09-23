@@ -33,9 +33,7 @@ const Game = ({
         <div className="game__icons">
           {isExperimental && (
             <div className="game__icon">
-              <ButtonWithModal iconName="icon-missing">
-                WOAAAH!!
-              </ButtonWithModal>
+              <ButtonWithModal iconName="beaker">WOAAAH!!</ButtonWithModal>
             </div>
           )}
         </div>

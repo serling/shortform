@@ -28,7 +28,8 @@ const Icon = ({ className, name, size }) =>
         $icons: (
           icon-missing: "../../static/icons/icon-missing.svg",
           hamburger: "../../static/icons/hamburger.svg",
-          close: "../../static/icons/close.svg"
+          close: "../../static/icons/close.svg",
+          beaker: "../../static/icons/beaker.svg"
         );
 
         .icon {
