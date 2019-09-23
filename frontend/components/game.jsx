@@ -104,7 +104,7 @@ Game.defaultProps = {
 Game.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  playerCount: PropTypes.string.isRequired,
+  playerCount: PropTypes.string,
   slug: PropTypes.string.isRequired,
   alternateTitles: PropTypes.array,
   isExperimental: PropTypes.bool,

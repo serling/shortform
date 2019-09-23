@@ -1,10 +1,8 @@
 import { client } from "../../utilities/client";
 
-///api/game?slug=slug-title
-
 const fatalErrorObject = {
   statusCode: 404,
-  title: "Could not find game -- or something"
+  title: "Could not find categories -- or something"
 };
 
 const dataErrorObject = {
@@ -17,12 +15,19 @@ export default async (req, res) => {
 
   await client
     .fetch(
-      `*
-    [_type == "game" && slug.current == "${query.slug}"][0]`
+      `* 
+      []
+      {
+        "categories": *[_type == "category"]{ 
+          _id,
+          title,
+          description,
+          "slug": slug.current
+      }
+    }[0]`
     )
     .then(response => {
-      console.log("api call for game:", response);
-
+      console.log("cat", response);
       if (response) {
         res.status(200).json({ success: true, payload: response });
         return;

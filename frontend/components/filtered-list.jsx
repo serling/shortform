@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import cn from "classnames";
 
 import List from "./list";
 import Game from "./game";
-import Checkbox from "./checkbox";
+// import Checkbox from "./checkbox";
 import Search from "./search";
 
 const FilteredList = ({ games }) => {
@@ -28,15 +27,15 @@ const FilteredList = ({ games }) => {
     );
   }, [searchString]);
 
-  const onCheckboxChange = e => {
-    setCheckboxChecked(!isCheckboxChecked);
+  // const onCheckboxChange = e => {
+  //   setCheckboxChecked(!isCheckboxChecked);
 
-    setFilteredGames(
-      games.filter(
-        game => game.title.toLowerCase().search("superheroes") !== -1 //TODO match player count
-      )
-    );
-  };
+  //   setFilteredGames(
+  //     games.filter(
+  //       game => game.title.toLowerCase().search("superheroes") !== -1 //TODO match player count
+  //     )
+  //   );
+  // };
 
   return (
     <div className="filtered-list">
@@ -76,8 +75,12 @@ const FilteredList = ({ games }) => {
   );
 };
 
-FilteredList.defaultProps = {};
+FilteredList.propTypes = {
+  games: PropTypes.array.isRequired
+};
 
-FilteredList.propTypes = {};
+FilteredList.defaultProps = {
+  games: []
+};
 
 export default FilteredList;

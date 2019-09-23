@@ -7,7 +7,7 @@ const themes = {
   default: "default"
 };
 
-const Link = ({ children, theme, href }) => {
+const Link = ({ children, theme, href, text }) => {
   return (
     <a
       href={href}
@@ -15,7 +15,7 @@ const Link = ({ children, theme, href }) => {
         [`link--${themes[theme]}`]: themes[theme]
       })}
     >
-      <span className="link__content">{children}</span>
+      <span className="link__content">{children || text}</span>
       <style jsx>
         {`
           .link {
@@ -49,8 +49,9 @@ const Link = ({ children, theme, href }) => {
 };
 
 Link.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   href: PropTypes.string.isRequired,
+  text: PropTypes.string,
   theme: PropTypes.oneOf(Object.keys(themes).map(key => themes[key]))
 };
 

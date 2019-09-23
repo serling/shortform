@@ -7,6 +7,7 @@ import BlockContent from "./block-content";
 import List from "./list";
 import Link from "./link";
 import Panel from "./panel";
+import Breadcrumbs from "./breadcrumbs";
 
 const GamePage = props => {
   const {
@@ -20,10 +21,22 @@ const GamePage = props => {
     notes
   } = props;
 
+  const breadcrumbs = [
+    {
+      text: "Home",
+      href: "/"
+    },
+    {
+      text: "Games",
+      href: "/games"
+    }
+  ];
+
   return (
     <Layout title={title}>
       <Content>
         <div className="game-page">
+          <Breadcrumbs links={breadcrumbs} />
           <div className="game-page__header">
             <h1 className="game-page__heading">{title}</h1>
             {categories && (
