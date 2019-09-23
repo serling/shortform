@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import cn from "classnames";
 
 const themes = {
-  label: "label"
+  label: "label",
+  default: "default"
 };
 
 const Link = ({ children, theme, href }) => {
@@ -25,6 +26,14 @@ const Link = ({ children, theme, href }) => {
               background-color: #dc5a5a;
               color: white;
             }
+
+            &--default {
+              border-bottom: 1px solid transparent;
+
+              &:hover {
+                border-bottom: 1px solid black;
+              }
+            }
           }
         `}
       </style>
@@ -36,6 +45,10 @@ Link.propTypes = {
   children: PropTypes.node.isRequired,
   href: PropTypes.string.isRequired,
   theme: PropTypes.oneOf(Object.keys(themes).map(key => themes[key]))
+};
+
+Link.defaultProps = {
+  theme: themes.default
 };
 
 Link.themes = themes;

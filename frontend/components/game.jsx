@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import cn from "classnames";
 
 import List from "./list";
-import Icon from "./icon";
+import Link from "./link";
+import ButtonWithModal from "./button-with-modal";
 
 const themes = {
   default: "default"
@@ -27,16 +28,17 @@ const Game = ({
     >
       <div className="game__header">
         <h2 className="game__title">
-          <a href={`/games/${slug}`}>{title}</a>
+          <Link href={`/games/${slug}`}>{title}</Link>
         </h2>
         <div className="game__icons">
           {isExperimental && (
             <div className="game__icon">
-              <Icon name="icon-missing" />
+              <ButtonWithModal iconName="icon-missing">
+                WOAAAH!!
+              </ButtonWithModal>
             </div>
           )}
         </div>
-
         <div className="game__alternate-titles">
           {alternateTitles && (
             <>
