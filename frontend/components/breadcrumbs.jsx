@@ -15,6 +15,7 @@ const Breadcrumbs = ({ links }) => (
       {`
         .breadcrumbs {
           $self: &;
+          margin-bottom: 0.5rem;
 
           &__list {
             display: flex;
