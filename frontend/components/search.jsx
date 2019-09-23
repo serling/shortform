@@ -19,6 +19,7 @@ const Search = ({ onChange }) => {
         </div>
         <div className="search__field">
           <input
+            autoFocus={true}
             type="text"
             onChange={onChange}
             className="search__input"
