@@ -32,6 +32,8 @@ const Header = () => (
           $self: &;
           width: 100%;
           padding: 1rem;
+          margin-bottom: 2rem;
+          border-bottom: 2px solid #eaeaea;
 
           &__actions {
             display: flex;
