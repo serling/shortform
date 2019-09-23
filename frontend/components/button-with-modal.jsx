@@ -17,7 +17,11 @@ const ButtonWithModal = ({ iconName, children }) => {
   return (
     <div className="button-with-modal">
       <Button iconName={iconName} onClick={handleOnClick} />
-      <Modal isVisible={modalIsVisible} onClose={handleOnClose}>
+      <Modal
+        isVisible={modalIsVisible}
+        onClose={handleOnClose}
+        contentLabel="information"
+      >
         {children}
       </Modal>
       <style jsx>
