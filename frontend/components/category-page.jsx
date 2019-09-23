@@ -27,6 +27,8 @@ const CategoryPage = props => {
           <Breadcrumbs links={breadcrumbs} />
           <h2 className="category-page__heading">{title}</h2>
           <p className="category-page__lead">{description}</p>
+        </Content>
+        <Content>
           <div className="category-page__list">
             <FilteredGamesList games={games} />
           </div>

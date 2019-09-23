@@ -23,6 +23,8 @@ const GamesPage = props => {
           <Breadcrumbs links={breadcrumbs} />
           <h2 className="games-page__heading">{title}</h2>
           <p className="games-page__lead">{description}</p>
+        </Content>
+        <Content>
           <div className="games-page__list">
             <FilteredGamesList games={games} />
           </div>

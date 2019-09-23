@@ -23,6 +23,8 @@ const CategoriesPage = props => {
           <Breadcrumbs links={breadcrumbs} />
           <h2 className="categories-page__heading">{title}</h2>
           <p className="categories-page__lead">{description}</p>
+        </Content>
+        <Content>
           <div className="categories-page__list">
             <CategoriesList categories={categories} />
           </div>

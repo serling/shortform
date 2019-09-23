@@ -12,6 +12,8 @@ const ImprolabPage = ({ games, title, description }) => {
         <Content>
           <h2 className="improlab-page__heading">{title}</h2>
           <p className="improlab-page__lead">{description}</p>
+        </Content>
+        <Content>
           <div className="improlab-page__list">
             <FilteredGamesList games={games} />
           </div>
