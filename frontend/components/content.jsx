@@ -24,7 +24,7 @@ const Content = ({ theme, children }) => (
           width: 100%;
 
           + #{$self} {
-            margin-top: 2rem;
+            margin-top: 4rem;
           }
 
           &--wide {
