@@ -18,7 +18,8 @@ export default async (req, res) => {
       `* 
       []
       {
-        "games": *[_type == "game"]{ 
+        "games": *[_type == "game"]{
+            _id, 
             title,
             description,
             playerCount,

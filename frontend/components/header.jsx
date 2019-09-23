@@ -14,6 +14,12 @@ const Header = () => (
             <Link href="/">Home</Link>
           </div>
           <div className="header__action">
+            <Link href="/games">Games</Link>
+          </div>
+          <div className="header__action">
+            <Link href="/categories">Categories</Link>
+          </div>
+          <div className="header__action">
             <Link href="/experimental">
               <div className="header__link">
                 <div className="header__icon">
