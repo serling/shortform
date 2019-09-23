@@ -33,7 +33,14 @@ const Game = ({
         <div className="game__icons">
           {isExperimental && (
             <div className="game__icon">
-              <ButtonWithModal iconName="beaker">WOAAAH!!</ButtonWithModal>
+              <ButtonWithModal iconName="beaker">
+                <h4>Improlab feature</h4>
+                <p>
+                  We don't consider this game ready for an audience just yet.
+                  We've come up with the idea, but it still needs some
+                  refinement.
+                </p>
+              </ButtonWithModal>
             </div>
           )}
         </div>

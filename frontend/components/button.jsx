@@ -81,6 +81,11 @@ const Button = ({
           &:hover,
           &:focus {
             text-decoration: none;
+
+            #{$self}__icon {
+              border: 2px solid black;
+              border-radius: 50%;
+            }
           }
 
           &[disabled] {
@@ -124,6 +129,7 @@ const Button = ({
           }
 
           &__icon {
+            border: 2px solid transparent;
             display: inline-block;
             padding: 0.5rem;
 
