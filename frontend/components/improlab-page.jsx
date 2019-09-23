@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import Layout from "./layout";
 import Content from "./content";
-import FilteredList from "./filtered-list";
+import FilteredGamesList from "./filtered-games-list";
 
 const ImprolabPage = ({ games, title, description }) => {
   return (
@@ -13,7 +13,7 @@ const ImprolabPage = ({ games, title, description }) => {
           <h2 className="improlab-page__heading">{title}</h2>
           <p className="improlab-page__lead">{description}</p>
           <div className="improlab-page__list">
-            <FilteredList games={games} />
+            <FilteredGamesList games={games} />
           </div>
         </Content>
       </div>

@@ -3,14 +3,14 @@ import Error from "next/error";
 import PropTypes from "prop-types";
 
 import { getInitialData } from "../../utilities/api-helper";
-import ListPage from "../../components/list-page";
+import CategoryPage from "../../components/category-page";
 
 const Categories = props => {
   const { data, error } = props;
 
   if (error) return <Error {...error} />;
 
-  return <ListPage {...data} />;
+  return <CategoryPage {...data} />;
 };
 
 Categories.getInitialProps = async ctx => {

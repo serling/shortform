@@ -27,7 +27,7 @@ const Search = ({ onChange }) => {
         </div>
       </div>
       <div className="search__button">
-        <Button iconName="close" onClick={handleOnClick} />
+        <Button iconName="close" onClick={handleOnClick} iconSize="tiny" />
       </div>
       <style jsx>{`
         .search {
@@ -36,10 +36,16 @@ const Search = ({ onChange }) => {
 
           &__input {
             padding: 0.5rem 0.5rem 0.5rem 2rem;
+            width: 100%;
           }
 
           &__wrapper {
             position: relative;
+            width: 100%;
+          }
+
+          &__button {
+            transform: translateX(-100%);
           }
 
           &__icon {

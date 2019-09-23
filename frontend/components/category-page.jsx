@@ -4,9 +4,9 @@ import PropTypes from "prop-types";
 import Layout from "./layout";
 import Content from "./content";
 import Breadcrumbs from "./breadcrumbs";
-import FilteredList from "./filtered-list";
+import FilteredGamesList from "./filtered-games-list";
 
-const ListPage = props => {
+const CategoryPage = props => {
   const { games, description, title } = props;
 
   const breadcrumbs = [
@@ -22,18 +22,18 @@ const ListPage = props => {
 
   return (
     <Layout title={title}>
-      <div className="list-page">
+      <div className="category-page">
         <Content>
           <Breadcrumbs links={breadcrumbs} />
-          <h2 className="list-page__heading">{title}</h2>
-          <p className="list-page__lead">{description}</p>
-          <div className="list-page__list">
-            <FilteredList games={games} />
+          <h2 className="category-page__heading">{title}</h2>
+          <p className="category-page__lead">{description}</p>
+          <div className="category-page__list">
+            <FilteredGamesList games={games} />
           </div>
         </Content>
       </div>
       <style jsx>{`
-        .list-page {
+        .category-page {
           &__heading {
             font-size: 3rem;
           }
@@ -47,10 +47,16 @@ const ListPage = props => {
   );
 };
 
-ListPage.propTypes = {
+CategoryPage.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
   games: PropTypes.array.isRequired
 };
 
-export default ListPage;
+CategoryPage.defaultProps = {
+  games: [],
+  title: "Category",
+  description: "Category contains following games"
+};
+
+export default CategoryPage;

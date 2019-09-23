@@ -6,7 +6,7 @@ import Game from "./game";
 // import Checkbox from "./checkbox";
 import Search from "./search";
 
-const FilteredList = ({ games }) => {
+const FilteredGamesList = ({ games }) => {
   const [filteredGames, setFilteredGames] = useState(games);
   const [searchString, setSearchString] = useState("");
   const [isCheckboxChecked, setCheckboxChecked] = useState(false);
@@ -38,9 +38,9 @@ const FilteredList = ({ games }) => {
   // };
 
   return (
-    <div className="filtered-list">
-      <div className="filtered-list__filters">
-        <div className="filtered-list__search">
+    <div className="filtered-games-list">
+      <div className="filtered-games-list__filters">
+        <div className="filtered-games-list__search">
           <Search onChange={handleOnChange} />
         </div>
         {/* <Checkbox
@@ -58,7 +58,7 @@ const FilteredList = ({ games }) => {
       </List>
       <style jsx>
         {`
-          .filtered-list {
+          .filtered-games-list {
             $self: &;
 
             &__search {
@@ -75,12 +75,12 @@ const FilteredList = ({ games }) => {
   );
 };
 
-FilteredList.propTypes = {
+FilteredGamesList.propTypes = {
   games: PropTypes.array.isRequired
 };
 
-FilteredList.defaultProps = {
+FilteredGamesList.defaultProps = {
   games: []
 };
 
-export default FilteredList;
+export default FilteredGamesList;
