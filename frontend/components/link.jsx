@@ -15,23 +15,30 @@ const Link = ({ children, theme, href }) => {
         [`link--${themes[theme]}`]: themes[theme]
       })}
     >
-      {children}
+      <span className="link__content">{children}</span>
       <style jsx>
         {`
           .link {
+            $self: &;
             display: inline-block;
 
             &--label {
               padding: 0.2rem 0.5rem;
               background-color: #dc5a5a;
               color: white;
+
+              &:hover {
+                #{$self}__content {
+                  border-bottom: 2px solid white;
+                }
+              }
             }
 
             &--default {
-              border-bottom: 1px solid transparent;
+              border-bottom: 2px solid transparent;
 
               &:hover {
-                border-bottom: 1px solid black;
+                border-bottom: 2px solid black;
               }
             }
           }
