@@ -17,25 +17,26 @@ export default async (req, res) => {
   await client
     .fetch(
       `*
-    [_type == "game" && "${query.slug}" in categories[]->slug.current] { 
-        _id, 
-        "slug": slug.current,
-        title, 
-        playerCount,
-        alternateTitles,
-        description, 
-        categories[]->,  
-        "heading": *[_type == "category" && slug.current == "${query.slug}"] {
-            title
-        }[0],
-    }`
+      [_type == "category" && slug.current == "${query.slug}"]
+      { 
+        title,
+        description,
+        "games": *[_type == "game" && "${query.slug}" in categories[]->slug.current] {
+          _id, 
+          "slug": slug.current,
+          title, 
+          playerCount,
+          isExperimental,
+          alternateTitles,
+          description, 
+          categories[]->
+        },
+    }[0]`
     )
     .then(response => {
+      console.log(response);
       if (response) {
-        res.status(200).json({
-          success: true,
-          payload: { games: response }
-        });
+        res.status(200).json({ success: true, payload: response });
         return;
       }
 

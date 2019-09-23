@@ -24,6 +24,7 @@ export default async (req, res) => {
         "slug": slug.current, 
         title, 
         alternateTitles,
+        isExperimental,
         description, 
         categories[]->
       },
@@ -32,6 +33,7 @@ export default async (req, res) => {
         title,
         alternateTitles,
         description,
+        isExperimental,
         "slug": slug.current,
         categories[]->
       }

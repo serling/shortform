@@ -14,10 +14,14 @@ const Header = () => (
             <Link href="/">Home</Link>
           </div>
           <div className="header__action">
-            <div className="header__icon">
-              <Icon name="icon-missing" />
-            </div>
-            <Link href="/experimental">Improlab</Link>
+            <Link href="/experimental">
+              <div className="header__link">
+                <div className="header__icon">
+                  <Icon name="icon-missing" />
+                </div>
+                <div className="header__text">Improlab</div>
+              </div>
+            </Link>
           </div>
         </div>
       </Content>
@@ -34,7 +38,12 @@ const Header = () => (
           }
 
           &__icon {
-            margin-right: 0.5rem;
+            margin-right: 0.25rem;
+          }
+
+          &__link {
+            display: flex;
+            align-items: center;
           }
 
           &__action {

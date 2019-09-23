@@ -6,15 +6,15 @@ import Content from "./content";
 import FilteredList from "./filtered-list";
 
 const ListPage = props => {
-  const { pageTitle = "category page", games } = props;
-  const heading = games[0].heading.title; //TODO: json from query is not properly nested so each element has the heading property
+  const { games, description, title } = props;
 
   return (
-    <Layout title={pageTitle}>
+    <Layout title={title}>
       <div className="list-page">
         <Content>
           <span>Category:</span>
-          <h2 className="list-page__heading">{heading}</h2>
+          <h2 className="list-page__heading">{title}</h2>
+          <p className="list-page__lead">{description}</p>
           <div className="list-page__list">
             <FilteredList games={games} />
           </div>
@@ -24,6 +24,9 @@ const ListPage = props => {
         .list-page {
           &__heading {
             font-size: 3rem;
+          }
+
+          &__lead {
             margin-bottom: 1rem;
           }
         }
@@ -33,8 +36,8 @@ const ListPage = props => {
 };
 
 ListPage.propTypes = {
-  pageTitle: PropTypes.string.isRequired,
-  heading: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string,
   games: PropTypes.array.isRequired
 };
 

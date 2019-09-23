@@ -5,16 +5,13 @@ import Layout from "./layout";
 import Content from "./content";
 import FilteredList from "./filtered-list";
 
-const ImprolabPage = ({ games, heading, pageTitle }) => {
+const ImprolabPage = ({ games, title, description }) => {
   return (
-    <Layout title={pageTitle}>
+    <Layout title={title}>
       <div className="improlab-page">
         <Content>
-          <h2 className="improlab-page__heading">{heading}</h2>
-          <p className="improlab-page__lead">
-            Welcome to improlab. This is where we stick all our utested, raw
-            improv games. You have been warned!
-          </p>
+          <h2 className="improlab-page__heading">{title}</h2>
+          <p className="improlab-page__lead">{description}</p>
           <div className="improlab-page__list">
             <FilteredList games={games} />
           </div>
@@ -36,15 +33,15 @@ const ImprolabPage = ({ games, heading, pageTitle }) => {
 };
 
 ImprolabPage.propTypes = {
-  pageTitle: PropTypes.string.isRequired,
-  heading: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   games: PropTypes.array.isRequired
 };
 
 ImprolabPage.defaultProps = {
-  pageTitle: "Improlab",
-  heading: "Improlab",
-  games: PropTypes.array.isRequired
+  title: "Improlab",
+  description:
+    "Welcome to improlab. This is where we stick all our un-tested, raw improv games. You have been warned!",
+  games: []
 };
 
 export default ImprolabPage;

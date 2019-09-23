@@ -13,26 +13,28 @@ const dataErrorObject = {
 export default async (req, res) => {
   const { query } = req;
 
-  //TODO: && isExperimental == true
   await client
     .fetch(
-      `*
-    [_type == "game" && isExperimental == true]{ 
-      _id,
-      title,
-      description,
-      playerCount,
-      alternateTitles,
-      publishedAt,
-      categories[]-> { title, "slug": slug.current },
-      "slug": slug.current
-    }`
+      `* 
+      []
+      {
+        "games": *[_type == "game" && isExperimental]{ 
+          _id,
+          title,
+          description,
+          playerCount,
+          alternateTitles,
+          isExperimental,
+          publishedAt,
+          categories[]-> { title, "slug": slug.current },
+          "slug": slug.current
+      }
+    }[0]`
     )
     .then(response => {
-      console.log("api call for experiments:", response);
-
+      console.log("ex", response);
       if (response) {
-        res.status(200).json({ success: true, payload: { games: response } });
+        res.status(200).json({ success: true, payload: response });
         return;
       }
 
