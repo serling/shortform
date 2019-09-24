@@ -6,7 +6,7 @@ import Game from "./game";
 // import Checkbox from "./checkbox";
 import Search from "./search";
 
-const FilteredGamesList = ({ games }) => {
+const FilteredGamesList = ({ games, noMatchesText }) => {
   const [filteredGames, setFilteredGames] = useState(games);
   const [searchString, setSearchString] = useState("");
   const [isCheckboxChecked, setCheckboxChecked] = useState(false);
@@ -49,14 +49,23 @@ const FilteredGamesList = ({ games }) => {
           labelText="2 players only"
         /> */}
       </div>
-      <div className="filtered-games-list__list">
-        <List>
-          {filteredGames.map(game => {
-            const { _id } = game;
+      {filteredGames.length > 0 && (
+        <div className="filtered-games-list__list">
+          <List>
+            {filteredGames.map(game => {
+              const { _id } = game;
 
-            return <Game {...game} key={_id} />;
-          })}
-        </List>
+              return <Game {...game} key={_id} />;
+            })}
+          </List>
+        </div>
+      )}
+      <div className="filtered-games-list__messages">
+        {filteredGames.length === 0 && (
+          <div className="filtered-games-list__message">
+            <p>{noMatchesText}</p>
+          </div>
+        )}
       </div>
       <style jsx>
         {`
@@ -83,11 +92,13 @@ const FilteredGamesList = ({ games }) => {
 };
 
 FilteredGamesList.propTypes = {
-  games: PropTypes.array.isRequired
+  games: PropTypes.array.isRequired,
+  noMatchesText: PropTypes.string
 };
 
 FilteredGamesList.defaultProps = {
-  games: []
+  games: [],
+  noMatchesText: "No matches found"
 };
 
 export default FilteredGamesList;

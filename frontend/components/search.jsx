@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 import Icon from "./icon";
@@ -6,10 +6,22 @@ import Button from "./button";
 
 const Search = ({ onChange, labelText, placeholderText }) => {
   const [value, setValue] = useState("");
+  const [showDelete, setShowDelete] = useState(false);
+
+  const textInput = React.createRef();
 
   const handleOnClick = () => {
     setValue("");
   };
+
+  useEffect(() => {
+    console.log("changed", textInput.current.value);
+    setShowDelete(false);
+
+    if (textInput.current.value) {
+      setShowDelete(true);
+    }
+  }, [onChange]);
 
   return (
     <div className="search">
@@ -22,6 +34,7 @@ const Search = ({ onChange, labelText, placeholderText }) => {
         </div>
         <div className="search__field">
           <input
+            ref={textInput}
             id="search"
             autoFocus={true}
             type="text"
@@ -30,15 +43,17 @@ const Search = ({ onChange, labelText, placeholderText }) => {
             placeholder={placeholderText}
           />
         </div>
-        <div className="search__button">
-          <Button
-            iconName="close"
-            onClick={handleOnClick}
-            iconSize="tiny"
-            textIsHidden={true}
-            text="delete search string"
-          />
-        </div>
+        {showDelete && (
+          <div className="search__button">
+            <Button
+              iconName="close"
+              onClick={handleOnClick}
+              iconSize="tiny"
+              textIsHidden={true}
+              text="delete search string"
+            />
+          </div>
+        )}
       </div>
 
       <style jsx>{`
