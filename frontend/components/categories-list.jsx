@@ -1,19 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import List from "./list";
+import Grid from "./grid";
 import Category from "./category";
 
 const CategoriesList = ({ categories }) => {
   return (
     <div className="categories-list">
-      <List>
+      <Grid>
         {categories.map(category => {
           const { _id } = category;
 
           return <Category key={_id} {...category} />;
         })}
-      </List>
+      </Grid>
       <style jsx>
         {`
           .categories-list {

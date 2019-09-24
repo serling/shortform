@@ -3,11 +3,12 @@ import PropTypes from "prop-types";
 
 import Layout from "./layout";
 import Content from "./content";
+import Image from "./image";
 import Breadcrumbs from "./breadcrumbs";
 import CategoriesList from "./categories-list";
 
 const CategoriesPage = props => {
-  const { categories, title, description } = props;
+  const { categories, title, description, image } = props;
 
   const breadcrumbs = [
     {
@@ -21,6 +22,7 @@ const CategoriesPage = props => {
       <div className="categories-page">
         <Content>
           <Breadcrumbs links={breadcrumbs} />
+          {image && <Image image={image} />}
           <h2 className="categories-page__heading">{title}</h2>
           <p className="categories-page__lead">{description}</p>
         </Content>

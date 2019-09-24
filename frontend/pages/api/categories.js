@@ -21,6 +21,7 @@ export default async (req, res) => {
         "categories": *[_type == "category"]{ 
           _id,
           title,
+          image,
           description,
           "slug": slug.current
       }

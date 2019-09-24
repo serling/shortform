@@ -93,12 +93,12 @@ const GamePage = props => {
               <BlockContent content={setup} />
             </div>
             {notes && (
-              <>
-                <h2 className="game-page__subheading">Teacher's notes</h2>
-                <div className="game-page__notes">
+              <div className="game-page__notes">
+                <h2 className="game-page__notes-heading">Teacher's notes:</h2>
+                <div className="game-page__notes-text">
                   <BlockContent content={notes} />
                 </div>
-              </>
+              </div>
             )}
             <div className="game-page__date">
               <p>Last updated: {publishedAt}</p>
@@ -108,6 +108,10 @@ const GamePage = props => {
 
         <style jsx>{`
           .game-page {
+            $break-at-sm: 25rem; //400px
+            $break-at-md: 50rem; //800px
+            $break-at-lg: 64rem; //1024px
+
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -167,7 +171,25 @@ const GamePage = props => {
             }
 
             &__setup {
-              margin-bottom: 2rem;
+              margin-bottom: 4rem;
+            }
+
+            &__notes-heading {
+              font-size: 1.2rem;
+              font-family: "Mansalva", cursive;
+              margin-bottom: 1rem;
+              color: #535353;
+            }
+
+            &__notes {
+              padding: 1rem;
+              border: 2px solid black;
+              background-color: white;
+              border-radius: 3px;
+
+              @media screen and (min-width: $break-at-md) {
+                transform: rotate(1deg);
+              }
             }
           }
         `}</style>

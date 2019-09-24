@@ -21,6 +21,7 @@ export default async (req, res) => {
       { 
         title,
         description,
+        image,
         "games": *[_type == "game" && "${query.slug}" in categories[]->slug.current] {
           _id, 
           "slug": slug.current,

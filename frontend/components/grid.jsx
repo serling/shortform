@@ -37,7 +37,7 @@ const Grid = ({ children, theme }) => {
 
               @media screen and (min-width: $break-at-md) {
                 margin: 1rem 0 0 1rem;
-                flex: 1 0 calc(100% / 3 - 1rem);
+                flex: 0 0 calc(100% / 3 - 1rem);
               }
             }
           }

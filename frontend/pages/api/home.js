@@ -40,9 +40,10 @@ export default async (req, res) => {
       "categories": *[_type == "category"] {
         _id,
         title,
+        image,
         description,
         "slug": slug.current
-      }[0...5]
+      }[0...3]
     }[0]`
     )
     .then(response => {

@@ -5,7 +5,6 @@ import Layout from "./layout";
 import Content from "./content";
 import List from "./list";
 import Link from "./link";
-import Grid from "./grid";
 import Game from "./game";
 import CategoriesList from "./categories-list";
 
@@ -31,13 +30,13 @@ const FrontPage = props => {
         </Content>
         <Content>
           <h2 className="front-page__heading">Random highlights</h2>
-          <Grid>
+          <List>
             {highlightedGames.map(game => {
               const { _id } = game;
 
               return <Game key={_id} {...game} />;
             })}
-          </Grid>
+          </List>
         </Content>
         <Content>
           <h2 className="front-page__heading">Check out some categories</h2>
@@ -61,7 +60,7 @@ const FrontPage = props => {
           </List>
           <div className="front-page__actions">
             <Link
-              text="Browse more games"
+              text="See even more games"
               href="/games"
               theme={Link.themes.inverted}
             />
