@@ -42,7 +42,11 @@ const FrontPage = props => {
           <h2 className="front-page__heading">Check out some categories</h2>
           <CategoriesList categories={categories} />
           <div className="front-page__actions">
-            <Link text="Browse more categories" href="/categories" />
+            <Link
+              text="Browse more categories"
+              href="/categories"
+              theme={Link.themes.inverted}
+            />
           </div>
         </Content>
         <Content>
@@ -55,12 +59,20 @@ const FrontPage = props => {
             })}
           </List>
           <div className="front-page__actions">
-            <Link text="Browse more games" href="/games" />
+            <Link
+              text="Browse more games"
+              href="/games"
+              theme={Link.themes.inverted}
+            />
           </div>
         </Content>
         <Content>
           <div className="front-page__cta">
-            <Link text="Check out the lab" href="/experimental" />
+            <Link
+              text="Check out the lab"
+              href="/experimental"
+              theme={Link.themes.cta}
+            />
           </div>
         </Content>
       </div>

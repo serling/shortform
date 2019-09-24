@@ -4,7 +4,9 @@ import cn from "classnames";
 
 const themes = {
   label: "label",
-  default: "default"
+  default: "default",
+  inverted: "inverted",
+  cta: "cta"
 };
 
 const Link = ({ children, theme, href, text }) => {
@@ -21,6 +23,27 @@ const Link = ({ children, theme, href, text }) => {
           .link {
             $self: &;
             display: inline-block;
+
+            &--cta {
+              border-bottom: 2px solid transparent;
+
+              &:after {
+                content: "→";
+                margin-left: 0.2em;
+              }
+
+              &:hover {
+                border-bottom: 2px solid black;
+              }
+            }
+
+            &--inverted {
+              border-bottom: 2px solid black;
+
+              &:hover {
+                border-color: transparent;
+              }
+            }
 
             &--label {
               padding: 0.2rem 0.5rem;
