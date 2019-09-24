@@ -61,8 +61,9 @@ const Search = ({
       <style jsx>{`
         .search {
           &__input {
-            padding: 0.5rem 0.5rem 0.5rem 2rem;
+            padding: 0.5rem 0.5rem 0.5rem 2.5rem;
             width: 100%;
+            font-size: 1.2rem;
           }
 
           &__wrapper {
