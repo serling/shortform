@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import Icon from "./icon";
 import Button from "./button";
 
-const Search = ({ onChange }) => {
+const Search = ({ onChange, labelText, placeholderText }) => {
   const [value, setValue] = useState("");
 
   const handleOnClick = () => {
@@ -13,34 +13,36 @@ const Search = ({ onChange }) => {
 
   return (
     <div className="search">
+      <label htmlFor="search" className="search__label">
+        {labelText}
+      </label>
       <div className="search__wrapper">
         <div className="search__icon">
-          <Icon name="icon-missing" />
+          <Icon name="magnifying-glass" />
         </div>
         <div className="search__field">
           <input
+            id="search"
             autoFocus={true}
             type="text"
             onChange={onChange}
             className="search__input"
-            placeholder="find game..."
+            placeholder={placeholderText}
+          />
+        </div>
+        <div className="search__button">
+          <Button
+            iconName="close"
+            onClick={handleOnClick}
+            iconSize="tiny"
+            textIsHidden={true}
+            text="delete search string"
           />
         </div>
       </div>
-      <div className="search__button">
-        <Button
-          iconName="close"
-          onClick={handleOnClick}
-          iconSize="tiny"
-          textIsHidden={true}
-          text="delete search string"
-        />
-      </div>
+
       <style jsx>{`
         .search {
-          display: flex;
-          align-items: center;
-
           &__input {
             padding: 0.5rem 0.5rem 0.5rem 2rem;
             width: 100%;
@@ -49,10 +51,22 @@ const Search = ({ onChange }) => {
           &__wrapper {
             position: relative;
             width: 100%;
+            display: flex;
+            align-items: center;
           }
 
           &__button {
-            transform: translateX(-100%);
+            position: absolute;
+            right: 0;
+          }
+
+          &__field {
+            width: 100%;
+          }
+
+          &__label {
+            margin-bottom: 0.5rem;
+            display: block;
           }
 
           &__icon {
@@ -69,6 +83,11 @@ const Search = ({ onChange }) => {
 
 Search.propTypes = {
   onChange: PropTypes.func.isRequired
+};
+
+Search.defaultProps = {
+  labelText: "Find a game or an exercise",
+  placeholderText: ""
 };
 
 export default Search;

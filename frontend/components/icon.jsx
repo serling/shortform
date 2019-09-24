@@ -29,7 +29,8 @@ const Icon = ({ className, name, size }) =>
           icon-missing: "../../static/icons/icon-missing.svg",
           hamburger: "../../static/icons/hamburger.svg",
           close: "../../static/icons/close.svg",
-          beaker: "../../static/icons/beaker.svg"
+          beaker: "../../static/icons/beaker.svg",
+          magnifying-glass: "../../static/icons/magnifying-glass.svg"
         );
 
         .icon {

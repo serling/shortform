@@ -49,13 +49,15 @@ const FilteredGamesList = ({ games }) => {
           labelText="2 players only"
         /> */}
       </div>
-      <List>
-        {filteredGames.map(game => {
-          const { _id } = game;
+      <div className="filtered-games-list__list">
+        <List>
+          {filteredGames.map(game => {
+            const { _id } = game;
 
-          return <Game {...game} key={_id} />;
-        })}
-      </List>
+            return <Game {...game} key={_id} />;
+          })}
+        </List>
+      </div>
       <style jsx>
         {`
           .filtered-games-list {
@@ -67,6 +69,11 @@ const FilteredGamesList = ({ games }) => {
 
             &__filters {
               margin-bottom: 2rem;
+            }
+
+            &__list {
+              padding-top: 1rem;
+              border-top: 1px solid #eaeaea;
             }
           }
         `}
