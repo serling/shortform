@@ -21,7 +21,7 @@ const Index = props => {
 Index.getInitialProps = async ctx => {
   const { req } = ctx;
 
-  const { payload, error } = await getInitialData(req, "/api/index");
+  const { payload, error } = await getInitialData(req, "/api/home");
 
   return { data: payload, error };
 };
