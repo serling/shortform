@@ -27,7 +27,7 @@ const Grid = ({ children, theme }) => {
             display: flex;
             flex-wrap: wrap;
 
-            @media screen and (min-width: $break-at-sm) {
+            @media screen and (min-width: $break-at-md) {
               margin-left: -1rem;
               margin-top: -1rem;
             }
@@ -35,7 +35,7 @@ const Grid = ({ children, theme }) => {
             &__item {
               margin-bottom: 1rem;
 
-              @media screen and (min-width: $break-at-sm) {
+              @media screen and (min-width: $break-at-md) {
                 margin: 1rem 0 0 1rem;
                 flex: 1 0 calc(100% / 3 - 1rem);
               }
