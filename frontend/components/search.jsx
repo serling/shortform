@@ -70,6 +70,7 @@ const Search = ({ onChange, labelText, placeholderText }) => {
           }
 
           &__icon {
+            pointer-events: none;
             position: absolute;
             top: 50%;
             left: 0.5rem;
