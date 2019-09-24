@@ -5,6 +5,7 @@ import Layout from "./layout";
 import Content from "./content";
 import List from "./list";
 import Link from "./link";
+import Grid from "./grid";
 import Game from "./game";
 import CategoriesList from "./categories-list";
 
@@ -30,13 +31,13 @@ const FrontPage = props => {
         </Content>
         <Content>
           <h2 className="front-page__heading">Random highlights</h2>
-          <List>
+          <Grid>
             {highlightedGames.map(game => {
               const { _id } = game;
 
               return <Game key={_id} {...game} />;
             })}
-          </List>
+          </Grid>
         </Content>
         <Content>
           <h2 className="front-page__heading">Check out some categories</h2>
