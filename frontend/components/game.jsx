@@ -50,11 +50,11 @@ const Game = ({
         <div className="game__alternate-titles">
           {alternateTitles && (
             <>
-              <span className="game__alternate-label">{`aka`}</span>
-              <span>
-                <List isInline={true}>
-                  {alternateTitles.map(title => title)}
-                </List>
+              <span className="game__alternate-label">aka</span>
+              <span className="game__alternate-values">
+                {alternateTitles.map((title, index, array) => {
+                  return index === array.length - 1 ? title : `${title}, `;
+                })}
               </span>
             </>
           )}
