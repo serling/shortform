@@ -15,6 +15,10 @@ const FilteredGamesList = ({ games, noMatchesText }) => {
     setSearchString(e.target.value);
   };
 
+  const handleOnClickDelete = () => {
+    setSearchString("");
+  };
+
   useEffect(() => {
     //TODO: concat name, alt name and desc in one string -- then search
     setFilteredGames(
@@ -41,7 +45,11 @@ const FilteredGamesList = ({ games, noMatchesText }) => {
     <div className="filtered-games-list">
       <div className="filtered-games-list__filters">
         <div className="filtered-games-list__search">
-          <Search onChange={handleOnChange} />
+          <Search
+            value={searchString}
+            onChange={handleOnChange}
+            onClickDelete={handleOnClickDelete}
+          />
         </div>
         {/* <Checkbox
           onChange={onCheckboxChange}

@@ -4,24 +4,25 @@ import PropTypes from "prop-types";
 import Icon from "./icon";
 import Button from "./button";
 
-const Search = ({ onChange, labelText, placeholderText }) => {
-  const [value, setValue] = useState("");
+const Search = ({
+  onChange,
+  onClickDelete,
+  labelText,
+  placeholderText,
+  value
+}) => {
   const [showDelete, setShowDelete] = useState(false);
 
   const textInput = React.createRef();
 
-  const handleOnClick = () => {
-    setValue("");
-  };
-
   useEffect(() => {
-    console.log("changed", textInput.current.value);
     setShowDelete(false);
+    textInput.current.focus();
 
-    if (textInput.current.value) {
+    if (value) {
       setShowDelete(true);
     }
-  }, [onChange]);
+  }, [value]);
 
   return (
     <div className="search">
@@ -34,6 +35,7 @@ const Search = ({ onChange, labelText, placeholderText }) => {
         </div>
         <div className="search__field">
           <input
+            value={value}
             ref={textInput}
             id="search"
             autoFocus={true}
@@ -47,7 +49,7 @@ const Search = ({ onChange, labelText, placeholderText }) => {
           <div className="search__button">
             <Button
               iconName="close"
-              onClick={handleOnClick}
+              onClick={onClickDelete}
               iconSize="tiny"
               textIsHidden={true}
               text="delete search string"
