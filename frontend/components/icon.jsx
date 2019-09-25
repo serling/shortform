@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import cn from "classnames";
 
 const sizes = {
+  default: "default",
   tiny: "tiny",
   small: "small",
   medium: "medium",
@@ -50,6 +51,11 @@ const Icon = ({ className, name, size }) =>
             background-size: contain;
           }
 
+          &--default {
+            width: 1em;
+            height: 1em;
+          }
+
           &--tiny {
             width: 18px;
             height: 18px;
@@ -81,7 +87,7 @@ Icon.propTypes = {
 };
 
 Icon.defaultProps = {
-  size: sizes.small
+  size: sizes.default
 };
 
 Icon.sizes = sizes;

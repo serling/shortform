@@ -22,6 +22,7 @@ export default async (req, res) => {
           _id,
           title,
           description,
+          isExperimental,
           playerCount,
           alternateTitles,
           "lastUpdated": _updatedAt,

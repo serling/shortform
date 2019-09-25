@@ -6,6 +6,7 @@ import Content from "./content";
 import List from "./list";
 import Link from "./link";
 import Game from "./game";
+import Icon from "./icon";
 import CategoriesList from "./categories-list";
 
 const pageTransitionDelayEnter = true;
@@ -28,7 +29,16 @@ const FrontPage = props => {
         <Content>
           <h1 className="front-page__heading">{heading}</h1>
           <p className="front-page__lead">
-            Welcome to a list of short form games.
+            Welcome to our curated list of short form games. This site is
+            updated with relevant info as games are tested and played. We
+            consider this place a catalogue of experiences.
+            <br />
+            <br />
+            <span>Please see our</span>
+            <span style={{ marginLeft: "0.2em" }}>
+              <Icon name="beaker" />
+            </span>
+            <span>improlab for games considered work-in-progress</span>
           </p>
         </Content>
         <Content>
@@ -41,7 +51,7 @@ const FrontPage = props => {
             })}
           </List>
         </Content>
-        <Content>
+        <Content color={Content.colors.white}>
           <h2 className="front-page__heading">Check out some categories</h2>
           <CategoriesList categories={categories} />
           <div className="front-page__actions">
@@ -71,6 +81,7 @@ const FrontPage = props => {
         </Content>
         <Content>
           <div className="front-page__cta">
+            <Icon name="beaker" />
             <Link
               text="Check out the lab"
               href="/experimental"
@@ -88,6 +99,14 @@ const FrontPage = props => {
             margin-bottom: 1rem;
           }
 
+          &__lead {
+            font-size: 1.2rem;
+
+            > * {
+              display: inline-block;
+            }
+          }
+
           &__actions {
             margin-top: 2rem;
             text-align: right;
@@ -95,6 +114,7 @@ const FrontPage = props => {
 
           &__cta {
             font-size: 3rem;
+            display: flex;
           }
         }
       `}</style>

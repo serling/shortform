@@ -8,11 +8,16 @@ const themes = {
   narrow: "narrow"
 };
 
-const Content = ({ theme, children }) => (
+const colors = {
+  white: "white"
+};
+
+const Content = ({ theme, children, color }) => (
   <>
     <div
       className={cn("content", {
-        [`content--${themes[theme]}`]: themes[theme]
+        [`content--${themes[theme]}`]: themes[theme],
+        [`content--color-${colors[color]}`]: colors[color]
       })}
     >
       <div className="content__inner">{children}</div>
@@ -25,6 +30,11 @@ const Content = ({ theme, children }) => (
 
           + #{$self} {
             margin-top: 4rem;
+          }
+
+          &--color-white {
+            background-color: white;
+            padding: 4rem 0;
           }
 
           &--wide {
@@ -47,6 +57,7 @@ const Content = ({ theme, children }) => (
 
           &__inner {
             margin: 0 auto;
+            padding: 0 1rem;
           }
         }
       `}
@@ -56,7 +67,8 @@ const Content = ({ theme, children }) => (
 
 Content.propTypes = {
   children: PropTypes.node,
-  theme: PropTypes.oneOf(Object.keys(themes).map(key => themes[key]))
+  theme: PropTypes.oneOf(Object.keys(themes).map(key => themes[key])),
+  color: PropTypes.oneOf(Object.keys(colors).map(key => colors[key]))
 };
 
 Content.defaultProps = {
@@ -64,5 +76,6 @@ Content.defaultProps = {
 };
 
 Content.themes = themes;
+Content.colors = colors;
 
 export default Content;

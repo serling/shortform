@@ -83,7 +83,7 @@ const Button = ({
             text-decoration: none;
 
             #{$self}__icon {
-              border: 2px solid black;
+              border: 2px solid #eaeaea;
               border-radius: 50%;
             }
           }

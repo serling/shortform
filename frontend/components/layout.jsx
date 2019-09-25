@@ -14,7 +14,6 @@ const Layout = ({ children, title }) => {
       <Footer />
       <style jsx>{`
         .layout__content {
-          padding: 0 1rem;
         }
       `}</style>
       <style jsx global>

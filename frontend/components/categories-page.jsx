@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import Layout from "./layout";
 import Content from "./content";
+import Lead from "./lead";
 import Image from "./image";
 import Breadcrumbs from "./breadcrumbs";
 import CategoriesList from "./categories-list";
@@ -23,8 +24,8 @@ const CategoriesPage = props => {
         <Content>
           <Breadcrumbs links={breadcrumbs} />
           {image && <Image image={image} />}
-          <h2 className="categories-page__heading">{title}</h2>
-          <p className="categories-page__lead">{description}</p>
+          <h1 className="categories-page__heading">{title}</h1>
+          <Lead text={description} />
         </Content>
         <Content>
           <div className="categories-page__list">
@@ -56,7 +57,8 @@ CategoriesPage.propTypes = {
 CategoriesPage.defaultProps = {
   categories: [],
   title: "Categories",
-  description: "A list of all the categories"
+  description:
+    "Every game we've catalogued fits one or more categories. You can browse those games using the category links below."
 };
 
 export default CategoriesPage;

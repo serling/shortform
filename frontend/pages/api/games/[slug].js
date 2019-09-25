@@ -10,6 +10,8 @@ const dataErrorObject = {
   title: "No response from fetch request"
 };
 
+// TODO: alphabetical listing for games and categories
+
 export default async (req, res) => {
   const { query } = req;
 
@@ -21,6 +23,7 @@ export default async (req, res) => {
       description,
       playerCount,
       alternateTitles,
+      isExperimental,
       setup,
       "lastUpdated": _updatedAt,
       notes,

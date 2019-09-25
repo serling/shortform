@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 import List from "./list";
+import Grid from "./grid";
 import Game from "./game";
 // import Checkbox from "./checkbox";
 import Search from "./search";
@@ -59,13 +60,13 @@ const FilteredGamesList = ({ games, noMatchesText }) => {
       </div>
       {filteredGames.length > 0 && (
         <div className="filtered-games-list__list">
-          <List>
+          <Grid theme={Grid.themes.twoColumns}>
             {filteredGames.map(game => {
               const { _id } = game;
 
               return <Game {...game} key={_id} />;
             })}
-          </List>
+          </Grid>
         </div>
       )}
       <div className="filtered-games-list__messages">

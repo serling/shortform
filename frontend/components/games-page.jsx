@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import Layout from "./layout";
 import Content from "./content";
+import Lead from "./lead";
 import Breadcrumbs from "./breadcrumbs";
 import FilteredGamesList from "./filtered-games-list";
 
@@ -21,8 +22,8 @@ const GamesPage = props => {
       <div className="games-page">
         <Content>
           <Breadcrumbs links={breadcrumbs} />
-          <h2 className="games-page__heading">{title}</h2>
-          <p className="games-page__lead">{description}</p>
+          <h1 className="games-page__heading">{title}</h1>
+          <Lead text={description} />
         </Content>
         <Content>
           <div className="games-page__list">
@@ -34,10 +35,6 @@ const GamesPage = props => {
         .games-page {
           &__heading {
             font-size: 3rem;
-          }
-
-          &__lead {
-            margin-bottom: 1rem;
           }
         }
       `}</style>
@@ -54,7 +51,8 @@ GamesPage.propTypes = {
 GamesPage.defaultProps = {
   games: [],
   title: "Games",
-  description: "List of all the games"
+  description:
+    "Browse our selection of games, or use the categories section to narrow what you're looking for. Or check out the improlab for crazy ideas for games we haven't tested yet."
 };
 
 export default GamesPage;

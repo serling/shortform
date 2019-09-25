@@ -17,6 +17,7 @@ const GamePage = props => {
     alternateTitles,
     categories,
     lastUpdated,
+    isExperimental,
     playerCount,
     setup,
     notes
@@ -33,11 +34,20 @@ const GamePage = props => {
     }
   ];
 
+  const improlabLink = {
+    text: "Improlab",
+    href: "/experimental"
+  };
+
   return (
     <Layout title={title}>
       <Content>
         <div className="game-page">
-          <Breadcrumbs links={breadcrumbs} />
+          <Breadcrumbs
+            links={
+              isExperimental ? [...breadcrumbs, improlabLink] : breadcrumbs
+            }
+          />
           <div className="game-page__header">
             <h1 className="game-page__heading">{title}</h1>
             {categories && (

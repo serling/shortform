@@ -28,7 +28,7 @@ export default async (req, res) => {
         description, 
         categories[]->
       },
-      "games": *[_type == "game"] {
+      "games": *[_type == "game" && isExperimental != true] {
         _id,
         title,
         alternateTitles,

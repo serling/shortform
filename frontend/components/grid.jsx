@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import cn from "classnames";
 
 const themes = {
-  default: "default"
+  default: "default",
+  twoColumns: "twoColumns"
 };
 
 const Grid = ({ children, theme }) => {
@@ -28,16 +29,31 @@ const Grid = ({ children, theme }) => {
             flex-wrap: wrap;
 
             @media screen and (min-width: $break-at-md) {
-              margin-left: -1rem;
-              margin-top: -1rem;
+              margin-left: -2rem;
+              margin-top: -2rem;
             }
 
             &__item {
-              margin-bottom: 1rem;
+              margin-bottom: 2rem;
+              flex-basis: 100%;
 
               @media screen and (min-width: $break-at-md) {
-                margin: 1rem 0 0 1rem;
-                flex: 0 0 calc(100% / 3 - 1rem);
+                margin: 2rem 0 0 2rem;
+                flex: 0 0 calc(100% / 3 - 2rem);
+              }
+            }
+
+            &--twoColumns {
+              @media screen and (min-width: $break-at-md) {
+                margin-left: -2rem;
+                margin-top: -3rem;
+              }
+
+              #{$self}__item {
+                @media screen and (min-width: $break-at-md) {
+                  margin: 3rem 0 0 2rem;
+                  flex: 0 0 calc(100% / 2 - 2rem);
+                }
               }
             }
           }

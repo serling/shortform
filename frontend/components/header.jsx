@@ -23,7 +23,7 @@ const Header = () => (
             <Link href="/experimental">
               <div className="header__link">
                 <div className="header__icon">
-                  <Icon name="beaker" />
+                  <Icon name="beaker" size={Icon.sizes.tiny} />
                 </div>
                 <div className="header__text">Improlab</div>
               </div>

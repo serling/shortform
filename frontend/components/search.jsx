@@ -31,7 +31,7 @@ const Search = ({
       </label>
       <div className="search__wrapper">
         <div className="search__icon">
-          <Icon name="magnifying-glass" />
+          <Icon name="magnifying-glass" size={Icon.sizes.small} />
         </div>
         <div className="search__field">
           <input
@@ -50,7 +50,7 @@ const Search = ({
             <Button
               iconName="close"
               onClick={onClickDelete}
-              iconSize="tiny"
+              iconSize={Button.iconSizes.tiny}
               textIsHidden={true}
               text="delete search string"
             />
@@ -105,7 +105,7 @@ Search.propTypes = {
 };
 
 Search.defaultProps = {
-  labelText: "Find a game or an exercise",
+  labelText: "Search the list for a game or exercise",
   placeholderText: ""
 };
 

@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import Layout from "./layout";
+import Lead from "./lead";
 import Content from "./content";
 import FilteredGamesList from "./filtered-games-list";
 
@@ -10,8 +11,8 @@ const ImprolabPage = ({ games, title, description }) => {
     <Layout title={title}>
       <div className="improlab-page">
         <Content>
-          <h2 className="improlab-page__heading">{title}</h2>
-          <p className="improlab-page__lead">{description}</p>
+          <h1 className="improlab-page__heading">{title}</h1>
+          <Lead text={description} />
         </Content>
         <Content>
           <div className="improlab-page__list">
@@ -23,10 +24,6 @@ const ImprolabPage = ({ games, title, description }) => {
         .improlab-page {
           &__heading {
             font-size: 3rem;
-          }
-
-          &__lead {
-            margin-bottom: 1rem;
           }
         }
       `}</style>
@@ -42,7 +39,7 @@ ImprolabPage.propTypes = {
 ImprolabPage.defaultProps = {
   title: "Improlab",
   description:
-    "Welcome to improlab. This is where we stick all our un-tested, raw improv games. You have been warned!",
+    "Welcome to improlab. This is where we stick all our un-tested, raw improv games. These might or might now have been tested in front of an audience. Either way, you have been warned!",
   games: []
 };
 
