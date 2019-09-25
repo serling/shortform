@@ -27,7 +27,7 @@ export default async (req, res) => {
             alternateTitles,
             isExperimental,
             setup,
-            publishedAt,
+            "lastUpdated": _updatedAt,
             notes,
             categories[]-> { title, "slug": slug.current },
       }

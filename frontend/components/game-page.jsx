@@ -7,6 +7,7 @@ import BlockContent from "./block-content";
 import List from "./list";
 import Link from "./link";
 import Panel from "./panel";
+import FormattedDate from "./formatted-date";
 import Breadcrumbs from "./breadcrumbs";
 
 const GamePage = props => {
@@ -15,7 +16,7 @@ const GamePage = props => {
     description,
     alternateTitles,
     categories,
-    publishedAt,
+    lastUpdated,
     playerCount,
     setup,
     notes
@@ -101,7 +102,7 @@ const GamePage = props => {
               </div>
             )}
             <div className="game-page__date">
-              <p>Last updated: {publishedAt}</p>
+              <FormattedDate dateString={lastUpdated} text="Last updated:" />
             </div>
           </div>
         </div>
@@ -203,7 +204,7 @@ GamePage.propTypes = {
   description: PropTypes.string.isRequired,
   alternateTitles: PropTypes.array,
   categories: PropTypes.array.isRequired,
-  publishedAt: PropTypes.string.isRequired,
+  lastUpdated: PropTypes.string,
   playerCount: PropTypes.string.isRequired,
   setup: PropTypes.array.isRequired,
   notes: PropTypes.array

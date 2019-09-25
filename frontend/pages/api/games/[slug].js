@@ -22,9 +22,9 @@ export default async (req, res) => {
       playerCount,
       alternateTitles,
       setup,
-      publishedAt,
+      "lastUpdated": _updatedAt,
       notes,
-      categories[]-> { title, "slug": slug.current },
+      categories[]-> { title, "slug": slug.current }
     }[0]`
     )
     .then(response => {

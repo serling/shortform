@@ -24,7 +24,7 @@ export default async (req, res) => {
           description,
           playerCount,
           alternateTitles,
-          publishedAt,
+          "lastUpdated": _updatedAt,
           categories[]-> { title, "slug": slug.current },
           "slug": slug.current
       }

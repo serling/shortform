@@ -48,7 +48,7 @@ const Grid = ({ children, theme }) => {
 };
 
 Grid.defaultProps = {
-  theme: themes.unordered
+  theme: themes.default
 };
 
 Grid.propTypes = {

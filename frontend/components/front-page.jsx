@@ -27,6 +27,9 @@ const FrontPage = props => {
       <div className="front-page">
         <Content>
           <h1 className="front-page__heading">{heading}</h1>
+          <p className="front-page__lead">
+            Welcome to a list of short form games.
+          </p>
         </Content>
         <Content>
           <h2 className="front-page__heading">Random highlights</h2>
