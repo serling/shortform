@@ -15,6 +15,7 @@ const Search = ({
   theme,
   onSubmit,
   labelText,
+  isDisabled,
   placeholderText,
   value,
   shouldAutoFocus
@@ -49,6 +50,7 @@ const Search = ({
           <input
             value={value}
             ref={textInput}
+            disabled={isDisabled}
             id="search"
             autoFocus={true}
             type="text"
@@ -61,6 +63,7 @@ const Search = ({
           <div className="search__clear">
             <Button
               iconName="close"
+              disabled={isDisabled}
               onClick={onClickDelete}
               iconSize={Button.iconSizes.tiny}
               textIsHidden={true}
@@ -142,7 +145,8 @@ Search.propTypes = {
   labelText: PropTypes.string,
   placeholderText: PropTypes.string,
   value: PropTypes.string,
-  shouldAutoFocus: PropTypes.bool
+  shouldAutoFocus: PropTypes.bool,
+  isDisabled: PropTypes.bool
 };
 
 Search.defaultProps = {

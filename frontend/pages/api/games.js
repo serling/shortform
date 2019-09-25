@@ -26,9 +26,7 @@ export default async (req, res) => {
             "slug": slug.current,
             alternateTitles,
             isExperimental,
-            setup,
             "lastUpdated": _updatedAt,
-            notes,
             categories[]-> { title, "slug": slug.current },
       }
     }[0]`
