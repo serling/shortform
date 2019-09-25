@@ -113,7 +113,7 @@ const Button = ({
           &--primary {
             background-color: #2164f3;
             color: white;
-            padding: 1rem 2rem;
+            padding: 0.5rem 2rem;
 
             &:hover,
             &:focus {

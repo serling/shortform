@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import Content from "./content";
 import Link from "./link";
 import Icon from "./icon";
+import SiteSearch from "./site-search";
 
 const Header = () => (
   <>
@@ -18,6 +19,9 @@ const Header = () => (
           </div>
           <div className="header__action">
             <Link href="/categories">Categories</Link>
+          </div>
+          <div className="header__action">
+            <SiteSearch placeholderText="find games or categories..." />
           </div>
           <div className="header__action">
             <Link href="/experimental">

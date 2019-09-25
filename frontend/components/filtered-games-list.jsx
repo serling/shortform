@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
-import List from "./list";
 import Grid from "./grid";
 import Game from "./game";
 // import Checkbox from "./checkbox";
@@ -10,7 +9,7 @@ import Search from "./search";
 const FilteredGamesList = ({ games, noMatchesText }) => {
   const [filteredGames, setFilteredGames] = useState(games);
   const [searchString, setSearchString] = useState("");
-  const [isCheckboxChecked, setCheckboxChecked] = useState(false);
+  // const [isCheckboxChecked, setCheckboxChecked] = useState(false);
 
   const handleOnChange = e => {
     setSearchString(e.target.value);
@@ -47,9 +46,12 @@ const FilteredGamesList = ({ games, noMatchesText }) => {
       <div className="filtered-games-list__filters">
         <div className="filtered-games-list__search">
           <Search
+            labelText="Search the list for a game or exercise"
             value={searchString}
             onChange={handleOnChange}
+            shouldAutoFocus={true}
             onClickDelete={handleOnClickDelete}
+            theme={Search.themes.transparent}
           />
         </div>
         {/* <Checkbox
@@ -90,8 +92,6 @@ const FilteredGamesList = ({ games, noMatchesText }) => {
             }
 
             &__list {
-              padding-top: 1rem;
-              border-top: 1px solid #eaeaea;
             }
           }
         `}
