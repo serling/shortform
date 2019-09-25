@@ -13,7 +13,7 @@ const sizes = {
 const Icon = ({ className, name, size }) =>
   !name ? null : (
     <>
-      <div
+      <span
         className={cn(
           "icon",
           `icon--${name}`,
@@ -23,8 +23,8 @@ const Icon = ({ className, name, size }) =>
           className
         )}
       >
-        <div />
-      </div>
+        <span />
+      </span>
       <style jsx>{`
         $icons: (
           icon-missing: "../../static/icons/icon-missing.svg",
@@ -35,15 +35,18 @@ const Icon = ({ className, name, size }) =>
         );
 
         .icon {
+          display: block;
+
           @each $name, $value in $icons {
             &--#{$name} {
-              > div {
+              > span {
                 background-image: url($value);
               }
             }
           }
 
-          > div {
+          > span {
+            display: block;
             width: 100%;
             height: 100%;
             background-position: 50% 50%;
