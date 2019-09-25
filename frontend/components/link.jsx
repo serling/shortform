@@ -47,7 +47,7 @@ const Link = ({ children, theme, href, text }) => {
 
             &--label {
               padding: 0.2rem 0.5rem;
-              background-color: #dc5a5a;
+              background-color: #a42323;
               color: white;
 
               &:hover {

@@ -19,7 +19,7 @@ const Category = ({ title, slug, description, theme, image }) => {
     >
       <div className="category__header">
         <div className="category__image">
-          {image && <Image image={image} />}
+          {image && <Image image={image} alt="category icon" />}
         </div>
         <h2 className="category__title">{title}</h2>
       </div>

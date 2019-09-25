@@ -19,7 +19,7 @@ const Footer = () => (
           width: 100%;
           height: 10rem;
           padding: 1rem;
-          background-color: #dc5a5a;
+          background-color: #a42323;
 
           margin-top: 8rem;
           color: white;

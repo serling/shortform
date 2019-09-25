@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { urlFor } from "../utilities/client";
 
-const Image = ({ image }) => {
+const Image = ({ image, alt }) => {
   if (!image) return null;
 
   const { description } = image;
@@ -12,7 +12,7 @@ const Image = ({ image }) => {
       <img
         className="image__image"
         src={urlFor(image).url()}
-        alt={description}
+        alt={description || alt}
       />
       <style jsx>{`
         .image {
@@ -28,7 +28,8 @@ const Image = ({ image }) => {
 };
 
 Image.propTypes = {
-  image: PropTypes.object.isRequired
+  image: PropTypes.object.isRequired,
+  alt: PropTypes.string
 };
 
 export default Image;

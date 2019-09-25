@@ -162,7 +162,7 @@ const GamePage = props => {
             &:before {
               content: "•";
               font-size: 1.5rem;
-              color: #dc5a5a;
+              color: #a42323;
               display: inline-block;
               width: 1rem;
             }
