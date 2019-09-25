@@ -77,6 +77,13 @@ export default {
       title: "Notes",
       description: "Usefull observations made playing this game.",
       type: "blockContent"
+    },
+    {
+      name: "relatedGames",
+      title: "Related Games",
+      description: "Games that are similar to this one.",
+      type: "array",
+      of: [{ type: "reference", to: { type: "game" } }]
     }
   ],
 

@@ -6,6 +6,8 @@ import Content from "./content";
 import BlockContent from "./block-content";
 import List from "./list";
 import Link from "./link";
+import Game from "./game";
+import Grid from "./grid";
 import Panel from "./panel";
 import FormattedDate from "./formatted-date";
 import Breadcrumbs from "./breadcrumbs";
@@ -20,7 +22,8 @@ const GamePage = props => {
     isExperimental,
     playerCount,
     setup,
-    notes
+    notes,
+    relatedGames
   } = props;
 
   const breadcrumbs = [
@@ -68,7 +71,7 @@ const GamePage = props => {
           </div>
           <div className="game-page__body">
             <h2 className="game-page__subheading">Description</h2>
-            <div className="game-page__setup">
+            <div className="game-page__setup cf">
               <Panel isFloated={true}>
                 <h3 className="game-page__aside-heading">Quick overview</h3>
                 <p className="game-page__aside-description">{description}</p>
@@ -116,95 +119,110 @@ const GamePage = props => {
             </div>
           </div>
         </div>
+      </Content>
+      {relatedGames && (
+        <Content>
+          <h2 className="game-page__related-heading">
+            Games similar to {title}:
+          </h2>
+          <Grid>
+            {relatedGames.map((game, index) => (
+              <Game key={index} {...game} />
+            ))}
+          </Grid>
+        </Content>
+      )}
+      <style jsx>{`
+        .game-page {
+          $break-at-sm: 25rem; //400px
+          $break-at-md: 50rem; //800px
+          $break-at-lg: 64rem; //1024px
 
-        <style jsx>{`
-          .game-page {
-            $break-at-sm: 25rem; //400px
-            $break-at-md: 50rem; //800px
-            $break-at-lg: 64rem; //1024px
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
 
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+          &__body {
+            margin-top: 2rem;
+          }
 
-            &__body {
-              margin-top: 2rem;
-            }
+          &__heading {
+            font-size: 4rem;
+          }
 
-            &__heading {
-              font-size: 4rem;
-            }
+          &__aside-list {
+          }
 
-            &__aside-list {
-            }
+          &__aside-description {
+            margin-bottom: 1rem;
+            font-size: 0.8rem;
+          }
 
-            &__aside-description {
-              margin-bottom: 1rem;
-              font-size: 0.8rem;
-            }
-
-            &__aside-item {
-              &:before {
-                content: "•";
-                font-size: 1.5rem;
-                color: #dc5a5a;
-                display: inline-block;
-                width: 1rem;
-              }
-            }
-
-            &__subheading {
-              font-size: 1.2rem;
-            }
-
-            &__date {
-              text-align: right;
-              margin-top: 2rem;
-            }
-
-            &__aside-heading {
-              margin-bottom: 1rem;
-            }
-
-            &__aside-label {
-              text-transform: uppercase;
-              font-size: 0.8rem;
-              margin-right: 0.5rem;
-            }
-
-            &__aside-value {
-              font-size: 0.8rem;
-            }
-
-            &__description {
-              margin-bottom: 2rem;
-            }
-
-            &__setup {
-              margin-bottom: 4rem;
-            }
-
-            &__notes-heading {
-              font-size: 1.2rem;
-              font-family: "Mansalva", cursive;
-              margin-bottom: 1rem;
-              color: #535353;
-            }
-
-            &__notes {
-              padding: 1rem;
-              border: 2px solid black;
-              background-color: white;
-              border-radius: 3px;
-
-              @media screen and (min-width: $break-at-md) {
-                transform: rotate(1deg);
-              }
+          &__aside-item {
+            &:before {
+              content: "•";
+              font-size: 1.5rem;
+              color: #dc5a5a;
+              display: inline-block;
+              width: 1rem;
             }
           }
-        `}</style>
-      </Content>
+
+          &__subheading {
+            font-size: 1.2rem;
+          }
+
+          &__date {
+            text-align: right;
+            margin-top: 2rem;
+          }
+
+          &__aside-heading {
+            margin-bottom: 1rem;
+          }
+
+          &__aside-label {
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+          }
+
+          &__aside-value {
+            font-size: 0.8rem;
+          }
+
+          &__description {
+            margin-bottom: 2rem;
+          }
+
+          &__setup {
+            margin-bottom: 4rem;
+          }
+
+          &__notes-heading {
+            font-size: 1.2rem;
+            font-family: "Mansalva", cursive;
+            margin-bottom: 1rem;
+            color: #535353;
+          }
+
+          &__related-heading {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+          }
+
+          &__notes {
+            padding: 1rem;
+            border: 2px solid black;
+            background-color: white;
+            border-radius: 3px;
+
+            @media screen and (min-width: $break-at-md) {
+              transform: rotate(1deg);
+            }
+          }
+        }
+      `}</style>
     </Layout>
   );
 };

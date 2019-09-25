@@ -42,7 +42,7 @@ const FrontPage = props => {
           </p>
         </Content>
         <Content>
-          <h2 className="front-page__heading">Random highlights</h2>
+          <h2 className="front-page__subheading">Random highlights</h2>
           <List>
             {highlightedGames.map(game => {
               const { _id } = game;
@@ -52,7 +52,7 @@ const FrontPage = props => {
           </List>
         </Content>
         <Content color={Content.colors.white}>
-          <h2 className="front-page__heading">Check out some categories</h2>
+          <h2 className="front-page__subheading">Check out some categories</h2>
           <CategoriesList categories={categories} />
           <div className="front-page__actions">
             <Link
@@ -63,7 +63,7 @@ const FrontPage = props => {
           </div>
         </Content>
         <Content>
-          <h2 className="front-page__heading">Or just browse games...</h2>
+          <h2 className="front-page__subheading">Or just browse games...</h2>
           <List>
             {games.map(game => {
               const { _id } = game;
@@ -96,6 +96,11 @@ const FrontPage = props => {
 
           &__heading {
             font-size: 3rem;
+            margin-bottom: 1rem;
+          }
+
+          &__subheading {
+            font-size: 2rem;
             margin-bottom: 1rem;
           }
 

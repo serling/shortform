@@ -24,6 +24,15 @@ export default async (req, res) => {
       playerCount,
       alternateTitles,
       isExperimental,
+      relatedGames[]->{ 
+        _id, 
+        "slug": slug.current, 
+        title, 
+        alternateTitles,
+        isExperimental,
+        description, 
+        categories[]->
+      },
       setup,
       "lastUpdated": _updatedAt,
       notes,

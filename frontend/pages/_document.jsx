@@ -17,11 +17,7 @@ export default class MyDocument extends Document {
           />
           <meta name="description" content="improv resources" />
           <link
-            href="https://fonts.googleapis.com/css?family=Manjari:400,700&display=swap"
-            rel="stylesheet"
-          />
-          <link
-            href="https://fonts.googleapis.com/css?family=Mansalva&display=swap"
+            href="https://fonts.googleapis.com/css?family=Mansalva|Manjari:400,700&display=swap"
             rel="stylesheet"
           />
         </Head>

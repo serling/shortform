@@ -4,13 +4,26 @@ import PropTypes from "prop-types";
 import Layout from "./layout";
 import Lead from "./lead";
 import Content from "./content";
+import Breadcrumbs from "./breadcrumbs";
 import FilteredGamesList from "./filtered-games-list";
 
 const ImprolabPage = ({ games, title, description }) => {
+  const breadcrumbs = [
+    {
+      text: "Home",
+      href: "/"
+    },
+    {
+      text: "Games",
+      href: "/games"
+    }
+  ];
+
   return (
     <Layout title={title}>
       <div className="improlab-page">
         <Content>
+          <Breadcrumbs links={breadcrumbs} />
           <h1 className="improlab-page__heading">{title}</h1>
           <Lead text={description} />
         </Content>
