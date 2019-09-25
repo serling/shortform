@@ -16,10 +16,6 @@ export default class MyDocument extends Document {
             content="initial-scale=1.0, width=device-width"
           />
           <meta name="description" content="improv resources" />
-          <link
-            href="https://fonts.googleapis.com/css?family=Mansalva|Manjari:400,700&display=swap"
-            rel="stylesheet"
-          />
         </Head>
         <body>
           <Main />

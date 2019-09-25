@@ -18,6 +18,19 @@ const Layout = ({ children, title }) => {
       `}</style>
       <style jsx global>
         {`
+          @font-face {
+            font-family: "Manjari";
+            src: url("/static/fonts/Manjari-Regular.ttf");
+            font-display: auto;
+            font-style: normal;
+          }
+
+          @font-face {
+            font-family: "Mansalva";
+            src: url("/static/fonts/Mansalva-Regular.ttf");
+            font-display: auto;
+            font-style: normal;
+          }
           *,
           *:before,
           *:after {
