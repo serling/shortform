@@ -26,7 +26,7 @@ const List = ({ children, theme, isInline }) => {
             $break-at-lg: 64rem; //1024px
 
             &__item {
-              margin-top: 1rem;
+              margin-top: 1.5rem;
             }
 
             &--inline {

@@ -108,7 +108,7 @@ const GamePage = props => {
             </div>
             {notes && (
               <div className="game-page__notes">
-                <h2 className="game-page__notes-heading">Teacher's notes:</h2>
+                <h2 className="game-page__notes-heading">- Teacher's notes:</h2>
                 <div className="game-page__notes-text">
                   <BlockContent content={notes} />
                 </div>
@@ -125,11 +125,11 @@ const GamePage = props => {
           <h2 className="game-page__related-heading">
             Games similar to {title}:
           </h2>
-          <Grid>
+          <List>
             {relatedGames.map((game, index) => (
               <Game key={index} {...game} />
             ))}
-          </Grid>
+          </List>
         </Content>
       )}
       <style jsx>{`
@@ -196,14 +196,27 @@ const GamePage = props => {
           }
 
           &__setup {
-            margin-bottom: 4rem;
+            margin-bottom: 2rem;
           }
 
           &__notes-heading {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             font-family: "Mansalva", cursive;
             margin-bottom: 1rem;
             color: #535353;
+            text-decoration: underline;
+
+            @media screen and (min-width: $break-at-md) {
+              transform: rotate(3deg);
+              margin-bottom: 0;
+              margin-left: 1rem;
+            }
+          }
+
+          &__notes-text {
+            @media screen and (min-width: $break-at-md) {
+              padding: 0 2rem;
+            }
           }
 
           &__related-heading {
@@ -212,14 +225,6 @@ const GamePage = props => {
           }
 
           &__notes {
-            padding: 1rem;
-            border: 2px solid black;
-            background-color: white;
-            border-radius: 3px;
-
-            @media screen and (min-width: $break-at-md) {
-              transform: rotate(1deg);
-            }
           }
         }
       `}</style>
