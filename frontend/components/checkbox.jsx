@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import cn from "classnames";
 
 import Icon from "./icon";
-import Button from "./button";
 
 const Checkbox = ({ labelText, onChange, isChecked }) => {
   return (
@@ -26,6 +25,17 @@ const Checkbox = ({ labelText, onChange, isChecked }) => {
           &__label {
             display: flex;
             align-items: center;
+            cursor: pointer;
+
+            &:hover {
+              #{$self}__text {
+                border-bottom: 2px solid black;
+              }
+            }
+          }
+
+          &__text {
+            border-bottom: 2px solid transparent;
           }
 
           &__input {
@@ -35,7 +45,7 @@ const Checkbox = ({ labelText, onChange, isChecked }) => {
           &--checked {
             #{$self}__fake {
               &:after {
-                content: "v";
+                background-image: url("../../static/icons/close.svg");
               }
             }
           }
@@ -46,9 +56,20 @@ const Checkbox = ({ labelText, onChange, isChecked }) => {
             border: 1px solid black;
             background: white;
             margin-right: 0.5rem;
+            position: relative;
 
             &:after {
-              content: none;
+              content: "";
+              width: 0.75rem;
+              height: 0.75rem;
+              display: block;
+              background-position: 50% 50%;
+              background-repeat: no-repeat;
+              background-size: contain;
+              transform: translate(-50%, -50%);
+              position: absolute;
+              left: 50%;
+              top: 50%;
             }
           }
         }

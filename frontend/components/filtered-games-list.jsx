@@ -11,7 +11,7 @@ import Search from "./search";
 const FilteredGamesList = ({ games, noMatchesText }) => {
   const [filteredGames, setFilteredGames] = useState(games);
   const [searchString, setSearchString] = useState("");
-  // const [isCheckboxChecked, setCheckboxChecked] = useState(false);
+  const [isCheckboxChecked, setCheckboxChecked] = useState(false);
 
   const handleOnChange = e => {
     setSearchString(e.target.value);
@@ -23,6 +23,7 @@ const FilteredGamesList = ({ games, noMatchesText }) => {
 
   useEffect(() => {
     //TODO: concat name, alt name and desc in one string -- then search
+    //TODO:special characters crash
     setFilteredGames(
       games.filter(
         game =>
@@ -34,13 +35,23 @@ const FilteredGamesList = ({ games, noMatchesText }) => {
   }, [searchString]);
 
   // const onCheckboxChange = e => {
-  //   setCheckboxChecked(!isCheckboxChecked);
+  //   if (isCheckboxChecked) {
+  //     setCheckboxChecked(false);
 
-  //   setFilteredGames(
-  //     games.filter(
-  //       game => game.title.toLowerCase().search("superheroes") !== -1 //TODO match player count
-  //     )
-  //   );
+  //     setFilteredGames(games);
+  //   } else {
+  //     setCheckboxChecked(true);
+
+  //     setFilteredGames(
+  //       games.filter(
+  //         game =>
+  //           game.playerCount
+  //             .toString()
+  //             .toLowerCase()
+  //             .search("2") !== -1 //TODO match player count
+  //       )
+  //     );
+  //   }
   // };
 
   return (
