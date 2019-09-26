@@ -11,7 +11,7 @@ import Search from "./search";
 const FilteredGamesList = ({ games, noMatchesText }) => {
   const [filteredGames, setFilteredGames] = useState(games);
   const [searchString, setSearchString] = useState("");
-  const [isCheckboxChecked, setCheckboxChecked] = useState(false);
+  // const [isCheckboxChecked, setCheckboxChecked] = useState(false);
 
   const handleOnChange = e => {
     setSearchString(e.target.value);
