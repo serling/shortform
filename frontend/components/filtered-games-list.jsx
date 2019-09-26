@@ -6,6 +6,8 @@ import Game from "./game";
 // import Checkbox from "./checkbox";
 import Search from "./search";
 
+//TODO: LOAD MORE
+
 const FilteredGamesList = ({ games, noMatchesText }) => {
   const [filteredGames, setFilteredGames] = useState(games);
   const [searchString, setSearchString] = useState("");
@@ -15,7 +17,7 @@ const FilteredGamesList = ({ games, noMatchesText }) => {
     setSearchString(e.target.value);
   };
 
-  const handleOnClickDelete = () => {
+  const handleOnClickDelete = e => {
     setSearchString("");
   };
 
@@ -46,6 +48,7 @@ const FilteredGamesList = ({ games, noMatchesText }) => {
       <div className="filtered-games-list__filters">
         <div className="filtered-games-list__search">
           <Search
+            id="filtered-games-search-0"
             labelText="Search the list for a game or exercise"
             value={searchString}
             onChange={handleOnChange}

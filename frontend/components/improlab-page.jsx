@@ -46,6 +46,7 @@ const ImprolabPage = ({ games, title, description }) => {
 
 ImprolabPage.propTypes = {
   title: PropTypes.string.isRequired,
+  description: PropTypes.string,
   games: PropTypes.array.isRequired
 };
 

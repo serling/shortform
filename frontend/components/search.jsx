@@ -6,30 +6,33 @@ import Icon from "./icon";
 import Button from "./button";
 
 const themes = {
-  transparent: "transparent"
+  transparent: "transparent",
+  slim: "slim"
 };
 
 const Search = ({
+  id,
   onChange,
   onClickDelete,
   theme,
   onSubmit,
+  hideSubmitButton,
   labelText,
   isDisabled,
   placeholderText,
   value,
   shouldAutoFocus
 }) => {
-  const [showDelete, setShowDelete] = useState(false);
+  const [inputHasText, setInputHasText] = useState(false);
 
   const textInput = React.createRef();
 
   useEffect(() => {
-    setShowDelete(false);
+    setInputHasText(false);
     if (shouldAutoFocus) textInput.current.focus();
 
     if (value) {
-      setShowDelete(true);
+      setInputHasText(true);
     }
   }, [value]);
 
@@ -39,48 +42,54 @@ const Search = ({
         [`search--${themes[theme]}`]: themes[theme]
       })}
     >
-      <label htmlFor="search" className="search__label">
+      <label htmlFor={id} className="search__label">
         {labelText}
       </label>
       <div className="search__wrapper">
-        <div className="search__icon">
-          <Icon name="magnifying-glass" size={Icon.sizes.small} />
-        </div>
-        <div className="search__field">
-          <input
-            value={value}
-            ref={textInput}
-            disabled={isDisabled}
-            id="search"
-            autoFocus={true}
-            type="text"
-            onChange={onChange}
-            className="search__input"
-            placeholder={placeholderText}
-          />
-        </div>
-        {showDelete && (
-          <div className="search__clear">
-            <Button
-              iconName="close"
+        <div className="search__bar">
+          <div className="search__icon">
+            <Icon name="magnifying-glass" size={Icon.sizes.small} />
+          </div>
+          <div className="search__field">
+            <input
+              value={value}
+              ref={textInput}
               disabled={isDisabled}
-              onClick={onClickDelete}
-              iconSize={Button.iconSizes.tiny}
-              textIsHidden={true}
-              text="clear search string"
+              id={id}
+              autoFocus={true}
+              type="text"
+              onChange={onChange}
+              className="search__input"
+              placeholder={placeholderText}
             />
           </div>
-        )}
-      </div>
-      {onSubmit && (
-        <div className="search__submit">
-          <Button
-            onClick={onSubmit}
-            text="Search"
-            theme={Button.themes.primary}
-          />
+          {inputHasText && (
+            <div className="search__clear">
+              <Button
+                iconName="close"
+                disabled={isDisabled}
+                onClick={onClickDelete}
+                iconSize={Button.iconSizes.tiny}
+                textIsHidden={true}
+                text="clear search string"
+              />
+            </div>
+          )}
         </div>
-      )}
+        <div className="serach__actions">
+          {onSubmit && !hideSubmitButton && (
+            <div className="search__submit">
+              <Button
+                disabled={!inputHasText || isDisabled}
+                onClick={onSubmit}
+                text="Search"
+                theme={Button.themes.primary}
+              />
+            </div>
+          )}
+        </div>
+      </div>
+
       <style jsx>{`
         .search {
           $self: &;
@@ -93,6 +102,13 @@ const Search = ({
             }
           }
 
+          &--slim {
+            #{$self}__input {
+              padding: 0.25rem 0.5rem 0.25rem 2.5rem;
+              font-size: 1rem;
+            }
+          }
+
           &__input {
             padding: 0.5rem 0.5rem 0.5rem 2.5rem;
             width: 100%;
@@ -100,15 +116,20 @@ const Search = ({
           }
 
           &__wrapper {
-            position: relative;
             width: 100%;
             display: flex;
             align-items: center;
           }
 
+          &__bar {
+            position: relative;
+            width: 100%;
+          }
+
           &__clear {
             position: absolute;
             right: 0;
+            top: 0;
           }
 
           &__submit {

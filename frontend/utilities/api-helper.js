@@ -4,12 +4,12 @@ const LOCAL_HOST = "localhost:3000";
 
 const genericError = {
   title: "generic fetch error",
-  statusCode: "Oh no!"
+  statusCode: 500
 };
 
 const fatalError = {
   title: "fatal fetch error",
-  statusCode: "You're a gonnar now, buddy!!"
+  statusCode: 500
 };
 
 function absoluteUrl(req, localHost = LOCAL_HOST) {
@@ -61,8 +61,8 @@ const getInitialData = async (req, apiRoute, resourceId, query) => {
 
       return { payload };
     })
-    .catch(err => {
-      console.log("fatal error", err);
+    .catch(error => {
+      console.log("* fatal error:", error);
 
       return {
         error: { ...fatalError, ...error }
