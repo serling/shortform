@@ -7,24 +7,18 @@ const SiteSearch = ({ placeholderText, labelText, inputValue }) => {
   const [searchString, setSearchString] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  // const handleUserKeyPress = event => {
-  //   const { key, keyCode } = event;
+  const handleOnKeyPress = e => {
+    const { key } = e;
 
-  //   if (keyCode === 13 || key === "Enter") {
-  //     handleOnSubmit();
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   window.addEventListener("keydown", handleUserKeyPress);
-
-  //   return () => {
-  //     window.removeEventListener("keydown", handleUserKeyPress);
-  //   };
-  // }, [handleUserKeyPress]);
+    if (key === "Enter") {
+      handleOnSubmit();
+    }
+  };
 
   const handleOnChange = e => {
-    setSearchString(e.target.value);
+    const { target } = e;
+
+    setSearchString(target.value);
   };
 
   const handleOnSubmit = () => {
@@ -44,12 +38,13 @@ const SiteSearch = ({ placeholderText, labelText, inputValue }) => {
   return (
     <div className="site-search">
       <Search
-        hideSubmitButton={false}
+        hideSubmitButton={true}
         id="site-search-0"
-        theme={Search.themes.slim}
+        onKeyPress={handleOnKeyPress}
+        theme={Search.themes.transparent}
         isDisabled={isLoading}
-        value={searchString}
         placeholderText={placeholderText}
+        value={searchString}
         labelText={labelText}
         hideLabel={true}
         onClickDelete={handleOnDelete}

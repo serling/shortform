@@ -24,7 +24,7 @@ const Header = () => (
           </div>
           <div className="header__search">
             <SiteSearch
-              placeholderText="find games or categories..."
+              placeholderText=""
               labelText="find games or categories..."
             />
           </div>

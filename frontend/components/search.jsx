@@ -13,6 +13,7 @@ const themes = {
 const Search = ({
   id,
   onChange,
+  onKeyPress,
   onClickDelete,
   theme,
   onSubmit,
@@ -22,6 +23,7 @@ const Search = ({
   isDisabled,
   placeholderText,
   value,
+  defaultValue,
   shouldAutoFocus
 }) => {
   const [inputHasText, setInputHasText] = useState(false);
@@ -58,9 +60,11 @@ const Search = ({
             <input
               value={value}
               ref={textInput}
+              onKeyPress={onKeyPress}
               disabled={isDisabled}
               id={id}
-              autoFocus={true}
+              defaultValue={defaultValue}
+              autoFocus={false}
               type="text"
               onChange={onChange}
               className="search__input"
@@ -69,14 +73,22 @@ const Search = ({
           </div>
           {inputHasText && (
             <div className="search__clear">
-              <Button
+              <button
+                disabled={isDisabled}
+                onClick={onClickDelete}
+                className="search__clear-button"
+              >
+                <span className="search__clear-label">clear search string</span>
+                <Icon name="close" size={Icon.sizes.tiny} />
+              </button>
+              {/* <Button
                 iconName="close"
                 disabled={isDisabled}
                 onClick={onClickDelete}
                 iconSize={Button.iconSizes.tiny}
                 textIsHidden={true}
                 text="clear search string"
-              />
+              /> */}
             </div>
           )}
         </div>
@@ -131,9 +143,20 @@ const Search = ({
           }
 
           &__clear {
+            height: 100%;
             position: absolute;
             right: 0;
             top: 0;
+          }
+
+          &__clear-label {
+            display: none;
+          }
+
+          &__clear-button {
+            padding: 0 1rem;
+            height: 100%;
+            cursor: pointer;
           }
 
           &__submit {

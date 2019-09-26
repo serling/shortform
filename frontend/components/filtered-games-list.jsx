@@ -49,12 +49,11 @@ const FilteredGamesList = ({ games, noMatchesText }) => {
         <div className="filtered-games-list__search">
           <Search
             id="filtered-games-search-0"
-            labelText="Search the list for a game or exercise"
+            labelText="Filter the list of games below"
+            placeholderText="e.g. genres, players, director, etc"
             value={searchString}
             onChange={handleOnChange}
-            shouldAutoFocus={true}
             onClickDelete={handleOnClickDelete}
-            theme={Search.themes.transparent}
           />
         </div>
         {/* <Checkbox
