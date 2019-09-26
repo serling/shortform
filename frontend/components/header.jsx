@@ -23,7 +23,10 @@ const Header = () => (
             </div>
           </div>
           <div className="header__search">
-            <SiteSearch placeholderText="find games or categories..." />
+            <SiteSearch
+              placeholderText="find games or categories..."
+              labelText="find games or categories..."
+            />
           </div>
           <div className="header__actions">
             <div className="header__action">

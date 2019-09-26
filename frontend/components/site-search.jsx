@@ -51,6 +51,7 @@ const SiteSearch = ({ placeholderText, labelText, inputValue }) => {
         value={searchString}
         placeholderText={placeholderText}
         labelText={labelText}
+        hideLabel={true}
         onClickDelete={handleOnDelete}
         onChange={handleOnChange}
         onSubmit={handleOnSubmit}

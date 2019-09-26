@@ -18,6 +18,7 @@ const Search = ({
   onSubmit,
   hideSubmitButton,
   labelText,
+  hideLabel,
   isDisabled,
   placeholderText,
   value,
@@ -42,7 +43,10 @@ const Search = ({
         [`search--${themes[theme]}`]: themes[theme]
       })}
     >
-      <label htmlFor={id} className="search__label">
+      <label
+        htmlFor={id}
+        className={cn("search__label", { "search__label--hidden": hideLabel })}
+      >
         {labelText}
       </label>
       <div className="search__wrapper">
@@ -143,6 +147,14 @@ const Search = ({
           &__label {
             margin-bottom: 0.5rem;
             display: block;
+
+            &--hidden {
+              position: absolute;
+              width: 0;
+              height: 0;
+              left: -999em;
+              overflow: hidden;
+            }
           }
 
           &__icon {
@@ -164,6 +176,7 @@ Search.propTypes = {
   onSubmit: PropTypes.func,
   theme: PropTypes.oneOf(Object.keys(themes).map(key => themes[key])),
   labelText: PropTypes.string,
+  hideLabel: PropTypes.bool,
   placeholderText: PropTypes.string,
   value: PropTypes.string,
   shouldAutoFocus: PropTypes.bool,
