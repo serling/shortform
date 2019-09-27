@@ -75,6 +75,8 @@ const SearchPage = ({ games, categories, title, description }) => {
       </div>
       <style jsx>{`
         .search-page {
+          padding-top: 2rem;
+
           &__heading {
             font-size: 3rem;
           }

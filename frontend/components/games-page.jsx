@@ -45,6 +45,8 @@ const GamesPage = props => {
       </div>
       <style jsx>{`
         .games-page {
+          padding-top: 2rem;
+
           &__heading {
             font-size: 3rem;
           }

@@ -44,8 +44,8 @@ const GamePage = props => {
 
   return (
     <Layout title={title}>
-      <Content>
-        <div className="game-page">
+      <div className="game-page">
+        <Content color={Content.colors.white}>
           <Breadcrumbs
             links={
               isExperimental ? [...breadcrumbs, improlabLink] : breadcrumbs
@@ -69,6 +69,8 @@ const GamePage = props => {
               </div>
             )}
           </div>
+        </Content>
+        <Content>
           <div className="game-page__body">
             <h2 className="game-page__subheading">Description</h2>
             <div className="game-page__setup cf">
@@ -118,20 +120,20 @@ const GamePage = props => {
               <FormattedDate dateString={lastUpdated} text="Last updated:" />
             </div>
           </div>
-        </div>
-      </Content>
-      {relatedGames && (
-        <Content>
-          <h2 className="game-page__related-heading">
-            Games similar to {title}:
-          </h2>
-          <List>
-            {relatedGames.map((game, index) => (
-              <Game key={index} {...game} />
-            ))}
-          </List>
         </Content>
-      )}
+        {relatedGames && (
+          <Content>
+            <h2 className="game-page__related-heading">
+              Games similar to {title}:
+            </h2>
+            <List>
+              {relatedGames.map((game, index) => (
+                <Game key={index} {...game} />
+              ))}
+            </List>
+          </Content>
+        )}
+      </div>
       <style jsx>{`
         .game-page {
           $break-at-sm: 25rem; //400px
@@ -143,7 +145,6 @@ const GamePage = props => {
           justify-content: center;
 
           &__body {
-            margin-top: 2rem;
           }
 
           &__heading {

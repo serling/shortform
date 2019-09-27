@@ -35,6 +35,8 @@ const CategoriesPage = props => {
       </div>
       <style jsx>{`
         .categories-page {
+          padding-top: 2rem;
+
           &__heading {
             font-size: 3rem;
           }

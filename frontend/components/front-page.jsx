@@ -51,7 +51,7 @@ const FrontPage = props => {
             })}
           </List>
         </Content>
-        <Content color={Content.colors.white}>
+        <Content color={Content.colors.white} theme={Content.themes.wide}>
           <h2 className="front-page__subheading">Check out some categories</h2>
           <CategoriesList categories={categories} />
           <div className="front-page__actions">
@@ -93,6 +93,7 @@ const FrontPage = props => {
       <style jsx>{`
         .front-page {
           min-height: 100vh;
+          padding-top: 2rem;
 
           &__heading {
             font-size: 3rem;

@@ -75,7 +75,6 @@ const Header = () => (
 
           width: 100%;
           padding: 1rem 0;
-          margin-bottom: 2rem;
           border-bottom: 2px solid #eaeaea;
 
           &__content {
