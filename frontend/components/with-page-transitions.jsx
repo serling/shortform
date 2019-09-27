@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import cn from "classnames";
 import { PageTransition } from "next-page-transitions";
 
 import PageLoader from "./page-loader";
@@ -34,7 +33,7 @@ const WithPageTransition = ({ children, theme }) => {
       <style jsx global>{`
         .page-transition--top-enter {
           opacity: 0;
-          transform: translate3d(0, -30px, 0);
+          transform: translate3d(0, -20px, 0);
         }
 
         .page-transition--top-enter-active {
@@ -52,7 +51,7 @@ const WithPageTransition = ({ children, theme }) => {
 
         .page-transition--left-enter {
           opacity: 0;
-          transform: translate3d(-30px, 0, 0);
+          transform: translate3d(-20px, 0, 0);
         }
 
         .page-transition--left-enter-active {
@@ -70,7 +69,7 @@ const WithPageTransition = ({ children, theme }) => {
 
         .page-transition--right-enter {
           opacity: 0;
-          transform: translate3d(30px, 0, 0);
+          transform: translate3d(20px, 0, 0);
         }
 
         .page-transition--right-enter-active {
@@ -108,5 +107,7 @@ WithPageTransition.propTypes = {
 WithPageTransition.defaultProps = {
   theme: themes.right
 };
+
+WithPageTransition.themes = themes;
 
 export default WithPageTransition;
