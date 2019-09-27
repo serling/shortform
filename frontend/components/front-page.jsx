@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 import Layout from "./layout";
@@ -9,19 +9,18 @@ import Game from "./game";
 import Icon from "./icon";
 import CategoriesList from "./categories-list";
 
-const pageTransitionDelayEnter = true;
+// FrontPage.pageTransitionDelayEnter = true;
 
 const FrontPage = props => {
-  const [hasLoaded, setHasLoaded] = useState(false);
-
-  useEffect(() => {
-    setHasLoaded(true);
-    props.pageTransitionReadyToEnter();
-  }, [hasLoaded]);
-
   const { pageTitle, heading, highlightedGames, games, categories } = props;
+  // const [hasLoaded, setHasLoaded] = useState(false);
 
-  if (!hasLoaded) return null;
+  // useEffect(() => {
+  //   setHasLoaded(true);
+  //   props.pageTransitionReadyToEnter();
+  // }, [hasLoaded]);
+
+  // if (!hasLoaded) return null;
 
   return (
     <Layout title={pageTitle}>
@@ -127,8 +126,6 @@ const FrontPage = props => {
     </Layout>
   );
 };
-
-FrontPage.pageTransitionDelayEnter = pageTransitionDelayEnter;
 
 FrontPage.propTypes = {
   pageTitle: PropTypes.string.isRequired,

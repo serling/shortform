@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import Error from "next/error";
 import PropTypes from "prop-types";
 
-import WithPageTransition from "../components/with-page-transitions";
 import { getInitialData } from "../utilities/api-helper";
 import FrontPage from "../components/front-page";
 
@@ -11,11 +10,7 @@ const Index = props => {
 
   if (error) return <Error {...error} />;
 
-  return (
-    <WithPageTransition>
-      <FrontPage {...data} />
-    </WithPageTransition>
-  );
+  return <FrontPage {...data} />;
 };
 
 Index.getInitialProps = async ctx => {
@@ -30,5 +25,7 @@ Index.propTypes = {
   data: PropTypes.object.isRequired,
   error: PropTypes.object
 };
+
+Index.pageTransitionDelayEnter = false;
 
 export default Index;
