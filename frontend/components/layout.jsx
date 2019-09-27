@@ -3,13 +3,13 @@ import Head from "next/head";
 import Header from "./header";
 import Footer from "./footer";
 
-const Layout = ({ children, title }) => {
+const Layout = ({ children, title, searchQuery }) => {
   return (
     <React.Fragment>
       <Head>
         <title>{title}</title>
       </Head>
-      <Header />
+      <Header searchQuery={searchQuery} />
       <div className="layout__content">{children}</div>
       <Footer />
       <style jsx>{`

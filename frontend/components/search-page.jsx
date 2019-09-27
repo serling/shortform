@@ -5,13 +5,12 @@ import Layout from "./layout";
 import Lead from "./lead";
 import Content from "./content";
 import Breadcrumbs from "./breadcrumbs";
-import List from "./list";
 import Grid from "./grid";
 import Link from "./link";
 import Game from "./game";
 import Category from "./category";
 
-const SearchPage = ({ games, categories, title, description }) => {
+const SearchPage = ({ games, categories, title, description, searchQuery }) => {
   const breadcrumbs = [
     {
       text: "Home",
@@ -20,7 +19,7 @@ const SearchPage = ({ games, categories, title, description }) => {
   ];
 
   return (
-    <Layout title={title}>
+    <Layout title={title} searchQuery={searchQuery}>
       <div className="search-page">
         <Content>
           <Breadcrumbs links={breadcrumbs} />
@@ -30,7 +29,7 @@ const SearchPage = ({ games, categories, title, description }) => {
         <Content>
           <div className="search-page__lists">
             {games.length <= 0 && categories.length <= 0 && (
-              <p>Sorry, we couldn't find anything.</p>
+              <p>{`Sorry, we couldn't find anything mathcing "${searchQuery}".`}</p>
             )}
             {games.length > 0 && (
               <div className="search-page__list">
@@ -106,7 +105,8 @@ SearchPage.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
   games: PropTypes.array,
-  categories: PropTypes.array
+  categories: PropTypes.array,
+  searchQuery: PropTypes.string.isRequired
 };
 
 SearchPage.defaultProps = {

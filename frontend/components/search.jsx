@@ -23,7 +23,6 @@ const Search = ({
   isDisabled,
   placeholderText,
   value,
-  defaultValue,
   shouldAutoFocus
 }) => {
   const [inputHasText, setInputHasText] = useState(false);
@@ -58,12 +57,11 @@ const Search = ({
           </div>
           <div className="search__field">
             <input
-              value={value}
               ref={textInput}
               onKeyPress={onKeyPress}
               disabled={isDisabled}
               id={id}
-              defaultValue={defaultValue}
+              value={value}
               autoFocus={false}
               type="text"
               onChange={onChange}
@@ -81,14 +79,6 @@ const Search = ({
                 <span className="search__clear-label">clear search string</span>
                 <Icon name="close" size={Icon.sizes.tiny} />
               </button>
-              {/* <Button
-                iconName="close"
-                disabled={isDisabled}
-                onClick={onClickDelete}
-                iconSize={Button.iconSizes.tiny}
-                textIsHidden={true}
-                text="clear search string"
-              /> */}
             </div>
           )}
         </div>

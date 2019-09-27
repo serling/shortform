@@ -17,6 +17,7 @@ export default async (req, res) => {
     .fetch(
       `* 
      []{
+         "searchQuery": "${query.query}",
          "games": *[_type == "game" && [title, description] match "${query.query}*"]
          {
             _id, 
@@ -40,7 +41,7 @@ export default async (req, res) => {
      }[0]`
     )
     .then(response => {
-      console.log("after a search:", query, response);
+      console.log("after a search:", response);
       if (response) {
         res.status(200).json({ success: true, payload: response });
         return;

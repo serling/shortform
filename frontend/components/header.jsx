@@ -32,7 +32,7 @@ const ImprolabLink = () => {
   );
 };
 
-const Header = () => (
+const Header = ({ searchQuery }) => (
   <>
     <div className="header">
       <Content theme={Content.themes.wide}>
@@ -54,6 +54,7 @@ const Header = () => (
           <div className="header__search">
             <SiteSearch
               placeholderText=""
+              defaultValue={searchQuery}
               labelText="find games or categories..."
             />
           </div>

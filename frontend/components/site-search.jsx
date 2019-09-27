@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 
 import Search from "./search";
 
-const SiteSearch = ({ placeholderText, labelText, inputValue }) => {
-  const [searchString, setSearchString] = useState("");
+const SiteSearch = ({ placeholderText, labelText, defaultValue }) => {
+  const [searchString, setSearchString] = useState(defaultValue);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleOnKeyPress = e => {
