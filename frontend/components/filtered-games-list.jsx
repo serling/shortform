@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import Grid from "./grid";
 import Game from "./game";
-// import Checkbox from "./checkbox";
+import Checkbox from "./checkbox";
 import Search from "./search";
 
 //TODO: LOAD MORE
@@ -11,48 +11,64 @@ import Search from "./search";
 const FilteredGamesList = ({ games, noMatchesText }) => {
   const [filteredGames, setFilteredGames] = useState(games);
   const [searchString, setSearchString] = useState("");
-  // const [isCheckboxChecked, setCheckboxChecked] = useState(false);
+  const [isCheckboxChecked, setCheckboxChecked] = useState(false);
+  const [activeFilters, setActiveFilters] = useState({});
 
   const handleOnChange = e => {
-    setSearchString(e.target.value);
+    const value = e.target.value.toString().toLowerCase();
+
+    setActiveFilters(() => {
+      return { ...activeFilters, search: value };
+    });
+
+    setSearchString(() => {
+      return value;
+    });
   };
 
   const handleOnClickDelete = e => {
     setSearchString("");
+
+    setActiveFilters(() => {
+      return { ...activeFilters, search: "" };
+    });
   };
 
+  //TODO:special characters crash
   useEffect(() => {
-    //TODO: concat name, alt name and desc in one string -- then search
-    //TODO:special characters crash
-    setFilteredGames(
-      games.filter(
-        game =>
-          game.title.toLowerCase().search(searchString.toLowerCase()) !== -1 ||
-          game.description.toLowerCase().search(searchString.toLowerCase()) !==
-            -1
-      )
-    );
-  }, [searchString]);
+    setFilteredGames(() => {
+      return games.filter(game => {
+        const { title, description, alternateTitles, playerCount } = game;
 
-  // const onCheckboxChange = e => {
-  //   if (isCheckboxChecked) {
-  //     setCheckboxChecked(false);
+        let activeFilteredGames = games;
 
-  //     setFilteredGames(games);
-  //   } else {
-  //     setCheckboxChecked(true);
+        const stringToMatch = `${title} ${description} ${alternateTitles &&
+          alternateTitles.toString()}`;
 
-  //     setFilteredGames(
-  //       games.filter(
-  //         game =>
-  //           game.playerCount
-  //             .toString()
-  //             .toLowerCase()
-  //             .search("2") !== -1 //TODO match player count
-  //       )
-  //     );
-  //   }
-  // };
+        activeFilteredGames =
+          stringToMatch.toLowerCase().search(activeFilters.search) !== -1 &&
+          playerCount.toString().search(activeFilters.count) !== -1;
+
+        return activeFilteredGames;
+      });
+    });
+  }, [activeFilters]);
+
+  const onCheckboxChange = e => {
+    if (isCheckboxChecked) {
+      setCheckboxChecked(false);
+
+      setActiveFilters(() => {
+        return { ...activeFilters, count: "" };
+      });
+    } else {
+      setCheckboxChecked(true);
+
+      setActiveFilters(() => {
+        return { ...activeFilters, count: "2" };
+      });
+    }
+  };
 
   return (
     <div className="filtered-games-list">
@@ -67,11 +83,11 @@ const FilteredGamesList = ({ games, noMatchesText }) => {
             onClickDelete={handleOnClickDelete}
           />
         </div>
-        {/* <Checkbox
+        <Checkbox
           onChange={onCheckboxChange}
           isChecked={isCheckboxChecked}
-          labelText="2 players only"
-        /> */}
+          labelText="For 2 players"
+        />
       </div>
       {filteredGames.length > 0 && (
         <div className="filtered-games-list__list">
@@ -102,6 +118,8 @@ const FilteredGamesList = ({ games, noMatchesText }) => {
 
             &__filters {
               margin-bottom: 2rem;
+              border-bottom: 1px solid #eaeaea;
+              padding-bottom: 1rem;
             }
 
             &__list {
