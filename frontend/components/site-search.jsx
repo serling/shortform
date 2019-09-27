@@ -22,11 +22,11 @@ const SiteSearch = ({ placeholderText, labelText, defaultValue }) => {
   };
 
   const handleOnSubmit = () => {
+    if (!searchString) return;
+
     setIsLoading(true);
 
     const TrimmedSearchInput = searchString.trim();
-
-    //TODO on blank?
 
     window.location.href = `/search/${TrimmedSearchInput}`;
   };

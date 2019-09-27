@@ -29,6 +29,8 @@ const Search = ({
 
   const textInput = React.createRef();
 
+  //TODO: set focus when clear button is clicked
+
   useEffect(() => {
     setInputHasText(false);
     if (shouldAutoFocus) textInput.current.focus();
