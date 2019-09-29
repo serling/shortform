@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import Layout from "./layout";
 import Content from "./content";
-import Breadcrumbs from "./breadcrumbs";
+import Intro from "./intro";
 import FilteredGamesList from "./filtered-games-list";
 
 const CategoryPage = props => {
@@ -24,9 +24,7 @@ const CategoryPage = props => {
     <Layout title={title}>
       <div className="category-page">
         <Content>
-          <Breadcrumbs links={breadcrumbs} />
-          <h2 className="category-page__heading">{title}</h2>
-          <p className="category-page__lead">{description}</p>
+          <Intro breadcrumbs={breadcrumbs} title={title} lead={description} />
         </Content>
         <Content>
           <div className="category-page__list">
@@ -37,14 +35,6 @@ const CategoryPage = props => {
       <style jsx>{`
         .category-page {
           padding-top: 2rem;
-
-          &__heading {
-            font-size: 3rem;
-          }
-
-          &__lead {
-            margin-bottom: 1rem;
-          }
         }
       `}</style>
     </Layout>

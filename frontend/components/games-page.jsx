@@ -3,10 +3,9 @@ import PropTypes from "prop-types";
 
 import Layout from "./layout";
 import Content from "./content";
-import Lead from "./lead";
+import Intro from "./intro";
 import Link from "./link";
 import Icon from "./icon";
-import Breadcrumbs from "./breadcrumbs";
 import FilteredGamesList from "./filtered-games-list";
 
 const GamesPage = props => {
@@ -23,9 +22,7 @@ const GamesPage = props => {
     <Layout title={title}>
       <div className="games-page">
         <Content>
-          <Breadcrumbs links={breadcrumbs} />
-          <h1 className="games-page__heading">{title}</h1>
-          <Lead text={description} />
+          <Intro breadcrumbs={breadcrumbs} title={title} lead={description} />
         </Content>
         <Content>
           <div className="games-page__cta">
@@ -45,15 +42,24 @@ const GamesPage = props => {
       </div>
       <style jsx>{`
         .games-page {
+          $break-at-sm: 25rem; //400px
+          $break-at-md: 50rem; //800px
+          $break-at-lg: 64rem; //1024px
+
           padding-top: 2rem;
 
-          &__heading {
-            font-size: 3rem;
-          }
           &__cta {
-            font-size: 2rem;
+            font-size: 1.5rem;
             display: flex;
             justify-content: flex-end;
+
+            @media screen and (min-width: $break-at-sm) {
+              font-size: 2rem;
+            }
+
+            @media screen and (min-width: $break-at-md) {
+              font-size: 3rem;
+            }
           }
         }
       `}</style>

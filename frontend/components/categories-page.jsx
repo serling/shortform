@@ -3,9 +3,8 @@ import PropTypes from "prop-types";
 
 import Layout from "./layout";
 import Content from "./content";
-import Lead from "./lead";
+import Intro from "./intro";
 import Image from "./image";
-import Breadcrumbs from "./breadcrumbs";
 import CategoriesList from "./categories-list";
 
 const CategoriesPage = props => {
@@ -22,10 +21,8 @@ const CategoriesPage = props => {
     <Layout title={title}>
       <div className="categories-page">
         <Content>
-          <Breadcrumbs links={breadcrumbs} />
+          <Intro breadcrumbs={breadcrumbs} title={title} lead={description} />
           {image && <Image image={image} />}
-          <h1 className="categories-page__heading">{title}</h1>
-          <Lead text={description} />
         </Content>
         <Content>
           <div className="categories-page__list">
@@ -36,10 +33,6 @@ const CategoriesPage = props => {
       <style jsx>{`
         .categories-page {
           padding-top: 2rem;
-
-          &__heading {
-            font-size: 3rem;
-          }
 
           &__lead {
             margin-bottom: 1rem;

@@ -2,9 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import Layout from "./layout";
-import Lead from "./lead";
+import Intro from "./intro";
 import Content from "./content";
-import Breadcrumbs from "./breadcrumbs";
 import FilteredGamesList from "./filtered-games-list";
 
 const ImprolabPage = ({ games, title, description }) => {
@@ -23,9 +22,7 @@ const ImprolabPage = ({ games, title, description }) => {
     <Layout title={title}>
       <div className="improlab-page">
         <Content>
-          <Breadcrumbs links={breadcrumbs} />
-          <h1 className="improlab-page__heading">{title}</h1>
-          <Lead text={description} />
+          <Intro breadcrumbs={breadcrumbs} title={title} lead={description} />
         </Content>
         <Content>
           <div className="improlab-page__list">
@@ -36,10 +33,6 @@ const ImprolabPage = ({ games, title, description }) => {
       <style jsx>{`
         .improlab-page {
           padding-top: 2rem;
-
-          &__heading {
-            font-size: 3rem;
-          }
         }
       `}</style>
     </Layout>

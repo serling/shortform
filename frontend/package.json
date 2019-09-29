@@ -13,6 +13,7 @@
     "blog",
     "compendium"
   ],
+  "browserslist": "last 2 versions",
   "author": "Thomas Christoffersen",
   "license": "ISC",
   "dependencies": {

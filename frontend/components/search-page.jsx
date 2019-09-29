@@ -2,10 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import Layout from "./layout";
-import Lead from "./lead";
 import Content from "./content";
-import Breadcrumbs from "./breadcrumbs";
 import Grid from "./grid";
+import Intro from "./intro";
 import Link from "./link";
 import Game from "./game";
 import Category from "./category";
@@ -22,9 +21,7 @@ const SearchPage = ({ games, categories, title, description, searchQuery }) => {
     <Layout title={title} searchQuery={searchQuery}>
       <div className="search-page">
         <Content>
-          <Breadcrumbs links={breadcrumbs} />
-          <h1 className="search-page__heading">{title}</h1>
-          <Lead text={description} />
+          <Intro breadcrumbs={breadcrumbs} title={title} lead={description} />
         </Content>
         <Content>
           <div className="search-page__lists">
@@ -75,10 +72,6 @@ const SearchPage = ({ games, categories, title, description, searchQuery }) => {
       <style jsx>{`
         .search-page {
           padding-top: 2rem;
-
-          &__heading {
-            font-size: 3rem;
-          }
 
           &__subheading {
             font-size: 2rem;

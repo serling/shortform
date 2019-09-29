@@ -91,6 +91,10 @@ const FrontPage = props => {
       </div>
       <style jsx>{`
         .front-page {
+          $break-at-sm: 25rem; //400px
+          $break-at-md: 50rem; //800px
+          $break-at-lg: 64rem; //1024px
+
           min-height: 100vh;
           padding-top: 2rem;
 
@@ -118,8 +122,16 @@ const FrontPage = props => {
           }
 
           &__cta {
-            font-size: 3rem;
+            font-size: 1.5rem;
             display: flex;
+
+            @media screen and (min-width: $break-at-sm) {
+              font-size: 2rem;
+            }
+
+            @media screen and (min-width: $break-at-md) {
+              font-size: 3rem;
+            }
           }
         }
       `}</style>
