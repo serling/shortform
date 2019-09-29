@@ -22,6 +22,8 @@ const Checkbox = ({ labelText, onChange, isChecked }) => {
         .checkbox {
           $self: &;
 
+          display: inline-block;
+
           &__label {
             display: flex;
             align-items: center;
