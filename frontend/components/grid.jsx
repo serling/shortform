@@ -28,6 +28,7 @@ const Grid = ({ children, theme }) => {
 
             display: flex;
             flex-wrap: wrap;
+            width: 100%;
 
             @media screen and (min-width: $break-at-md) {
               margin-left: -2rem;

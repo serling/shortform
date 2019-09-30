@@ -47,7 +47,7 @@ const Layout = ({ children, title, searchQuery }) => {
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
 
-            background-color: #f9f8f3fc;
+            background-color: #f9f8f3;
             font-family: "Manjari", sans-serif;
           }
 
