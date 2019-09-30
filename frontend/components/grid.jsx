@@ -4,6 +4,7 @@ import cn from "classnames";
 
 const themes = {
   default: "default",
+  auto: "auto",
   twoColumns: "twoColumns"
 };
 
@@ -54,6 +55,16 @@ const Grid = ({ children, theme }) => {
                   margin: 3rem 0 0 2rem;
                   flex: 0 0 calc(100% / 2 - 2rem);
                 }
+              }
+            }
+
+            &--auto {
+              margin-left: -1rem;
+              margin-top: -1rem;
+
+              #{$self}__item {
+                flex: 0 1 auto;
+                margin: 1rem 0 0 1rem;
               }
             }
           }

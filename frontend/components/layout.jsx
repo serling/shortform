@@ -14,6 +14,7 @@ const Layout = ({ children, title, searchQuery }) => {
       <Footer />
       <style jsx>{`
         .layout__content {
+          min-height: 75vh;
         }
       `}</style>
       <style jsx global>

@@ -4,6 +4,7 @@ import cn from "classnames";
 
 import Icon from "./icon";
 import Button from "./button";
+import Spinner from "./page-loader";
 
 const themes = {
   transparent: "transparent",
@@ -70,8 +71,13 @@ const Search = ({
               className="search__input"
               placeholder={placeholderText}
             />
+            {isDisabled && (
+              <div className="search__spinner">
+                <Spinner theme={Spinner.themes.small} />
+              </div>
+            )}
           </div>
-          {inputHasText && (
+          {inputHasText && !isDisabled && (
             <div className="search__clear">
               <button
                 disabled={isDisabled}
@@ -84,7 +90,7 @@ const Search = ({
             </div>
           )}
         </div>
-        <div className="serach__actions">
+        <div className="search__actions">
           {onSubmit && !hideSubmitButton && (
             <div className="search__submit">
               <Button
@@ -149,6 +155,13 @@ const Search = ({
             padding: 0 1rem;
             height: 100%;
             cursor: pointer;
+          }
+
+          &__spinner {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translate(-50%, -50%);
           }
 
           &__submit {

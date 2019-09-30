@@ -41,7 +41,6 @@ export default async (req, res) => {
      }[0]`
     )
     .then(response => {
-      console.log("after a search:", response);
       if (response) {
         res.status(200).json({ success: true, payload: response });
         return;

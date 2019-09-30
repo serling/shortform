@@ -55,7 +55,7 @@ const GamePage = props => {
             <h1 className="game-page__heading">{title}</h1>
             {categories && (
               <div className="game-page__categories">
-                <List isInline={true}>
+                <Grid theme={Grid.themes.auto}>
                   {categories.map(({ slug, title }) => (
                     <Link
                       href={`/categories/${slug}`}
@@ -65,7 +65,7 @@ const GamePage = props => {
                       {title}
                     </Link>
                   ))}
-                </List>
+                </Grid>
               </div>
             )}
           </div>

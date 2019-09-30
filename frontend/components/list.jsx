@@ -31,8 +31,10 @@ const List = ({ children, theme, isInline }) => {
 
             &--inline {
               #{$self}__item {
-                display: inline-block;
-                margin: 0 0 0 0.5rem;
+                @media screen and (min-width: $break-at-sm) {
+                  display: inline-block;
+                  margin: 0 0 0 0.5rem;
+                }
 
                 &:first-child {
                   margin-left: 0;
