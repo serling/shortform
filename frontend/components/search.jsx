@@ -41,6 +41,11 @@ const Search = ({
     }
   }, [value]);
 
+  const onHandleClickDelete = e => {
+    textInput.current.focus();
+    onClickDelete(e);
+  };
+
   return (
     <div
       className={cn("search", {
@@ -81,7 +86,7 @@ const Search = ({
             <div className="search__clear">
               <button
                 disabled={isDisabled}
-                onClick={onClickDelete}
+                onClick={onHandleClickDelete}
                 className="search__clear-button"
               >
                 <span className="search__clear-label">clear search string</span>
