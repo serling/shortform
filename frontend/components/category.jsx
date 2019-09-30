@@ -40,7 +40,6 @@ const Category = ({ title, slug, description, theme, image }) => {
             }
 
             &__title {
-              font-size: 1.2rem;
               border-bottom: 2px solid transparent;
             }
 

@@ -6,32 +6,6 @@ import Link from "./link";
 import Icon from "./icon";
 import SiteSearch from "./site-search";
 
-const ImprolabLink = () => {
-  return (
-    <Link href="/experimental">
-      <div className="improlab-link">
-        <div className="improlab-link__icon">
-          <Icon name="beaker" size={Icon.sizes.tiny} />
-        </div>
-        <div className="improlab-link__text">Improlab</div>
-      </div>
-      <style jsx>{`
-        .improlab-link {
-          display: flex;
-          align-items: center;
-
-          &__icon {
-            margin-right: 0.25rem;
-          }
-
-          &__text {
-          }
-        }
-      `}</style>
-    </Link>
-  );
-};
-
 const Header = ({ searchQuery }) => (
   <>
     <div className="header">
@@ -48,7 +22,7 @@ const Header = ({ searchQuery }) => (
               <Link href="/categories">Categories</Link>
             </div>
             <div className="header__action header__action--improlab">
-              <ImprolabLink />
+              <Link text="Improlab" href="/experimental" iconName="beaker" />
             </div>
           </div>
           <div className="header__search">
@@ -60,7 +34,7 @@ const Header = ({ searchQuery }) => (
           </div>
           <div className="header__actions header__actions--post">
             <div className="header__action">
-              <ImprolabLink />
+              <Link text="Improlab" href="/experimental" iconName="beaker" />
             </div>
           </div>
         </div>

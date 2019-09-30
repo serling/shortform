@@ -26,7 +26,7 @@ const SearchPage = ({ games, categories, title, description, searchQuery }) => {
         <Content>
           <div className="search-page__lists">
             {games.length <= 0 && categories.length <= 0 && (
-              <p>{`Sorry, we couldn't find anything mathcing "${searchQuery}".`}</p>
+              <p>{`Sorry, we couldn't find anything matching "${searchQuery}".`}</p>
             )}
             {games.length > 0 && (
               <div className="search-page__list">

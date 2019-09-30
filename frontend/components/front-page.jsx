@@ -80,9 +80,9 @@ const FrontPage = props => {
         </Content>
         <Content>
           <div className="front-page__cta">
-            <Icon name="beaker" />
             <Link
               text="Check out the lab"
+              iconName="beaker"
               href="/experimental"
               theme={Link.themes.cta}
             />
@@ -99,13 +99,21 @@ const FrontPage = props => {
           padding-top: 2rem;
 
           &__heading {
-            font-size: 3rem;
+            font-size: 2rem;
             margin-bottom: 1rem;
+
+            @media screen and (min-width: $break-at-md) {
+              font-size: 3rem;
+            }
           }
 
           &__subheading {
-            font-size: 2rem;
+            font-size: 1.5rem;
             margin-bottom: 1rem;
+
+            @media screen and (min-width: $break-at-md) {
+              font-size: 2rem;
+            }
           }
 
           &__lead {
@@ -123,7 +131,10 @@ const FrontPage = props => {
 
           &__cta {
             font-size: 1.5rem;
-            display: flex;
+
+            &:before {
+              content: "";
+            }
 
             @media screen and (min-width: $break-at-sm) {
               font-size: 2rem;

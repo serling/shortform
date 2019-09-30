@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
 
+import Icon from "./icon";
+
 const themes = {
   label: "label",
   default: "default",
@@ -9,7 +11,7 @@ const themes = {
   cta: "cta"
 };
 
-const Link = ({ children, theme, href, text }) => {
+const Link = ({ children, theme, href, text, iconName }) => {
   return (
     <a
       href={href}
@@ -17,12 +19,22 @@ const Link = ({ children, theme, href, text }) => {
         [`link--${themes[theme]}`]: themes[theme]
       })}
     >
+      {iconName && (
+        <span className="link__icon">
+          <Icon name={iconName} />
+        </span>
+      )}
       <span className="link__content">{children || text}</span>
       <style jsx>
         {`
           .link {
             $self: &;
             display: inline-block;
+
+            &__icon {
+              display: inline-block;
+              margin-right: 0.15em;
+            }
 
             &--cta {
               border-bottom: 2px solid transparent;

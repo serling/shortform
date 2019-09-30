@@ -26,8 +26,8 @@ const GamesPage = props => {
         </Content>
         <Content>
           <div className="games-page__cta">
-            <Icon name="beaker" />
             <Link
+              iconName="beaker"
               text="Check out the lab"
               href="/experimental"
               theme={Link.themes.cta}

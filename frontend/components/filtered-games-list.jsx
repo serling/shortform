@@ -34,6 +34,12 @@ const FilteredGamesList = ({ games, noMatchesText }) => {
     });
   };
 
+  const handleOnCheckboxKeyPress = e => {
+    if (e.key === "Enter") {
+      onCheckboxChange();
+    }
+  };
+
   //TODO:special characters crash
   useEffect(() => {
     setFilteredGames(() => {
@@ -84,6 +90,7 @@ const FilteredGamesList = ({ games, noMatchesText }) => {
           />
         </div>
         <Checkbox
+          onKeyPress={handleOnCheckboxKeyPress}
           onChange={onCheckboxChange}
           isChecked={isCheckboxChecked}
           labelText="For 2 players"

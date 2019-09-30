@@ -18,6 +18,7 @@ const Intro = ({ title, lead, breadcrumbs }) => {
 
           &__heading {
             font-size: 1.5rem;
+            margin-bottom: 1rem;
 
             @media screen and (min-width: $break-at-sm) {
               font-size: 2rem;

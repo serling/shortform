@@ -26,15 +26,17 @@ const Game = ({
       })}
     >
       <div className="game__header">
-        {isExperimental && (
+        {/* {isExperimental && (
           <div className="game__icons">
             <div className="game__icon">
               <Icon name="beaker" size={Icon.sizes.tiny} />
             </div>
           </div>
-        )}
+        )} */}
         <h2 className="game__title">
-          <Link href={`/games/${slug}`}>{title}</Link>
+          <Link href={`/games/${slug}`} iconName={isExperimental && "beaker"}>
+            {title}
+          </Link>
         </h2>
       </div>
       <div className="game__meta">
@@ -84,7 +86,7 @@ const Game = ({
             }
 
             &__title {
-              font-size: 1.2rem;
+              font-size: 1rem;
             }
 
             &__icons {

@@ -1,13 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
 
-import Icon from "./icon";
-
-const Checkbox = ({ labelText, onChange, isChecked }) => {
+const Checkbox = ({ labelText, onChange, onKeyPress, isChecked }) => {
   return (
     <div className={cn("checkbox", { "checkbox--checked": isChecked })}>
-      <label className="checkbox__label">
+      <label className="checkbox__label" tabIndex={0} onKeyPress={onKeyPress}>
         <div className="checkbox__fake" />
         <input
           type="checkbox"
@@ -81,7 +79,10 @@ const Checkbox = ({ labelText, onChange, isChecked }) => {
 };
 
 Checkbox.propTypes = {
-  onChange: PropTypes.func.isRequired
+  isChecked: PropTypes.bool,
+  labelText: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onKeyPress: PropTypes.func
 };
 
 export default Checkbox;
