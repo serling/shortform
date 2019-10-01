@@ -2,6 +2,13 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 import Search from "./search";
+import Modal from "./modal";
+import Intro from "./intro";
+import Content from "./content";
+import Grid from "./grid";
+import Link from "./link";
+import Category from "./category";
+import Game from "./game";
 
 const SiteSearch = ({ placeholderText, labelText, defaultValue }) => {
   const [searchString, setSearchString] = useState(defaultValue);
@@ -28,7 +35,7 @@ const SiteSearch = ({ placeholderText, labelText, defaultValue }) => {
 
     const TrimmedSearchInput = searchString.trim();
 
-    window.location.href = `/search/${TrimmedSearchInput}`;
+    window.location.href = `/search`;
   };
 
   const handleOnDelete = () => {
@@ -51,6 +58,7 @@ const SiteSearch = ({ placeholderText, labelText, defaultValue }) => {
         onChange={handleOnChange}
         onSubmit={handleOnSubmit}
       />
+
       <style jsx>{`
         .site-search {
         }

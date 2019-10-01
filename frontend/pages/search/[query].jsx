@@ -16,11 +16,7 @@ const Search = props => {
 Search.getInitialProps = async ctx => {
   const { query, req } = ctx;
 
-  const { payload, error } = await getInitialData(
-    req,
-    "/api/search",
-    query.query
-  );
+  const { payload, error } = await getInitialData(req, "/api/search");
 
   return { data: payload, error };
 };

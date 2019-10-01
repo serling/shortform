@@ -8,7 +8,8 @@ import Button from "./button";
 ReactModal.setAppElement("#__next");
 
 const themes = {
-  default: "default"
+  default: "default",
+  overlay: "overlay"
 };
 
 class Modal extends React.Component {
@@ -77,6 +78,16 @@ class Modal extends React.Component {
                 #{$self}__content {
                   padding: 3rem 2rem 2rem 2rem;
                   position: relative;
+                }
+              }
+
+              &--overlay {
+                left: 0;
+                top: 4.5rem;
+                width: 100%;
+
+                #{$self}__content {
+                  padding: 3rem 2rem 2rem 2rem;
                 }
               }
 

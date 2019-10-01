@@ -7,7 +7,7 @@ import Lead from "./lead";
 const Intro = ({ title, lead, breadcrumbs }) => {
   return (
     <div className="intro">
-      <Breadcrumbs links={breadcrumbs} />
+      {breadcrumbs && <Breadcrumbs links={breadcrumbs} />}
       <h1 className="intro__heading">{title}</h1>
       <Lead text={lead} />
       <style jsx>{`
