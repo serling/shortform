@@ -16,8 +16,6 @@ const Image = ({ image, alt }) => {
       />
       <style jsx>{`
         .image {
-          margin: 1rem 0;
-
           &__image {
             max-width: 100%;
           }
