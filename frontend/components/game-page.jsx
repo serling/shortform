@@ -110,7 +110,7 @@ const GamePage = props => {
             </div>
             {notes && (
               <div className="game-page__notes">
-                <h2 className="game-page__notes-heading">- Teacher's notes:</h2>
+                <h2 className="game-page__notes-heading"> Teacher's notes</h2>
                 <div className="game-page__notes-text">
                   <BlockContent content={notes} />
                 </div>
@@ -171,6 +171,7 @@ const GamePage = props => {
 
           &__subheading {
             font-size: 1.2rem;
+            margin-bottom: 1rem;
           }
 
           &__date {
@@ -201,28 +202,20 @@ const GamePage = props => {
           }
 
           &__notes-heading {
-            font-size: 1.5rem;
-            font-family: "Mansalva", cursive;
+            font-size: 1.2rem;
             margin-bottom: 1rem;
-            color: #535353;
-            text-decoration: underline;
-
-            @media screen and (min-width: $break-at-md) {
-              transform: rotate(3deg);
-              margin-bottom: 0;
-              margin-left: 1rem;
-            }
           }
 
           &__notes-text {
-            @media screen and (min-width: $break-at-md) {
-              padding: 0 2rem;
-            }
           }
 
           &__related-heading {
             font-size: 2rem;
             margin-bottom: 1rem;
+
+            @media screen and (min-width: $break-at-md) {
+              padding-top: 4rem;
+            }
           }
 
           &__notes {

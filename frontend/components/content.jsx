@@ -26,15 +26,27 @@ const Content = ({ theme, children, color }) => (
       {`
         .content {
           $self: &;
+          $break-at-sm: 25rem; //400px
+          $break-at-md: 50rem; //800px
+          $break-at-lg: 64rem; //1024px
+
           width: 100%;
 
           + #{$self} {
-            margin-top: 4rem;
+            margin-top: 2rem;
+
+            @media screen and (min-width: $break-at-sm) {
+              margin-top: 4rem;
+            }
           }
 
           &--color-white {
             background-color: white;
-            padding: 4rem 0;
+            padding: 2rem 0;
+
+            @media screen and (min-width: $break-at-sm) {
+              padding: 4rem 0;
+            }
           }
 
           &--wide {

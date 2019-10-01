@@ -33,8 +33,16 @@ const FormattedDate = ({ theme, dateString, text }) => {
       <style jsx>
         {`
           .formatted-date {
+            $break-at-sm: 25rem; //400px
+            $break-at-md: 50rem; //800px
+            $break-at-lg: 64rem; //1024px
+
             &__text {
               margin-right: 0.5em;
+            }
+
+            &__date {
+              display: block;
             }
           }
         `}
