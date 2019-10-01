@@ -64,6 +64,11 @@ const Header = ({ searchQuery }) => (
 
           &__search {
             flex: 1 1 auto;
+            margin-top: 1rem;
+
+            @media screen and (min-width: $break-at-sm) {
+              margin: 0;
+            }
 
             @media screen and (min-width: $break-at-md) {
               margin: 0 2rem;
@@ -72,6 +77,12 @@ const Header = ({ searchQuery }) => (
 
           &__actions {
             display: flex;
+            flex-wrap: wrap;
+            margin-left: -1rem;
+            margin-top: -1rem;
+
+            @media screen and (min-width: $break-at-sm) {
+            }
 
             &--post {
               display: none;
@@ -89,11 +100,16 @@ const Header = ({ searchQuery }) => (
 
           &__action {
             margin-left: 1rem;
+            margin-top: 1rem;
             display: flex;
             align-items: center;
 
+            @media screen and (min-width: $break-at-sm) {
+            }
+
             &:first-child {
-              margin-left: 0;
+              @media screen and (min-width: $break-at-sm) {
+              }
             }
 
             &:last-child {
