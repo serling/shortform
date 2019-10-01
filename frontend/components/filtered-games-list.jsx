@@ -83,7 +83,7 @@ const FilteredGamesList = ({ games, noMatchesText }) => {
           <Search
             id="filtered-games-search-0"
             labelText="Filter the list of games below"
-            placeholderText="e.g. genres, players, director, etc"
+            placeholderText='e.g. "onion", "group", "story", etc'
             value={searchString}
             onChange={handleOnChange}
             onClickDelete={handleOnClickDelete}

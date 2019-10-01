@@ -112,6 +112,9 @@ const Search = ({
       <style jsx>{`
         .search {
           $self: &;
+          $break-at-sm: 25rem; //400px
+          $break-at-md: 50rem; //800px
+          $break-at-lg: 64rem; //1024px
 
           &--transparent {
             #{$self}__input {
@@ -131,7 +134,15 @@ const Search = ({
           &__input {
             padding: 0.5rem 0.5rem 0.5rem 2.5rem;
             width: 100%;
-            font-size: 1.2rem;
+            font-size: 0.8rem;
+
+            @media screen and (min-width: $break-at-sm) {
+              font-size: 1rem;
+            }
+
+            @media screen and (min-width: $break-at-md) {
+              font-size: 1.2rem;
+            }
           }
 
           &__wrapper {

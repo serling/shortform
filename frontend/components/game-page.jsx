@@ -148,7 +148,15 @@ const GamePage = props => {
           }
 
           &__heading {
-            font-size: 4rem;
+            font-size: 2rem;
+
+            @media screen and (min-width: $break-at-sm) {
+              font-size: 3rem;
+            }
+
+            @media screen and (min-width: $break-at-md) {
+              font-size: 4rem;
+            }
           }
 
           &__aside-list {
