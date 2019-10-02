@@ -3,10 +3,9 @@ import PropTypes from "prop-types";
 
 import Content from "./content";
 import Link from "./link";
-import Icon from "./icon";
 import SiteSearch from "./site-search";
 
-const Header = ({ searchQuery }) => (
+const Header = ({ defaultSearchParameters }) => (
   <>
     <div className="header">
       <Content theme={Content.themes.wide}>
@@ -28,8 +27,8 @@ const Header = ({ searchQuery }) => (
           <div className="header__search">
             <SiteSearch
               placeholderText=""
-              defaultValue={searchQuery}
               labelText="find games or categories..."
+              {...defaultSearchParameters}
             />
           </div>
           <div className="header__actions header__actions--post">

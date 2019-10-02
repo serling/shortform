@@ -19,7 +19,8 @@ export default async (req, res) => {
     .fetch(
       `* 
      []{
-         "searchQuery": "${q}",
+         "defaultSearchValue": "${q ? q : ""}",
+         "defaultIsExperimental": ${!lab ? false : true},
          "games": *[_type == "game" && [title, description] match "${q}*" ${
         lab ? `&& isExperimental` : ""
       }]

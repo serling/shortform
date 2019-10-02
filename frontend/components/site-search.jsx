@@ -1,41 +1,69 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 import { useRouter } from "next/router";
-import Search from "./search";
+import PropTypes from "prop-types";
 
-const SiteSearch = ({ placeholderText, labelText, defaultValue }) => {
-  const [searchString, setSearchString] = useState(defaultValue);
+import Search from "./search";
+import Checkbox from "./checkbox";
+
+const SiteSearch = ({
+  placeholderText,
+  labelText,
+  defaultSearchValue,
+  defaultIsExperimental
+}) => {
+  const [searchString, setSearchString] = useState(defaultSearchValue);
+  const [isExperimental, setIsExperimental] = useState(defaultIsExperimental);
+  const [queries, setQueries] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
 
-  const handleOnKeyPress = e => {
+  useEffect(() => {
+    setQueries({ ...queries, q: searchString });
+  }, [searchString]);
+
+  useEffect(() => {
+    setQueries({ ...queries, lab: isExperimental });
+  }, [isExperimental]);
+
+  const handleOnSearchStringKeyPress = e => {
     const { key } = e;
 
     if (key === "Enter") {
-      handleOnSubmit();
+      handleOnSearchSubmit();
     }
   };
 
-  const handleOnChange = e => {
+  const handleOnSearchStringChange = e => {
     const { target } = e;
 
     setSearchString(target.value);
   };
 
-  const handleOnSubmit = () => {
+  const handleOnExperimentalChange = e => {
+    if (isExperimental) {
+      setIsExperimental(false);
+    } else {
+      setIsExperimental(true);
+    }
+  };
+
+  const handleOnExperimentalKeyPress = e => {
+    if (e.key === "Enter") {
+      handleOnExperimentalChange();
+    }
+  };
+
+  const handleOnSearchSubmit = () => {
     if (!searchString) return;
 
     setIsLoading(true);
 
-    const TrimmedSearchInput = searchString.trim();
+    console.log("sending", queries);
 
     router.push({
       pathname: `/search`,
-      query: {
-        q: TrimmedSearchInput
-        // lab: true
-      }
+      query: queries
     });
   };
 
@@ -48,7 +76,7 @@ const SiteSearch = ({ placeholderText, labelText, defaultValue }) => {
       <Search
         hideSubmitButton={true}
         id="site-search-0"
-        onKeyPress={handleOnKeyPress}
+        onKeyPress={handleOnSearchStringKeyPress}
         theme={Search.themes.transparent}
         isDisabled={isLoading}
         placeholderText={placeholderText}
@@ -56,11 +84,22 @@ const SiteSearch = ({ placeholderText, labelText, defaultValue }) => {
         labelText={labelText}
         hideLabel={true}
         onClickDelete={handleOnDelete}
-        onChange={handleOnChange}
-        onSubmit={handleOnSubmit}
+        onChange={handleOnSearchStringChange}
+        onSubmit={handleOnSearchSubmit}
       />
+      <div className="site-search__actions">
+        <Checkbox
+          labelText="experimental"
+          onChange={handleOnExperimentalChange}
+          onKeyPress={handleOnExperimentalKeyPress}
+          isChecked={isExperimental}
+        />
+      </div>
       <style jsx>{`
         .site-search {
+          &__actions {
+            margin-top: 1rem;
+          }
         }
       `}</style>
     </div>
@@ -71,5 +110,10 @@ SiteSearch.propTypes = {
   placeholderText: PropTypes.string,
   labelText: PropTypes.string
 };
+
+// SiteSearch.defaultProps = {
+//   defaultIsExperimental: false,
+//   defaultSearchValue: ""
+// };
 
 export default SiteSearch;

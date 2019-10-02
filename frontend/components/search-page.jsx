@@ -9,16 +9,30 @@ import Link from "./link";
 import Game from "./game";
 import Category from "./category";
 
-const SearchPage = ({ games, categories, title, description, searchQuery }) => {
-  const breadcrumbs = [
-    {
-      text: "Home",
-      href: "/"
-    }
-  ];
+const breadcrumbs = [
+  {
+    text: "Home",
+    href: "/"
+  }
+];
+
+const SearchPage = ({
+  games,
+  categories,
+  title,
+  description,
+  defaultSearchValue,
+  defaultIsExperimental
+}) => {
+  const defaultSearchParameters = {
+    defaultSearchValue,
+    defaultIsExperimental
+  };
+
+  console.log("from query to page:", defaultSearchParameters);
 
   return (
-    <Layout title={title} searchQuery={searchQuery}>
+    <Layout title={title} defaultSearchParameters={defaultSearchParameters}>
       <div className="search-page">
         <Content>
           <Intro breadcrumbs={breadcrumbs} title={title} lead={description} />
@@ -26,7 +40,7 @@ const SearchPage = ({ games, categories, title, description, searchQuery }) => {
         <Content>
           <div className="search-page__lists">
             {games.length <= 0 && categories.length <= 0 && (
-              <p>{`Sorry, we couldn't find anything matching "${searchQuery}".`}</p>
+              <p>{`Sorry, we couldn't find anything matching "${defaultSearchValue}".`}</p>
             )}
             {games.length > 0 && (
               <div className="search-page__list">
@@ -99,7 +113,7 @@ SearchPage.propTypes = {
   description: PropTypes.string,
   games: PropTypes.array,
   categories: PropTypes.array,
-  searchQuery: PropTypes.string.isRequired
+  defaultSearchValue: PropTypes.string.isRequired
 };
 
 SearchPage.defaultProps = {

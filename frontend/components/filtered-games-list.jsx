@@ -36,7 +36,7 @@ const FilteredGamesList = ({ games, noMatchesText }) => {
 
   const handleOnCheckboxKeyPress = e => {
     if (e.key === "Enter") {
-      onCheckboxChange();
+      handleOnCheckboxChange();
     }
   };
 
@@ -60,7 +60,7 @@ const FilteredGamesList = ({ games, noMatchesText }) => {
     });
   }, [activeFilters]);
 
-  const onCheckboxChange = e => {
+  const handleOnCheckboxChange = e => {
     if (isCheckboxChecked) {
       setCheckboxChecked(false);
 
@@ -91,7 +91,7 @@ const FilteredGamesList = ({ games, noMatchesText }) => {
         </div>
         <Checkbox
           onKeyPress={handleOnCheckboxKeyPress}
-          onChange={onCheckboxChange}
+          onChange={handleOnCheckboxChange}
           isChecked={isCheckboxChecked}
           labelText="For 2 players"
         />
