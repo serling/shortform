@@ -2,8 +2,8 @@ import React from "react";
 import Error from "next/error";
 import PropTypes from "prop-types";
 
-import { getInitialData } from "../../utilities/api-helper";
-import SearchPage from "../../components/search-page";
+import { getInitialData } from "../utilities/api-helper";
+import SearchPage from "../components/search-page";
 
 const Search = props => {
   const { data, error } = props;
@@ -19,7 +19,8 @@ Search.getInitialProps = async ctx => {
   const { payload, error } = await getInitialData(
     req,
     "/api/search",
-    query.query
+    undefined,
+    query
   );
 
   return { data: payload, error };

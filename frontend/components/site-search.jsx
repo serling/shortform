@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-
+import { useRouter } from "next/router";
 import Search from "./search";
 
 const SiteSearch = ({ placeholderText, labelText, defaultValue }) => {
   const [searchString, setSearchString] = useState(defaultValue);
   const [isLoading, setIsLoading] = useState(false);
+
+  const router = useRouter();
 
   const handleOnKeyPress = e => {
     const { key } = e;
@@ -28,7 +30,13 @@ const SiteSearch = ({ placeholderText, labelText, defaultValue }) => {
 
     const TrimmedSearchInput = searchString.trim();
 
-    window.location.href = `/search/${TrimmedSearchInput}`;
+    router.push({
+      pathname: `/search`,
+      query: {
+        q: TrimmedSearchInput
+        // lab: true
+      }
+    });
   };
 
   const handleOnDelete = () => {

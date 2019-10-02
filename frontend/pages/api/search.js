@@ -1,4 +1,4 @@
-import { client } from "../../../utilities/client";
+import { client } from "../../utilities/client";
 
 const fatalErrorObject = {
   statusCode: 404,
@@ -13,12 +13,16 @@ const dataErrorObject = {
 export default async (req, res) => {
   const { query } = req;
 
+  const { q, lab } = query;
+
   await client
     .fetch(
       `* 
      []{
-         "searchQuery": "${query.query}",
-         "games": *[_type == "game" && [title, description] match "${query.query}*"]
+         "searchQuery": "${q}",
+         "games": *[_type == "game" && [title, description] match "${q}*" ${
+        lab ? `&& isExperimental` : ""
+      }]
          {
             _id, 
             title,
@@ -30,7 +34,7 @@ export default async (req, res) => {
             "lastUpdated": _updatedAt,
             categories[]-> { title, "slug": slug.current },  
          },
-         "categories": *[_type == "category" && [title, description] match "${query.query}*"]
+         "categories": *[_type == "category" && [title, description] match "${q}*"]
          {
             _id,
             title,
