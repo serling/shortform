@@ -13,7 +13,6 @@ const dataErrorObject = {
 export default async (req, res) => {
   const { query } = req;
 
-  //TODO: fix this query so data is nested in a "games" property
   await client
     .fetch(
       `*
