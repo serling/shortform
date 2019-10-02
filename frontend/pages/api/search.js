@@ -20,7 +20,7 @@ export default async (req, res) => {
       `* 
      []{
          "defaultSearchValue": "${q ? q : ""}",
-         "defaultIsExperimental": ${!lab ? false : true},
+         "defaultIsExperimental": "${!lab ? "" : true}",
          "games": *[_type == "game" && [title, description] match "${q}*" ${
         lab ? `&& isExperimental` : ""
       }]

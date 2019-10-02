@@ -29,8 +29,6 @@ const SearchPage = ({
     defaultIsExperimental
   };
 
-  console.log("from query to page:", defaultSearchParameters);
-
   return (
     <Layout title={title} defaultSearchParameters={defaultSearchParameters}>
       <div className="search-page">

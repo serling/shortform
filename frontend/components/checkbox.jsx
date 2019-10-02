@@ -2,9 +2,20 @@ import React from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
 
-const Checkbox = ({ labelText, onChange, onKeyPress, isChecked }) => {
+const Checkbox = ({
+  labelText,
+  onChange,
+  onKeyPress,
+  isChecked,
+  isDisabled
+}) => {
   return (
-    <div className={cn("checkbox", { "checkbox--checked": isChecked })}>
+    <div
+      className={cn("checkbox", {
+        "checkbox--checked": isChecked,
+        "checkbox--disabled": isDisabled
+      })}
+    >
       <label className="checkbox__label" tabIndex={0} onKeyPress={onKeyPress}>
         <div className="checkbox__fake" />
         <input
@@ -12,6 +23,7 @@ const Checkbox = ({ labelText, onChange, onKeyPress, isChecked }) => {
           className="checkbox__input"
           checked={isChecked}
           onChange={onChange}
+          disabled={isDisabled}
         />
         <span className="checkbox__text">{labelText}</span>
       </label>
@@ -50,6 +62,18 @@ const Checkbox = ({ labelText, onChange, onKeyPress, isChecked }) => {
             }
           }
 
+          &--disabled {
+            #{$self}__fake {
+              background-color: #eaeaea;
+            }
+
+            &:hover {
+              #{$self}__text {
+                border-bottom: 2px solid transparent;
+              }
+            }
+          }
+
           &__fake {
             width: 1rem;
             height: 1rem;
@@ -80,6 +104,7 @@ const Checkbox = ({ labelText, onChange, onKeyPress, isChecked }) => {
 
 Checkbox.propTypes = {
   isChecked: PropTypes.bool,
+  isDisabled: PropTypes.bool,
   labelText: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   onKeyPress: PropTypes.func
