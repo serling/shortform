@@ -7,7 +7,7 @@ import Intro from "./intro";
 import FilteredGamesList from "./filtered-games-list";
 
 const CategoryPage = props => {
-  const { games, description, title } = props;
+  const { games, description, title, image } = props;
 
   const breadcrumbs = [
     {
@@ -24,7 +24,12 @@ const CategoryPage = props => {
     <Layout title={title}>
       <div className="category-page">
         <Content>
-          <Intro breadcrumbs={breadcrumbs} title={title} lead={description} />
+          <Intro
+            breadcrumbs={breadcrumbs}
+            title={title}
+            lead={description}
+            image={image}
+          />
         </Content>
         <Content>
           <div className="category-page__list">
