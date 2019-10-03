@@ -11,10 +11,9 @@ const dataErrorObject = {
 };
 
 const searchQuery = (q, lab, audience) => {
-  let string = [
-    `_type == "game"`,
-    q && `[title, description] match "${q}*"`
-  ].join(" && ");
+  let string = `_type == "game"`;
+
+  if (q) string = string.concat(`&& [title, description] match "${q}*"`);
 
   if (lab) string = string.concat(` && isExperimental`);
 
