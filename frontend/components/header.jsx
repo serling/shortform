@@ -5,7 +5,7 @@ import Content from "./content";
 import Link from "./link";
 import SiteSearch from "./site-search";
 
-const Header = ({ defaultSearchParameters }) => (
+const Header = ({ hideSearchBar }) => (
   <>
     <div className="header">
       <Content theme={Content.themes.wide}>
@@ -24,14 +24,15 @@ const Header = ({ defaultSearchParameters }) => (
               <Link text="Improlab" href="/experimental" iconName="beaker" />
             </div>
           </div>
-          <div className="header__search">
-            <SiteSearch
-              searchInputId="header-search-0"
-              placeholderText=""
-              labelText="find games or categories..."
-              {...defaultSearchParameters}
-            />
-          </div>
+          {!hideSearchBar && (
+            <div className="header__search">
+              <SiteSearch
+                searchInputId="header-search-0"
+                placeholderText=""
+                labelText="find games or categories..."
+              />
+            </div>
+          )}
           <div className="header__actions header__actions--post">
             <div className="header__action">
               <Link text="Improlab" href="/experimental" iconName="beaker" />
@@ -55,6 +56,7 @@ const Header = ({ defaultSearchParameters }) => (
           &__content {
             flex-flow: column;
             display: flex;
+            justify-content: space-between;
 
             @media screen and (min-width: $break-at-md) {
               align-items: center;

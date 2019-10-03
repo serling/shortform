@@ -20,7 +20,7 @@ const breadcrumbs = [
 const SearchPage = ({ games, categories, title, description, queryValues }) => {
   const { defaultSearchValue } = queryValues;
   return (
-    <Layout title={title} defaultSearchParameters={queryValues}>
+    <Layout title={title} hideSearchBar={true}>
       <div className="search-page">
         <Content>
           <Intro breadcrumbs={breadcrumbs} title={title} lead={description} />

@@ -22,32 +22,32 @@ const queryBooleans = {
 const playerCountOptions = [
   {
     id: "zero-0",
-    label: "not important",
+    label: "Unimportant",
     value: "0"
   },
   {
     id: "one-0",
-    label: "one player",
+    label: "One player",
     value: "1"
   },
   {
     id: "two-0",
-    label: "two players",
+    label: "Two players",
     value: "2"
   },
   {
     id: "three-0",
-    label: "three players",
+    label: "Three players",
     value: "3"
   },
   {
     id: "four-0",
-    label: "four players",
+    label: "Four players",
     value: "4"
   },
   {
     id: "five-0",
-    label: "five players or more",
+    label: "Five players or more",
     value: "5"
   }
 ];
