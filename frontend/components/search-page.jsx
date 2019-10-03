@@ -8,6 +8,7 @@ import Intro from "./intro";
 import Link from "./link";
 import Game from "./game";
 import Category from "./category";
+import SiteSearch from "./site-search";
 
 const breadcrumbs = [
   {
@@ -23,6 +24,14 @@ const SearchPage = ({ games, categories, title, description, queryValues }) => {
       <div className="search-page">
         <Content>
           <Intro breadcrumbs={breadcrumbs} title={title} lead={description} />
+        </Content>
+        <Content>
+          <SiteSearch
+            theme={SiteSearch.themes.complex}
+            placeholderText=""
+            labelText="find games or categories..."
+            {...queryValues}
+          />
         </Content>
         <Content>
           <div className="search-page__lists">
@@ -105,7 +114,7 @@ SearchPage.propTypes = {
 
 SearchPage.defaultProps = {
   title: "Search Results",
-  description: "Searched through games and categories.",
+  description: "Search through games and categories.",
   games: [],
   categories: []
 };

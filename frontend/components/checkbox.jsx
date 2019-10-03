@@ -54,8 +54,8 @@ const Checkbox = ({
             cursor: pointer;
 
             &:hover {
-              #{$self}__text {
-                border-bottom: 2px solid black;
+              #{$self}__fake {
+                border: 3px solid black;
               }
             }
           }

@@ -70,6 +70,7 @@ const Button = ({
           border: 0;
           padding: 0;
           margin: 0;
+          font-size: 1em;
           text-align: center;
           text-decoration: none;
           transform: translateZ(0);
