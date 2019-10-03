@@ -10,7 +10,13 @@ const dataErrorObject = {
   title: "No response from fetch request"
 };
 
-const searchQuery = (q, lab, audience) => {
+const getCategoriesQuery = q => {
+  let string = `_type == "category" && [title, description] match "${q}*"`;
+
+  return string;
+};
+
+const getGamesQuery = (q, lab, audience, players) => {
   let string = `_type == "game"`;
 
   if (q) string = string.concat(`&& [title, description] match "${q}*"`);
@@ -21,6 +27,8 @@ const searchQuery = (q, lab, audience) => {
     string = string.concat(
       ` && "audience-participation" in categories[]->slug.current`
     );
+
+  if (players) string = string.concat(` && playerCount === "${players}"`);
 
   console.log(string);
 
@@ -41,7 +49,7 @@ export default async (req, res) => {
           "defaultIsExperimental": "${!!lab ? true : ""}",
           "defaultIsAudience": "${!!audience ? true : ""}",
           },
-         "games": *[${searchQuery(q, lab, audience)}]
+         "games": *[${getGamesQuery(q, lab, audience)}]
          {
             _id, 
             title,
@@ -53,7 +61,7 @@ export default async (req, res) => {
             "lastUpdated": _updatedAt,
             categories[]-> { title, "slug": slug.current },  
          },
-         "categories": *[_type == "category" && [title, description] match "${q}*"]
+         "categories": *[${getCategoriesQuery(q)}]
          {
             _id,
             title,
