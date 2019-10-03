@@ -93,6 +93,7 @@ const SiteSearch = ({
           onChange={handleOnExperimentalChange}
           onKeyPress={handleOnExperimentalKeyPress}
           isChecked={isExperimental}
+          isDisabled={isLoading}
         />
       </div>
       <style jsx>{`
