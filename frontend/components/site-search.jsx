@@ -6,6 +6,7 @@ import keys from "../utilities/keys";
 
 import Search from "./search";
 import Checkbox from "./checkbox";
+import Select from "./select/select";
 import Button from "./button";
 
 const themes = {
@@ -18,6 +19,39 @@ const queryBooleans = {
   false: ""
 };
 
+const playerCountOptions = [
+  {
+    id: "zero-0",
+    label: "not important",
+    value: "0"
+  },
+  {
+    id: "one-0",
+    label: "one player",
+    value: "1"
+  },
+  {
+    id: "two-0",
+    label: "two players",
+    value: "2"
+  },
+  {
+    id: "three-0",
+    label: "three players",
+    value: "3"
+  },
+  {
+    id: "four-0",
+    label: "four players",
+    value: "4"
+  },
+  {
+    id: "five-0",
+    label: "five players or more",
+    value: "5"
+  }
+];
+
 const SiteSearch = ({
   theme,
   searchInputId,
@@ -25,11 +59,13 @@ const SiteSearch = ({
   labelText,
   defaultSearchValue,
   defaultIsExperimental,
-  defaultIsAudience
+  defaultIsAudience,
+  defaultPlayerCount
 }) => {
   const [searchString, setSearchString] = useState(defaultSearchValue);
   const [isExperimental, setIsExperimental] = useState(defaultIsExperimental);
   const [isAudience, setIsAudience] = useState(defaultIsAudience);
+  const [playerCount, setPlayerCount] = useState(defaultPlayerCount);
   const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
@@ -74,6 +110,10 @@ const SiteSearch = ({
     handleOnSearchSubmit();
   };
 
+  const handleOnPlayerCountChange = value => {
+    setPlayerCount(value);
+  };
+
   const handleOnSearchSubmit = () => {
     if (!searchString) return;
 
@@ -87,9 +127,11 @@ const SiteSearch = ({
 
     if (isAudience) queries["audience"] = isAudience;
 
+    if (playerCount > 0) queries["players"] = playerCount;
+
     router.push({
       pathname: `/search`,
-      query: { ...queries }
+      query: queries
     });
   };
 
@@ -132,7 +174,7 @@ const SiteSearch = ({
               <Checkbox
                 id="experimental-0"
                 labelText="Improlab games"
-                labelDescription="Experimental games we haven't tested yet."
+                labelDescription="Include experimental games we haven't tested yet."
                 onChange={handleOnExperimentalChange}
                 onKeyPress={handleOnExperimentalKeyPress}
                 isChecked={!!isExperimental}
@@ -143,11 +185,23 @@ const SiteSearch = ({
               <Checkbox
                 id="audience-0"
                 labelText="Audience friendly"
-                labelDescription="Do you want to invite audience members on stage?"
+                labelDescription="Only show games where audience members can join?"
                 onChange={handleOnAudienceChange}
                 onKeyPress={handleOnAudienceKeyPress}
                 isChecked={!!isAudience}
                 isDisabled={isLoading}
+              />
+            </div>
+          </div>
+          <div className="site-search__actions">
+            <div className="site-search__action">
+              <Select
+                labelText="How many players do you want on stage?"
+                id="player-count-0"
+                name="players"
+                onChange={handleOnPlayerCountChange}
+                options={playerCountOptions}
+                defaultSelectedValue={playerCount}
               />
             </div>
           </div>
@@ -197,6 +251,8 @@ const SiteSearch = ({
             margin-top: 2rem;
             display: flex;
             justify-content: flex-end;
+            border-top: 1px solid #d8d7d7;
+            padding-top: 1rem;
           }
         }
       `}</style>

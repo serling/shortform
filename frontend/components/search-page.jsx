@@ -110,7 +110,7 @@ SearchPage.propTypes = {
   description: PropTypes.string,
   games: PropTypes.array,
   categories: PropTypes.array,
-  defaultSearchValue: PropTypes.string.isRequired
+  queryValues: PropTypes.object
 };
 
 SearchPage.defaultProps = {

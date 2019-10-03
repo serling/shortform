@@ -38,7 +38,7 @@ const getGamesQuery = (q, lab, audience, players) => {
 export default async (req, res) => {
   const { query } = req;
 
-  const { q, lab, audience } = query;
+  const { q, lab, audience, players } = query;
 
   await client
     .fetch(
@@ -48,8 +48,9 @@ export default async (req, res) => {
           "defaultSearchValue": "${q ? q : ""}",
           "defaultIsExperimental": "${!!lab ? true : ""}",
           "defaultIsAudience": "${!!audience ? true : ""}",
+          "defaultPlayerCount": ${players}
           },
-         "games": *[${getGamesQuery(q, lab, audience)}]
+         "games": *[${getGamesQuery(q, lab, audience, players)}]
          {
             _id, 
             title,

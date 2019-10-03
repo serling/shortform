@@ -31,6 +31,7 @@ const Icon = ({ className, name, size }) =>
           hamburger: "../../static/icons/hamburger.svg",
           close: "../../static/icons/close.svg",
           beaker: "../../static/icons/beaker.svg",
+          caret: "../../static/icons/caret.svg",
           magnifying-glass: "../../static/icons/magnifying-glass.svg"
         );
 
