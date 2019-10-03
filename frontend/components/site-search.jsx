@@ -102,7 +102,7 @@ const SiteSearch = ({
         [`site-search--${themes[theme]}`]: themes[theme]
       })}
     >
-      {theme !== themes.complex && (
+      <div className="site-search__search">
         <Search
           hideSubmitButton={true}
           id="site-search-0"
@@ -117,7 +117,7 @@ const SiteSearch = ({
           onChange={handleOnSearchStringChange}
           onSubmit={handleOnSearchSubmit}
         />
-      )}
+      </div>
       {theme === themes.complex && (
         <div className="site-search__complex">
           <div className="site-search__preface">
@@ -162,6 +162,8 @@ const SiteSearch = ({
       )}
       <style jsx>{`
         .site-search {
+          $self: &;
+
           &__actions {
             margin-top: 2rem;
             display: flex;
@@ -173,6 +175,11 @@ const SiteSearch = ({
 
             &:first-child {
               margin-left: 0;
+            }
+          }
+
+          &--complex {
+            #{$self}__search {
             }
           }
 
