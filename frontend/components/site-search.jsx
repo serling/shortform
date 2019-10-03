@@ -165,8 +165,8 @@ const SiteSearch = ({
         <div className="site-search__complex">
           <div className="site-search__preface">
             <p className="site-search__preface-text">
-              Not finding what you're looking for? Adjust your search even
-              further:
+              Not finding what you're looking for? Try fiddling with some more
+              buttons:
             </p>
           </div>
           <div className="site-search__actions">

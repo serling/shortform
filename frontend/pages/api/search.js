@@ -45,10 +45,10 @@ export default async (req, res) => {
       `* 
      []{
         "queryValues": {
-          "defaultSearchValue": "${q ? q : ""}",
-          "defaultIsExperimental": "${!!lab ? true : ""}",
-          "defaultIsAudience": "${!!audience ? true : ""}",
-          "defaultPlayerCount": ${players}
+          "defaultSearchValue": "${q || ""}",
+          "defaultIsExperimental": "${lab || ""}",
+          "defaultIsAudience": "${audience || ""}",
+          "defaultPlayerCount": "${players || "0"}"
           },
          "games": *[${getGamesQuery(q, lab, audience, players)}]
          {

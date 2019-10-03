@@ -42,10 +42,7 @@ class Select extends React.Component {
   };
 
   componentDidMount() {
-    console.log("this needs to be selected:", this.props.defaultSelectedValue);
-    this.setState({ isMounted: true }, () => {
-      // this.handleChange(this.props.defaultSelectedValue);
-    });
+    this.setState({ isMounted: true, value: this.props.defaultSelectedValue });
 
     window.addEventListener("click", this.handleClickOutside);
     window.addEventListener("touchstart", this.onTouchStart);
@@ -94,12 +91,6 @@ class Select extends React.Component {
   getLabel = () =>
     get(this.props.options.find(o => o.value === this.state.value), "label");
 
-  getDisplayedLabel = () =>
-    get(
-      this.props.options.find(o => o.value === this.state.value),
-      "displayedLabel"
-    );
-
   render() {
     return (
       <div
@@ -139,7 +130,7 @@ class Select extends React.Component {
             onClick={this.toggleDropdown}
             ref={this.fakeSelect}
           >
-            {this.getDisplayedLabel() || this.getLabel()}
+            {this.getLabel()}
             <div className="select__icon">
               <Icon name="caret" size={Icon.sizes.tiny} />
             </div>
