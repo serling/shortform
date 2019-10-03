@@ -90,6 +90,7 @@ const FilteredGamesList = ({ games, noMatchesText }) => {
           />
         </div>
         <Checkbox
+          id="filter-checkbox-0"
           onKeyPress={handleOnCheckboxKeyPress}
           onChange={handleOnCheckboxChange}
           isChecked={isCheckboxChecked}
