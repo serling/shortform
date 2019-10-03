@@ -27,6 +27,7 @@ const SearchPage = ({ games, categories, title, description, queryValues }) => {
         </Content>
         <Content>
           <SiteSearch
+            searchInputId="search-page-0"
             theme={SiteSearch.themes.complex}
             placeholderText=""
             labelText="find games or categories..."

@@ -20,6 +20,7 @@ const queryBooleans = {
 
 const SiteSearch = ({
   theme,
+  searchInputId,
   placeholderText,
   labelText,
   defaultSearchValue,
@@ -105,7 +106,7 @@ const SiteSearch = ({
       <div className="site-search__search">
         <Search
           hideSubmitButton={true}
-          id="site-search-0"
+          id={searchInputId}
           onKeyPress={handleOnSearchStringKeyPress}
           theme={Search.themes.transparent}
           isDisabled={isLoading}
@@ -206,6 +207,7 @@ const SiteSearch = ({
 SiteSearch.propTypes = {
   placeholderText: PropTypes.string,
   labelText: PropTypes.string,
+  searchInputId: PropTypes.string.isRequired,
   theme: PropTypes.oneOf(Object.keys(themes).map(key => themes[key]))
 };
 

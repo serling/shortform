@@ -26,6 +26,7 @@ const Header = ({ defaultSearchParameters }) => (
           </div>
           <div className="header__search">
             <SiteSearch
+              searchInputId="header-search-0"
               placeholderText=""
               labelText="find games or categories..."
               {...defaultSearchParameters}
