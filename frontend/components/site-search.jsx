@@ -66,6 +66,7 @@ const SiteSearch = ({
   const [isExperimental, setIsExperimental] = useState(defaultIsExperimental);
   const [isAudience, setIsAudience] = useState(defaultIsAudience);
   const [playerCount, setPlayerCount] = useState(defaultPlayerCount);
+  const [showComplexity, setShowComplexity] = useState(false); //TODO: if query has some values, show complexity immediately!
   const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
@@ -135,6 +136,10 @@ const SiteSearch = ({
     });
   };
 
+  const handleOnShowComplexityClick = () => {
+    setShowComplexity(!showComplexity);
+  };
+
   const handleOnDelete = () => {
     setSearchString("");
   };
@@ -161,57 +166,72 @@ const SiteSearch = ({
           onSubmit={handleOnSearchSubmit}
         />
       </div>
+
       {theme === themes.complex && (
-        <div className="site-search__complex">
+        <div
+          className={cn("site-search__complex", {
+            "site-search__complex--hidden": !showComplexity
+          })}
+        >
           <div className="site-search__preface">
-            <p className="site-search__preface-text">
-              Not finding what you're looking for? Try fiddling with some more
-              buttons:
-            </p>
-          </div>
-          <div className="site-search__actions">
-            <div className="site-search__action">
-              <Checkbox
-                id="experimental-0"
-                labelText="Improlab games"
-                labelDescription="Include experimental games we haven't tested yet."
-                onChange={handleOnExperimentalChange}
-                onKeyPress={handleOnExperimentalKeyPress}
-                isChecked={!!isExperimental}
-                isDisabled={isLoading}
-              />
-            </div>
-            <div className="site-search__action">
-              <Checkbox
-                id="audience-0"
-                labelText="Audience friendly"
-                labelDescription="Only show games where audience members can join?"
-                onChange={handleOnAudienceChange}
-                onKeyPress={handleOnAudienceKeyPress}
-                isChecked={!!isAudience}
-                isDisabled={isLoading}
-              />
-            </div>
-          </div>
-          <div className="site-search__actions">
-            <div className="site-search__action">
-              <Select
-                labelText="How many players do you want on stage?"
-                id="player-count-0"
-                name="players"
-                onChange={handleOnPlayerCountChange}
-                options={playerCountOptions}
-                defaultSelectedValue={playerCount}
-              />
-            </div>
-          </div>
-          <div className="site-search__submit">
             <Button
-              text="Look again"
-              theme={Button.themes.primary}
-              onClick={handleOnSubmitButtonClick}
-              disabled={isLoading}
+              iconName="caret"
+              isIconAfterText={true}
+              theme={Button.themes.link}
+              text="Not finding what you're looking for?"
+              onClick={handleOnShowComplexityClick}
             />
+          </div>
+          <div className="site-search__complex-content">
+            <div className="site-search__preface">
+              <p className="site-search__preface-text">
+                Try fiddling with some more buttons:
+              </p>
+            </div>
+            <div className="site-search__actions">
+              <div className="site-search__action">
+                <Checkbox
+                  id="experimental-0"
+                  labelText="Improlab games"
+                  labelDescription="Include experimental games we haven't tested yet."
+                  onChange={handleOnExperimentalChange}
+                  onKeyPress={handleOnExperimentalKeyPress}
+                  isChecked={!!isExperimental}
+                  isDisabled={isLoading}
+                />
+              </div>
+              <div className="site-search__action">
+                <Checkbox
+                  id="audience-0"
+                  labelText="Audience friendly"
+                  labelDescription="Only show games where audience members can join?"
+                  onChange={handleOnAudienceChange}
+                  onKeyPress={handleOnAudienceKeyPress}
+                  isChecked={!!isAudience}
+                  isDisabled={isLoading}
+                />
+              </div>
+            </div>
+            <div className="site-search__actions">
+              <div className="site-search__action">
+                <Select
+                  labelText="How many players do you want on stage?"
+                  id="player-count-0"
+                  name="players"
+                  onChange={handleOnPlayerCountChange}
+                  options={playerCountOptions}
+                  defaultSelectedValue={playerCount}
+                />
+              </div>
+            </div>
+            <div className="site-search__submit">
+              <Button
+                text="Look harder"
+                theme={Button.themes.primary}
+                onClick={handleOnSubmitButtonClick}
+                disabled={isLoading}
+              />
+            </div>
           </div>
         </div>
       )}
@@ -234,11 +254,19 @@ const SiteSearch = ({
           }
 
           &--complex {
-            #{$self}__search {
-            }
           }
 
           &__complex {
+            margin-top: 2rem;
+
+            &--hidden {
+              #{$self}__complex-content {
+                display: none;
+              }
+            }
+          }
+
+          &__preface {
             margin-top: 2rem;
           }
 

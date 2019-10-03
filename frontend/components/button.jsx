@@ -6,7 +6,8 @@ import Icon from "./icon";
 import VisuallyHidden from "./visually-hidden";
 
 const themes = {
-  primary: "primary"
+  primary: "primary",
+  link: "link"
 };
 
 const iconSizes = Icon.sizes;
@@ -21,6 +22,7 @@ const Button = ({
   iconName,
   activeIconName,
   iconSize,
+  isIconAfterText,
   theme,
   text
 }) => {
@@ -37,6 +39,9 @@ const Button = ({
         onClick={onClick}
         disabled={disabled}
       >
+        {!textIsHidden && isIconAfterText && (
+          <span className="button__text">{children || text}</span>
+        )}
         {iconName && (
           <div
             className={cn("button__icon", {
@@ -57,7 +62,7 @@ const Button = ({
             )}
           </div>
         )}
-        {!textIsHidden && (
+        {!textIsHidden && !isIconAfterText && (
           <span className="button__text">{children || text}</span>
         )}
       </button>
@@ -84,8 +89,6 @@ const Button = ({
             text-decoration: none;
 
             #{$self}__icon {
-              border: 2px solid #eaeaea;
-              border-radius: 50%;
             }
           }
 
@@ -120,6 +123,14 @@ const Button = ({
             &:focus {
               outline: none;
               text-decoration: underline;
+            }
+          }
+
+          &--link {
+            border-bottom: 2px solid transparent;
+
+            &:hover {
+              border-bottom: 2px solid black;
             }
           }
 
@@ -159,6 +170,7 @@ Button.propTypes = {
   theme: PropTypes.oneOf(Object.keys(themes).map(key => themes[key])),
   disabled: PropTypes.bool,
   text: PropTypes.string,
+  isIconAfterText: PropTypes.bool,
   textIsHidden: PropTypes.bool
 };
 

@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 
 import Grid from "./grid";
 import Game from "./game";
-import Checkbox from "./checkbox";
 import Search from "./search";
 
 //TODO: LOAD MORE
@@ -11,7 +10,6 @@ import Search from "./search";
 const FilteredGamesList = ({ games, noMatchesText }) => {
   const [filteredGames, setFilteredGames] = useState(games);
   const [searchString, setSearchString] = useState("");
-  const [isCheckboxChecked, setCheckboxChecked] = useState(false);
   const [activeFilters, setActiveFilters] = useState({});
 
   const handleOnChange = e => {
@@ -34,17 +32,11 @@ const FilteredGamesList = ({ games, noMatchesText }) => {
     });
   };
 
-  const handleOnCheckboxKeyPress = e => {
-    if (e.key === "Enter") {
-      handleOnCheckboxChange();
-    }
-  };
-
   //TODO:special characters crash
   useEffect(() => {
     setFilteredGames(() => {
       return games.filter(game => {
-        const { title, description, alternateTitles, playerCount } = game;
+        const { title, description, alternateTitles } = game;
 
         let activeFilteredGames = games;
 
@@ -52,29 +44,12 @@ const FilteredGamesList = ({ games, noMatchesText }) => {
           alternateTitles.toString()}`;
 
         activeFilteredGames =
-          stringToMatch.toLowerCase().search(activeFilters.search) !== -1 &&
-          playerCount.toString().search(activeFilters.count) !== -1;
+          stringToMatch.toLowerCase().search(activeFilters.search) !== -1;
 
         return activeFilteredGames;
       });
     });
   }, [activeFilters]);
-
-  const handleOnCheckboxChange = e => {
-    if (isCheckboxChecked) {
-      setCheckboxChecked(false);
-
-      setActiveFilters(() => {
-        return { ...activeFilters, count: "" };
-      });
-    } else {
-      setCheckboxChecked(true);
-
-      setActiveFilters(() => {
-        return { ...activeFilters, count: "2" };
-      });
-    }
-  };
 
   return (
     <div className="filtered-games-list">
@@ -82,20 +57,13 @@ const FilteredGamesList = ({ games, noMatchesText }) => {
         <div className="filtered-games-list__search">
           <Search
             id="filtered-games-search-0"
-            labelText="Filter the list of games below"
+            labelText="Optionally, throw in a keyword to shorten the list of games below"
             placeholderText='e.g. "onion", "group", "story", etc'
             value={searchString}
             onChange={handleOnChange}
             onClickDelete={handleOnClickDelete}
           />
         </div>
-        <Checkbox
-          id="filter-checkbox-0"
-          onKeyPress={handleOnCheckboxKeyPress}
-          onChange={handleOnCheckboxChange}
-          isChecked={isCheckboxChecked}
-          labelText="For 2 players"
-        />
       </div>
       {filteredGames.length > 0 && (
         <div className="filtered-games-list__list">
@@ -128,9 +96,6 @@ const FilteredGamesList = ({ games, noMatchesText }) => {
               margin-bottom: 2rem;
               border-bottom: 1px solid #eaeaea;
               padding-bottom: 1rem;
-            }
-
-            &__list {
             }
           }
         `}

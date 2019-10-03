@@ -99,7 +99,11 @@ class Select extends React.Component {
           "select--mounted": this.state.isMounted
         })}
       >
-        <label htmlFor={this.props.id} className="select__label">
+        <label
+          htmlFor={this.props.id}
+          className="select__label"
+          onClick={this.toggleDropdown}
+        >
           {this.props.labelText}
         </label>
         <select

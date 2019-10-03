@@ -7,7 +7,6 @@ import Grid from "./grid";
 import Intro from "./intro";
 import Link from "./link";
 import Game from "./game";
-import Category from "./category";
 import SiteSearch from "./site-search";
 
 const breadcrumbs = [
@@ -17,8 +16,7 @@ const breadcrumbs = [
   }
 ];
 
-const SearchPage = ({ games, categories, title, description, queryValues }) => {
-  const { defaultSearchValue } = queryValues;
+const SearchPage = ({ games, title, description, queryValues }) => {
   return (
     <Layout title={title} hideSearchBar={true}>
       <div className="search-page">
@@ -26,6 +24,11 @@ const SearchPage = ({ games, categories, title, description, queryValues }) => {
           <Intro breadcrumbs={breadcrumbs} title={title} lead={description} />
         </Content>
         <Content>
+          {games.length <= 0 && (
+            <p className="search-page__message">
+              Sorry, we couldn't find anything matching:
+            </p>
+          )}
           <SiteSearch
             searchInputId="search-page-0"
             theme={SiteSearch.themes.complex}
@@ -36,9 +39,6 @@ const SearchPage = ({ games, categories, title, description, queryValues }) => {
         </Content>
         <Content>
           <div className="search-page__lists">
-            {games.length <= 0 && categories.length <= 0 && (
-              <p>{`Sorry, we couldn't find anything matching "${defaultSearchValue}".`}</p>
-            )}
             {games.length > 0 && (
               <div className="search-page__list">
                 <h2 className="search-page__subheading">Matching games:</h2>
@@ -57,26 +57,6 @@ const SearchPage = ({ games, categories, title, description, queryValues }) => {
                 </div>
               </div>
             )}
-            {categories.length > 0 && (
-              <div className="search-page__list">
-                <h2 className="search-page__subheading">
-                  Matching categories:
-                </h2>
-                <Grid>
-                  {categories.map(category => {
-                    const { _id } = category;
-                    return <Category key={_id} {...category} />;
-                  })}
-                </Grid>
-                <div className="search-page__actions">
-                  <Link
-                    text="Browse all categories"
-                    href="/categories"
-                    theme={Link.themes.inverted}
-                  />
-                </div>
-              </div>
-            )}
           </div>
         </Content>
       </div>
@@ -89,6 +69,10 @@ const SearchPage = ({ games, categories, title, description, queryValues }) => {
             margin-bottom: 2rem;
             border-bottom: 1px solid #eaeaea;
             padding-bottom: 1rem;
+          }
+
+          &__message {
+            margin-bottom: 0.5rem;
           }
 
           &__list {
@@ -115,9 +99,8 @@ SearchPage.propTypes = {
 
 SearchPage.defaultProps = {
   title: "Search Results",
-  description: "Search through games and categories.",
-  games: [],
-  categories: []
+  description: "Search through all the games we've catalogued.",
+  games: []
 };
 
 export default SearchPage;

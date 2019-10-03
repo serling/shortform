@@ -10,12 +10,6 @@ const dataErrorObject = {
   title: "No response from fetch request"
 };
 
-const getCategoriesQuery = q => {
-  let string = `_type == "category" && [title, description] match "${q}*"`;
-
-  return string;
-};
-
 const getGamesQuery = (q, lab, audience, players) => {
   let string = `_type == "game"`;
 
@@ -61,14 +55,6 @@ export default async (req, res) => {
             isExperimental,
             "lastUpdated": _updatedAt,
             categories[]-> { title, "slug": slug.current },  
-         },
-         "categories": *[${getCategoriesQuery(q)}]
-         {
-            _id,
-            title,
-            image,
-            description,
-            "slug": slug.current   
          }
      }[0]`
     )
