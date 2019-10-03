@@ -1,35 +1,39 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 import PropTypes from "prop-types";
+import keys from "../utilities/keys";
 
 import Search from "./search";
 import Checkbox from "./checkbox";
+
+const queryBooleans = {
+  true: true,
+  false: ""
+};
 
 const SiteSearch = ({
   placeholderText,
   labelText,
   defaultSearchValue,
-  defaultIsExperimental
+  defaultIsExperimental,
+  defaultIsAudience
 }) => {
   const [searchString, setSearchString] = useState(defaultSearchValue);
   const [isExperimental, setIsExperimental] = useState(defaultIsExperimental);
-  const [queries, setQueries] = useState({});
+  const [isAudience, setIsAudience] = useState(defaultIsAudience);
+  const [queries, setQueries] = useState({
+    q: defaultSearchValue,
+    lab: defaultIsExperimental,
+    audience: defaultIsAudience
+  });
   const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
 
-  useEffect(() => {
-    setQueries({ ...queries, q: searchString });
-  }, [searchString]);
-
-  useEffect(() => {
-    setQueries({ ...queries, lab: isExperimental });
-  }, [isExperimental]);
-
   const handleOnSearchStringKeyPress = e => {
     const { key } = e;
 
-    if (key === "Enter") {
+    if (key === keys.Enter) {
       handleOnSearchSubmit();
     }
   };
@@ -41,16 +45,24 @@ const SiteSearch = ({
   };
 
   const handleOnExperimentalChange = e => {
-    if (isExperimental) {
-      setIsExperimental(false);
-    } else {
-      setIsExperimental(true);
-    }
+    setIsExperimental(
+      isExperimental ? queryBooleans.false : queryBooleans.true
+    );
+  };
+
+  const handleOnAudienceChange = e => {
+    setIsAudience(isAudience ? queryBooleans.false : queryBooleans.true);
   };
 
   const handleOnExperimentalKeyPress = e => {
-    if (e.key === "Enter") {
+    if (e.key === keys.Enter && !isLoading) {
       handleOnExperimentalChange();
+    }
+  };
+
+  const handleOnAudienceKeyPress = e => {
+    if (e.key === keys.Enter && !isLoading) {
+      handleOnAudienceChange();
     }
   };
 
@@ -59,11 +71,14 @@ const SiteSearch = ({
 
     setIsLoading(true);
 
-    console.log("sending", queries);
-
     router.push({
       pathname: `/search`,
-      query: queries
+      query: {
+        ...queries,
+        q: searchString,
+        lab: isExperimental,
+        audience: isAudience
+      }
     });
   };
 
@@ -88,18 +103,43 @@ const SiteSearch = ({
         onSubmit={handleOnSearchSubmit}
       />
       <div className="site-search__actions">
-        <Checkbox
-          labelText="experimental"
-          onChange={handleOnExperimentalChange}
-          onKeyPress={handleOnExperimentalKeyPress}
-          isChecked={isExperimental}
-          isDisabled={isLoading}
-        />
+        <div className="site-search__action">
+          <Checkbox
+            id="experimental-0"
+            labelText="Improlab games"
+            labelDescription="Experimental games we haven't tested yet."
+            onChange={handleOnExperimentalChange}
+            onKeyPress={handleOnExperimentalKeyPress}
+            isChecked={!!isExperimental}
+            isDisabled={isLoading}
+          />
+        </div>
+        <div className="site-search__action">
+          <Checkbox
+            id="audience-0"
+            labelText="Audience friendly"
+            labelDescription="Do you want to invite audience members on stage?"
+            onChange={handleOnAudienceChange}
+            onKeyPress={handleOnAudienceKeyPress}
+            isChecked={!!isAudience}
+            isDisabled={isLoading}
+          />
+        </div>
       </div>
       <style jsx>{`
         .site-search {
           &__actions {
             margin-top: 1rem;
+            display: flex;
+          }
+
+          &__action {
+            margin-left: 1rem;
+            display: inline-block;
+
+            &:first-child {
+              margin-left: 0;
+            }
           }
         }
       `}</style>
@@ -111,10 +151,5 @@ SiteSearch.propTypes = {
   placeholderText: PropTypes.string,
   labelText: PropTypes.string
 };
-
-// SiteSearch.defaultProps = {
-//   defaultIsExperimental: false,
-//   defaultSearchValue: ""
-// };
 
 export default SiteSearch;

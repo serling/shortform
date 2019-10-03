@@ -16,21 +16,10 @@ const breadcrumbs = [
   }
 ];
 
-const SearchPage = ({
-  games,
-  categories,
-  title,
-  description,
-  defaultSearchValue,
-  defaultIsExperimental
-}) => {
-  const defaultSearchParameters = {
-    defaultSearchValue,
-    defaultIsExperimental
-  };
-
+const SearchPage = ({ games, categories, title, description, queryValues }) => {
+  const { defaultSearchValue } = queryValues;
   return (
-    <Layout title={title} defaultSearchParameters={defaultSearchParameters}>
+    <Layout title={title} defaultSearchParameters={queryValues}>
       <div className="search-page">
         <Content>
           <Intro breadcrumbs={breadcrumbs} title={title} lead={description} />

@@ -3,7 +3,9 @@ import PropTypes from "prop-types";
 import cn from "classnames";
 
 const Checkbox = ({
+  id,
   labelText,
+  labelDescription,
   onChange,
   onKeyPress,
   isChecked,
@@ -16,16 +18,29 @@ const Checkbox = ({
         "checkbox--disabled": isDisabled
       })}
     >
-      <label className="checkbox__label" tabIndex={0} onKeyPress={onKeyPress}>
-        <div className="checkbox__fake" />
-        <input
-          type="checkbox"
-          className="checkbox__input"
-          checked={isChecked}
-          onChange={onChange}
-          disabled={isDisabled}
-        />
-        <span className="checkbox__text">{labelText}</span>
+      <label
+        htmlFor={id}
+        className="checkbox__label"
+        tabIndex={0}
+        onKeyPress={onKeyPress}
+      >
+        <span>
+          <div className="checkbox__fake" />
+          <input
+            id={id}
+            type="checkbox"
+            className="checkbox__input"
+            checked={isChecked}
+            onChange={onChange}
+            disabled={isDisabled}
+          />
+        </span>
+        <span>
+          <span className="checkbox__text">{labelText}</span>
+          {labelDescription && (
+            <span className="checkbox__description">{labelDescription}</span>
+          )}
+        </span>
       </label>
 
       <style jsx>{`
@@ -36,7 +51,6 @@ const Checkbox = ({
 
           &__label {
             display: flex;
-            align-items: center;
             cursor: pointer;
 
             &:hover {
@@ -48,6 +62,12 @@ const Checkbox = ({
 
           &__text {
             border-bottom: 2px solid transparent;
+          }
+
+          &__description {
+            display: block;
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
           }
 
           &__input {
@@ -104,8 +124,10 @@ const Checkbox = ({
 
 Checkbox.propTypes = {
   isChecked: PropTypes.bool,
+  id: PropTypes.string.isRequired,
   isDisabled: PropTypes.bool,
   labelText: PropTypes.string.isRequired,
+  labelDescription: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   onKeyPress: PropTypes.func
 };

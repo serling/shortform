@@ -10,20 +10,39 @@ const dataErrorObject = {
   title: "No response from fetch request"
 };
 
+const searchQuery = (q, lab, audience) => {
+  let string = [
+    `_type == "game"`,
+    q && `[title, description] match "${q}*"`
+  ].join(" && ");
+
+  if (lab) string = string.concat(` && isExperimental`);
+
+  if (audience)
+    string = string.concat(
+      ` && "audience-participation" in categories[]->slug.current`
+    );
+
+  console.log(string);
+
+  return string;
+};
+
 export default async (req, res) => {
   const { query } = req;
 
-  const { q, lab } = query;
+  const { q, lab, audience } = query;
 
   await client
     .fetch(
       `* 
      []{
-         "defaultSearchValue": "${q ? q : ""}",
-         "defaultIsExperimental": "${!lab ? "" : true}",
-         "games": *[_type == "game" && [title, description] match "${q}*" ${
-        lab ? `&& isExperimental` : ""
-      }]
+        "queryValues": {
+          "defaultSearchValue": "${q ? q : ""}",
+          "defaultIsExperimental": "${!!lab ? true : ""}",
+          "defaultIsAudience": "${!!audience ? true : ""}",
+          },
+         "games": *[${searchQuery(q, lab, audience)}]
          {
             _id, 
             title,
