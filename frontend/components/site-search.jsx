@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import cn from "classnames";
@@ -66,10 +66,20 @@ const SiteSearch = ({
   const [isExperimental, setIsExperimental] = useState(defaultIsExperimental);
   const [isAudience, setIsAudience] = useState(defaultIsAudience);
   const [playerCount, setPlayerCount] = useState(defaultPlayerCount);
-  const [showComplexity, setShowComplexity] = useState(false); //TODO: if query has some values, show complexity immediately!
+  const [showComplexity, setShowComplexity] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
+
+  useEffect(() => {
+    // We want to open the complex panel if buttons have been toggled etc
+    if (
+      defaultIsAudience ||
+      defaultIsExperimental ||
+      defaultPlayerCount !== "0"
+    )
+      setShowComplexity(true);
+  }, [defaultIsAudience, defaultPlayerCount, defaultIsExperimental]);
 
   const handleOnSearchStringKeyPress = e => {
     const { key } = e;
