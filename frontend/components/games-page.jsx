@@ -1,15 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { phrases } from "../static/data/phrases/games-page";
 
 import Layout from "./layout";
 import Content from "./content";
 import Intro from "./intro";
 import Link from "./link";
-import Icon from "./icon";
 import FilteredGamesList from "./filtered-games-list";
 
 const GamesPage = props => {
-  const { games, description, title } = props;
+  const { games } = props;
+  const { title, description, searchPhrases } = phrases;
 
   const breadcrumbs = [
     {
@@ -36,7 +37,7 @@ const GamesPage = props => {
         </Content>
         <Content>
           <div className="games-page__list">
-            <FilteredGamesList games={games} />
+            <FilteredGamesList games={games} phrases={searchPhrases} />
           </div>
         </Content>
       </div>
@@ -68,16 +69,11 @@ const GamesPage = props => {
 };
 
 GamesPage.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string,
   games: PropTypes.array.isRequired
 };
 
 GamesPage.defaultProps = {
-  games: [],
-  title: "Games",
-  description:
-    "Browse our selection of games, or use the categories section to narrow what you're looking for. Or check out the lab for crazy ideas for games we haven't tested yet."
+  games: []
 };
 
 export default GamesPage;

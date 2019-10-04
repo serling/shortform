@@ -1,0 +1,11 @@
+{
+  "phrases": {
+    "title": "Improv lab",
+    "description": "Welcome to our lab. This is where we stick all our un-tested, raw improv games. These might or might now have been tested in front of an audience. Either way, you have been warned!",
+    "searchPhrases": {
+      "searchLabel": "Optionally, throw in a keyword to filter down the list:",
+      "searchPlaceholder": "e.g. group, story, hammer, etc",
+      "noMatchesText": "No matches found"
+    }
+  }
+}

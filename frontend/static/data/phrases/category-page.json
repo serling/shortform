@@ -1,0 +1,10 @@
+{
+  "phrases": {
+    "lead": "Browse related games in the list below",
+    "searchPhrases": {
+      "searchLabel": "Optionally, throw in a keyword to shorten it:",
+      "searchPlaceholder": "e.g. group, story, hammer, etc",
+      "noMatchesText": "No matches found"
+    }
+  }
+}

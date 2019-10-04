@@ -1,0 +1,12 @@
+{
+  "phrases": {
+    "title": "Search Results",
+    "description": "Search through all the games we've catalogued.",
+    "noMatchText": "Sorry, we couldn't find anything matching:",
+    "hitsHeading": "Matching games:",
+    "searchPhrases": {
+      "placeholderText": "",
+      "labelText": "find games or categories..."
+    }
+  }
+}

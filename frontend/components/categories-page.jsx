@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { phrases } from "../static/data/phrases/categories-page";
 
 import Layout from "./layout";
 import Content from "./content";
@@ -8,7 +9,8 @@ import Image from "./image";
 import CategoriesList from "./categories-list";
 
 const CategoriesPage = props => {
-  const { categories, title, description, image } = props;
+  const { categories, image } = props;
+  const { title, description } = phrases;
 
   const breadcrumbs = [
     {
@@ -44,16 +46,11 @@ const CategoriesPage = props => {
 };
 
 CategoriesPage.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string,
   categories: PropTypes.array.isRequired
 };
 
 CategoriesPage.defaultProps = {
-  categories: [],
-  title: "Categories",
-  description:
-    "Every game we've catalogued fits one or more categories. You can browse those games using the category links below."
+  categories: []
 };
 
 export default CategoriesPage;

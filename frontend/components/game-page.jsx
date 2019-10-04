@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { phrases } from "../static/data/phrases/game-page";
 
 import Layout from "./layout";
 import Content from "./content";
@@ -25,6 +26,16 @@ const GamePage = props => {
     notes,
     relatedGames
   } = props;
+
+  const {
+    descriptionHeading,
+    overviewHeading,
+    playerCountLabel,
+    alternateTitlesLabel,
+    notesHeading,
+    relatedGamesHeading,
+    dateLabel
+  } = phrases;
 
   const breadcrumbs = [
     {
@@ -72,15 +83,15 @@ const GamePage = props => {
         </Content>
         <Content>
           <div className="game-page__body">
-            <h2 className="game-page__subheading">Description</h2>
+            <h2 className="game-page__subheading">{descriptionHeading}</h2>
             <div className="game-page__setup cf">
               <Panel isFloated={true}>
-                <h3 className="game-page__aside-heading">Quick overview</h3>
+                <h3 className="game-page__aside-heading">{overviewHeading}</h3>
                 <p className="game-page__aside-description">{description}</p>
                 <ul className="game-page__aside-list">
                   <li className="game-page__aside-item">
                     <span className="game-page__aside-label">
-                      Player Count:
+                      {playerCountLabel}
                     </span>
                     <span className="game-page__aside-value">
                       {playerCount}
@@ -89,7 +100,7 @@ const GamePage = props => {
                   {alternateTitles && (
                     <li className="game-page__aside-item">
                       <span className="game-page__aside-label">
-                        Also known as:
+                        {alternateTitlesLabel}
                       </span>
                       <span className="game-page__aside-value">
                         {alternateTitles.map((title, index, array) => {
@@ -110,21 +121,21 @@ const GamePage = props => {
             </div>
             {notes && (
               <div className="game-page__notes">
-                <h2 className="game-page__notes-heading"> Teacher's notes</h2>
+                <h2 className="game-page__notes-heading">{notesHeading}</h2>
                 <div className="game-page__notes-text">
                   <BlockContent content={notes} />
                 </div>
               </div>
             )}
             <div className="game-page__date">
-              <FormattedDate dateString={lastUpdated} text="Last updated:" />
+              <FormattedDate dateString={lastUpdated} text={dateLabel} />
             </div>
           </div>
         </Content>
         {relatedGames && (
           <Content>
             <h2 className="game-page__related-heading">
-              Games similar to {title}:
+              {`${relatedGamesHeading} ${title}:`}
             </h2>
             <List>
               {relatedGames.map((game, index) => (

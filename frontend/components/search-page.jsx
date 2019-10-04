@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { phrases } from "../static/data/phrases/search-page";
 
 import Layout from "./layout";
 import Content from "./content";
@@ -16,7 +17,15 @@ const breadcrumbs = [
   }
 ];
 
-const SearchPage = ({ games, title, description, queryValues }) => {
+const SearchPage = ({ games, queryValues }) => {
+  const {
+    title,
+    description,
+    noMatchText,
+    hitsHeading,
+    searchPhrases
+  } = phrases;
+
   return (
     <Layout title={title} hideSearchBar={true}>
       <div className="search-page">
@@ -25,15 +34,12 @@ const SearchPage = ({ games, title, description, queryValues }) => {
         </Content>
         <Content>
           {games.length <= 0 && (
-            <p className="search-page__message">
-              Sorry, we couldn't find anything matching:
-            </p>
+            <p className="search-page__message">{noMatchText}</p>
           )}
           <SiteSearch
             searchInputId="search-page-0"
             theme={SiteSearch.themes.complex}
-            placeholderText=""
-            labelText="find games or categories..."
+            phrases={searchPhrases}
             {...queryValues}
           />
         </Content>
@@ -41,7 +47,7 @@ const SearchPage = ({ games, title, description, queryValues }) => {
           <div className="search-page__lists">
             {games.length > 0 && (
               <div className="search-page__list">
-                <h2 className="search-page__subheading">Matching games:</h2>
+                <h2 className="search-page__subheading">{hitsHeading}</h2>
                 <Grid>
                   {games.map(game => {
                     const { _id } = game;
@@ -90,16 +96,11 @@ const SearchPage = ({ games, title, description, queryValues }) => {
 };
 
 SearchPage.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string,
   games: PropTypes.array,
-  categories: PropTypes.array,
   queryValues: PropTypes.object
 };
 
 SearchPage.defaultProps = {
-  title: "Search Results",
-  description: "Search through all the games we've catalogued.",
   games: []
 };
 

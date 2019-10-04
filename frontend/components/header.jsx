@@ -29,6 +29,10 @@ const Header = ({ hideSearchBar }) => (
               <SiteSearch
                 searchInputId="header-search-0"
                 placeholderText=""
+                phrases={{
+                  placeholderText: "",
+                  labelText: "find games or categories..."
+                }}
                 labelText="find games or categories..."
               />
             </div>

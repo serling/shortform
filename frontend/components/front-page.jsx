@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { phrases } from "../static/data/phrases/front-page";
 
 import Layout from "./layout";
 import Content from "./content";
@@ -13,6 +14,7 @@ import CategoriesList from "./categories-list";
 
 const FrontPage = props => {
   const { pageTitle, heading, highlightedGames, games, categories } = props;
+  const { lead, highlightsHeading, categoriesHeading, gamesHeading } = phrases;
   // const [hasLoaded, setHasLoaded] = useState(false);
 
   // useEffect(() => {
@@ -28,9 +30,7 @@ const FrontPage = props => {
         <Content>
           <h1 className="front-page__heading">{heading}</h1>
           <p className="front-page__lead">
-            Welcome to our curated list of short form games. This site is
-            updated with relevant info as games are tested and played. We
-            consider this place a catalogue of experiences.
+            {lead}
             <br />
             <br />
             <span>Please see our</span>
@@ -41,7 +41,7 @@ const FrontPage = props => {
           </p>
         </Content>
         <Content>
-          <h2 className="front-page__subheading">Random highlights</h2>
+          <h2 className="front-page__subheading">{highlightsHeading}</h2>
           <List>
             {highlightedGames.map(game => {
               const { _id } = game;
@@ -51,7 +51,7 @@ const FrontPage = props => {
           </List>
         </Content>
         <Content color={Content.colors.white} theme={Content.themes.wide}>
-          <h2 className="front-page__subheading">Check out some categories</h2>
+          <h2 className="front-page__subheading">{categoriesHeading}</h2>
           <CategoriesList categories={categories} />
           <div className="front-page__actions">
             <Link
@@ -62,7 +62,7 @@ const FrontPage = props => {
           </div>
         </Content>
         <Content>
-          <h2 className="front-page__subheading">Or just browse games...</h2>
+          <h2 className="front-page__subheading">{gamesHeading}</h2>
           <List>
             {games.map(game => {
               const { _id } = game;
@@ -159,8 +159,6 @@ FrontPage.propTypes = {
 };
 
 FrontPage.defaultProps = {
-  pageTitle: "front page",
-  heading: "Front Page",
   highlightedGames: [],
   games: [],
   categories: []

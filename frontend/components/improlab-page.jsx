@@ -1,22 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { phrases } from "../static/data/phrases/improlab-page";
 
 import Layout from "./layout";
 import Intro from "./intro";
 import Content from "./content";
 import FilteredGamesList from "./filtered-games-list";
 
-const ImprolabPage = ({ games, title, description }) => {
-  const breadcrumbs = [
-    {
-      text: "Home",
-      href: "/"
-    },
-    {
-      text: "Games",
-      href: "/games"
-    }
-  ];
+const breadcrumbs = [
+  {
+    text: "Home",
+    href: "/"
+  },
+  {
+    text: "Games",
+    href: "/games"
+  }
+];
+
+const ImprolabPage = ({ games }) => {
+  const { title, description, searchPhrases } = phrases;
 
   return (
     <Layout title={title}>
@@ -26,7 +29,7 @@ const ImprolabPage = ({ games, title, description }) => {
         </Content>
         <Content>
           <div className="improlab-page__list">
-            <FilteredGamesList games={games} />
+            <FilteredGamesList games={games} phrases={searchPhrases} />
           </div>
         </Content>
       </div>
@@ -40,15 +43,10 @@ const ImprolabPage = ({ games, title, description }) => {
 };
 
 ImprolabPage.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string,
   games: PropTypes.array.isRequired
 };
 
 ImprolabPage.defaultProps = {
-  title: "Improv lab",
-  description:
-    "Welcome to our lab. This is where we stick all our un-tested, raw improv games. These might or might now have been tested in front of an audience. Either way, you have been warned!",
   games: []
 };
 

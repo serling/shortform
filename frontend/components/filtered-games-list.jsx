@@ -7,7 +7,8 @@ import Search from "./search";
 
 //TODO: LOAD MORE
 
-const FilteredGamesList = ({ games, noMatchesText }) => {
+const FilteredGamesList = ({ games, phrases }) => {
+  const { searchLabel, searchPlaceholder, noMatchesText } = phrases;
   const [filteredGames, setFilteredGames] = useState(games);
   const [searchString, setSearchString] = useState("");
   const [activeFilters, setActiveFilters] = useState({});
@@ -57,8 +58,8 @@ const FilteredGamesList = ({ games, noMatchesText }) => {
         <div className="filtered-games-list__search">
           <Search
             id="filtered-games-search-0"
-            labelText="Optionally, throw in a keyword to shorten the list of games below"
-            placeholderText='e.g. "onion", "group", "story", etc'
+            labelText={searchLabel}
+            placeholderText={searchPlaceholder}
             value={searchString}
             onChange={handleOnChange}
             onClickDelete={handleOnClickDelete}
@@ -106,12 +107,15 @@ const FilteredGamesList = ({ games, noMatchesText }) => {
 
 FilteredGamesList.propTypes = {
   games: PropTypes.array.isRequired,
-  noMatchesText: PropTypes.string
+  phrases: PropTypes.shape({
+    searchLabel: PropTypes.string.isRequired,
+    searchPlaceholder: PropTypes.string.isRequired,
+    noMatchesText: PropTypes.string.isRequired
+  }).isRequired
 };
 
 FilteredGamesList.defaultProps = {
-  games: [],
-  noMatchesText: "No matches found"
+  games: []
 };
 
 export default FilteredGamesList;

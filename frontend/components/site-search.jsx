@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import cn from "classnames";
 import keys from "../utilities/keys";
+import { options } from "../static/data/player-count-options";
 
 import Search from "./search";
 import Checkbox from "./checkbox";
@@ -19,49 +20,17 @@ const queryBooleans = {
   false: ""
 };
 
-const playerCountOptions = [
-  {
-    id: "zero-0",
-    label: "Unimportant",
-    value: "0"
-  },
-  {
-    id: "one-0",
-    label: "One player",
-    value: "1"
-  },
-  {
-    id: "two-0",
-    label: "Two players",
-    value: "2"
-  },
-  {
-    id: "three-0",
-    label: "Three players",
-    value: "3"
-  },
-  {
-    id: "four-0",
-    label: "Four players",
-    value: "4"
-  },
-  {
-    id: "five-0",
-    label: "Five players or more",
-    value: "5"
-  }
-];
-
 const SiteSearch = ({
   theme,
+  phrases,
   searchInputId,
-  placeholderText,
-  labelText,
   defaultSearchValue,
   defaultIsExperimental,
   defaultIsAudience,
   defaultPlayerCount
 }) => {
+  const { placeholderText, labelText } = phrases;
+
   const [searchString, setSearchString] = useState(defaultSearchValue);
   const [isExperimental, setIsExperimental] = useState(defaultIsExperimental);
   const [isAudience, setIsAudience] = useState(defaultIsAudience);
@@ -230,7 +199,7 @@ const SiteSearch = ({
                   id="player-count-0"
                   name="players"
                   onChange={handleOnPlayerCountChange}
-                  options={playerCountOptions}
+                  options={options}
                   defaultSelectedValue={playerCount}
                 />
               </div>
@@ -314,9 +283,11 @@ const SiteSearch = ({
 };
 
 SiteSearch.propTypes = {
-  placeholderText: PropTypes.string,
-  labelText: PropTypes.string,
   searchInputId: PropTypes.string.isRequired,
+  phrases: PropTypes.shape({
+    placeholderText: PropTypes.string,
+    labelText: PropTypes.string
+  }).isRequired,
   theme: PropTypes.oneOf(Object.keys(themes).map(key => themes[key]))
 };
 

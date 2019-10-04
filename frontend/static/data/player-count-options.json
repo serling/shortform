@@ -1,0 +1,34 @@
+{
+  "options": [
+    {
+      "id": "zero-0",
+      "label": "Unimportant",
+      "value": "0"
+    },
+    {
+      "id": "one-0",
+      "label": "One player",
+      "value": "1"
+    },
+    {
+      "id": "two-0",
+      "label": "Two players",
+      "value": "2"
+    },
+    {
+      "id": "three-0",
+      "label": "Three players",
+      "value": "3"
+    },
+    {
+      "id": "four-0",
+      "label": "Four players",
+      "value": "4"
+    },
+    {
+      "id": "five-0",
+      "label": "Five players or more",
+      "value": "5"
+    }
+  ]
+}
