@@ -15,7 +15,7 @@ const getGamesQuery = (q, lab, audience, players) => {
 
   if (q) string = string.concat(`&& [title, description] match "${q}*"`);
 
-  if (lab) string = string.concat(` && isExperimental`);
+  if (lab) string = string.concat(` && isExperimental == false`);
 
   if (audience)
     string = string.concat(

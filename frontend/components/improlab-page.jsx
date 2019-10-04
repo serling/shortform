@@ -46,9 +46,9 @@ ImprolabPage.propTypes = {
 };
 
 ImprolabPage.defaultProps = {
-  title: "Improlab",
+  title: "Improv lab",
   description:
-    "Welcome to improlab. This is where we stick all our un-tested, raw improv games. These might or might now have been tested in front of an audience. Either way, you have been warned!",
+    "Welcome to our lab. This is where we stick all our un-tested, raw improv games. These might or might now have been tested in front of an audience. Either way, you have been warned!",
   games: []
 };
 

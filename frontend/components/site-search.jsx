@@ -184,8 +184,10 @@ const SiteSearch = ({
         >
           <div className="site-search__preface">
             <Button
-              iconName="caret"
+              iconName="caret-up"
+              activeIconName="caret-down"
               isIconAfterText={true}
+              isActive={showComplexity}
               theme={Button.themes.link}
               text="Not finding what you're looking for?"
               onClick={handleOnShowComplexityClick}
@@ -201,8 +203,8 @@ const SiteSearch = ({
               <div className="site-search__action">
                 <Checkbox
                   id="experimental-0"
-                  labelText="Improlab games"
-                  labelDescription="Include experimental games we haven't tested yet."
+                  labelText="No lab games"
+                  labelDescription="exclude experimental games we haven't tested yet."
                   onChange={handleOnExperimentalChange}
                   onKeyPress={handleOnExperimentalKeyPress}
                   isChecked={!!isExperimental}

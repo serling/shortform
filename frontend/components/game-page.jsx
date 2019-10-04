@@ -38,7 +38,7 @@ const GamePage = props => {
   ];
 
   const improlabLink = {
-    text: "Improlab",
+    text: "lab",
     href: "/experimental"
   };
 

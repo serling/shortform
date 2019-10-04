@@ -21,7 +21,7 @@ const Header = ({ hideSearchBar }) => (
               <Link href="/categories">Categories</Link>
             </div>
             <div className="header__action header__action--improlab">
-              <Link text="Improlab" href="/experimental" iconName="beaker" />
+              <Link text="lab" href="/experimental" iconName="beaker" />
             </div>
           </div>
           {!hideSearchBar && (
@@ -34,8 +34,11 @@ const Header = ({ hideSearchBar }) => (
             </div>
           )}
           <div className="header__actions header__actions--post">
+            {/* <div className="header__action">
+              <Link href="/random">Random</Link>
+            </div> */}
             <div className="header__action">
-              <Link text="Improlab" href="/experimental" iconName="beaker" />
+              <Link text="lab" href="/experimental" iconName="beaker" />
             </div>
           </div>
         </div>

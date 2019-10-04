@@ -37,7 +37,7 @@ const FrontPage = props => {
             <span style={{ marginLeft: "0.2em" }}>
               <Icon name="beaker" />
             </span>
-            <span>improlab for games considered work-in-progress</span>
+            <span>lab for games considered work-in-progress</span>
           </p>
         </Content>
         <Content>

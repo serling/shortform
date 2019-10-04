@@ -77,7 +77,7 @@ GamesPage.defaultProps = {
   games: [],
   title: "Games",
   description:
-    "Browse our selection of games, or use the categories section to narrow what you're looking for. Or check out the improlab for crazy ideas for games we haven't tested yet."
+    "Browse our selection of games, or use the categories section to narrow what you're looking for. Or check out the lab for crazy ideas for games we haven't tested yet."
 };
 
 export default GamesPage;
