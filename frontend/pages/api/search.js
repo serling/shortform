@@ -22,7 +22,7 @@ const getGamesQuery = (q, lab, audience, players) => {
       ` && "audience-participation" in categories[]->slug.current`
     );
 
-  if (players) string = string.concat(` && playerCount == "${players}"`);
+  if (players) string = string.concat(` && playerCount match "*${players}*"`);
 
   console.log(string);
 

@@ -136,7 +136,7 @@ class Select extends React.Component {
           >
             {this.getLabel()}
             <div className="select__icon">
-              <Icon name="caret" size={Icon.sizes.tiny} />
+              <Icon name="caret-down" size={Icon.sizes.tiny} />
             </div>
           </div>
           {this.state.dropdownIsVisible && (
