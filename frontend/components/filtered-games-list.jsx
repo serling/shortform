@@ -58,6 +58,7 @@ const FilteredGamesList = ({ games, phrases }) => {
         <div className="filtered-games-list__search">
           <Search
             id="filtered-games-search-0"
+            theme={Search.themes.slim}
             labelText={searchLabel}
             placeholderText={searchPlaceholder}
             value={searchString}
@@ -88,9 +89,16 @@ const FilteredGamesList = ({ games, phrases }) => {
         {`
           .filtered-games-list {
             $self: &;
+            $break-at-sm: 25rem; //400px
+            $break-at-md: 50rem; //800px
+            $break-at-lg: 64rem; //1024px
 
             &__search {
               margin-bottom: 1rem;
+
+              @media screen and (min-width: $break-at-md) {
+                width: 50%;
+              }
             }
 
             &__filters {

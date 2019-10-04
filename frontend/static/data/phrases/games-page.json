@@ -6,7 +6,7 @@
     "ctaCategoriesText": "Or: browse by category",
     "searchPhrases": {
       "searchLabel": "Optionally, throw in a keyword to shorten the list:",
-      "searchPlaceholder": "e.g. group, story, hammer, etc",
+      "searchPlaceholder": "e.g. library, hospital, etc",
       "noMatchesText": "No matches found"
     }
   }

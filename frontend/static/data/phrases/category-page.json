@@ -3,7 +3,7 @@
     "lead": "Browse related games in the list below",
     "searchPhrases": {
       "searchLabel": "Optionally, throw in a keyword to shorten it:",
-      "searchPlaceholder": "e.g. group, story, hammer, etc",
+      "searchPlaceholder": "e.g. hammer, saw, etc",
       "noMatchesText": "No matches found"
     }
   }

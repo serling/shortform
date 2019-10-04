@@ -79,19 +79,21 @@ const Search = ({
                 <Spinner theme={Spinner.themes.small} />
               </div>
             )}
+            {inputHasText && !isDisabled && (
+              <div className="search__clear">
+                <button
+                  disabled={isDisabled}
+                  onClick={onHandleClickDelete}
+                  className="search__clear-button"
+                >
+                  <span className="search__clear-label">
+                    clear search string
+                  </span>
+                  <Icon name="close" size={Icon.sizes.tiny} />
+                </button>
+              </div>
+            )}
           </div>
-          {inputHasText && !isDisabled && (
-            <div className="search__clear">
-              <button
-                disabled={isDisabled}
-                onClick={onHandleClickDelete}
-                className="search__clear-button"
-              >
-                <span className="search__clear-label">clear search string</span>
-                <Icon name="close" size={Icon.sizes.tiny} />
-              </button>
-            </div>
-          )}
         </div>
         <div className="search__actions">
           {onSubmit && !hideSubmitButton && (
@@ -117,21 +119,25 @@ const Search = ({
           &--transparent {
             #{$self}__input {
               border: 0;
+              width: 100%;
               border-bottom: 1px solid black;
               background-color: transparent;
+            }
+
+            #{$self}__bar {
+              width: 100%;
             }
           }
 
           &--slim {
             #{$self}__input {
-              padding: 0.25rem 0.5rem 0.25rem 2.5rem;
               font-size: 1rem;
             }
           }
 
           &__input {
-            padding: 0.5rem 0.5rem 0.5rem 2.5rem;
-            width: 100%;
+            padding: 0.5rem 2.5rem 0.5rem 2.5rem;
+            /* width: 100%; */
             font-size: 0.8rem;
 
             @media screen and (min-width: $break-at-sm) {
@@ -144,14 +150,13 @@ const Search = ({
           }
 
           &__wrapper {
-            width: 100%;
             display: flex;
             align-items: center;
           }
 
           &__bar {
             position: relative;
-            width: 100%;
+            /* width: 100%; */
           }
 
           &__clear {
@@ -183,7 +188,6 @@ const Search = ({
           }
 
           &__field {
-            width: 100%;
           }
 
           &__label {
