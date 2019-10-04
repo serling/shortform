@@ -127,6 +127,7 @@ const Button = ({
           }
 
           &--link {
+            text-align: left;
             border-bottom: 2px solid transparent;
 
             &:hover {

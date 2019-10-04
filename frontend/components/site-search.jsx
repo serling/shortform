@@ -72,7 +72,6 @@ const SiteSearch = ({
   const router = useRouter();
 
   useEffect(() => {
-    // We want to open the complex panel if buttons have been toggled etc
     if (
       defaultIsAudience ||
       defaultIsExperimental ||
@@ -248,19 +247,33 @@ const SiteSearch = ({
       <style jsx>{`
         .site-search {
           $self: &;
+          $break-at-sm: 25rem; //400px
+          $break-at-md: 50rem; //800px
+          $break-at-lg: 64rem; //1024px
 
           &__actions {
-            margin-top: 2rem;
             display: flex;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+
+            @media screen and (min-width: $break-at-md) {
+              margin-left: -1rem;
+              margin-top: -1rem;
+              margin-bottom: 2rem;
+            }
           }
 
           &__action {
-            margin-left: 1rem;
-            display: inline-block;
+            margin-bottom: 1rem;
 
-            &:first-child {
-              margin-left: 0;
+            @media screen and (min-width: $break-at-md) {
+              margin-left: 1rem;
+              margin-top: 1rem;
+              margin-bottom: 0;
             }
+          }
+
+          &__complex-content {
           }
 
           &--complex {
@@ -277,7 +290,7 @@ const SiteSearch = ({
           }
 
           &__preface {
-            margin-top: 2rem;
+            margin: 2rem 0;
           }
 
           &__preface-text {
