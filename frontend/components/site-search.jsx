@@ -29,7 +29,7 @@ const SiteSearch = ({
   defaultIsAudience,
   defaultPlayerCount
 }) => {
-  const { placeholderText, labelText } = phrases;
+  const { placeholderText, labelText, complexHeading } = phrases;
 
   const [searchString, setSearchString] = useState(defaultSearchValue);
   const [isExperimental, setIsExperimental] = useState(defaultIsExperimental);
@@ -151,7 +151,7 @@ const SiteSearch = ({
             "site-search__complex--hidden": !showComplexity
           })}
         >
-          <div className="site-search__preface">
+          <div className="site-search__toggle">
             <Button
               iconName="caret-up"
               activeIconName="caret-down"
@@ -163,11 +163,7 @@ const SiteSearch = ({
             />
           </div>
           <div className="site-search__complex-content">
-            <div className="site-search__preface">
-              <p className="site-search__preface-text">
-                Try fiddling with some more buttons:
-              </p>
-            </div>
+            <p className="site-search__complex-heading">{complexHeading}</p>
             <div className="site-search__actions">
               <div className="site-search__action">
                 <Checkbox
@@ -244,7 +240,14 @@ const SiteSearch = ({
             }
           }
 
+          &__complex-heading {
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+          }
+
           &__complex-content {
+            padding: 1rem;
+            background-color: white;
           }
 
           &--complex {
@@ -260,12 +263,8 @@ const SiteSearch = ({
             }
           }
 
-          &__preface {
-            margin: 2rem 0;
-          }
-
-          &__preface-text {
-            font-size: 1.2rem;
+          &__toggle {
+            margin-bottom: 1rem;
           }
 
           &__submit {
