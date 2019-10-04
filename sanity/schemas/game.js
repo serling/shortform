@@ -8,7 +8,8 @@ export default {
       name: "title",
       title: "Title",
       description: "Name of the game.",
-      type: "string"
+      type: "string",
+      validation: Rule => Rule.required()
     },
     {
       name: "slug",
@@ -17,7 +18,8 @@ export default {
       options: {
         source: "title",
         maxLength: 96
-      }
+      },
+      validation: Rule => Rule.required()
     },
     {
       name: "alternateTitles",
@@ -40,14 +42,16 @@ export default {
       title: "Categories",
       description: "Tags we can categorize this game under.",
       type: "array",
-      of: [{ type: "reference", to: { type: "category" } }]
+      of: [{ type: "reference", to: { type: "category" } }],
+      validation: Rule => Rule.required()
     },
     {
       name: "isExperimental",
       title: "Improlab",
       description:
         "Experimental. Considered part of the improv lab. Not tested yet.",
-      type: "boolean"
+      type: "boolean",
+      validation: Rule => Rule.required()
     },
     {
       name: "publishedAt",
@@ -58,7 +62,8 @@ export default {
       name: "playerCount",
       title: "Player Count",
       description: "Free text, e.g. '4', '4+', 'Between 4 and 6'",
-      type: "string"
+      type: "string",
+      validation: Rule => Rule.required()
     },
     {
       name: "description",
