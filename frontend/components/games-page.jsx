@@ -8,16 +8,22 @@ import Intro from "./intro";
 import Link from "./link";
 import FilteredGamesList from "./filtered-games-list";
 
+const breadcrumbs = [
+  {
+    text: "Home",
+    href: "/"
+  }
+];
+
 const GamesPage = props => {
   const { games } = props;
-  const { title, description, searchPhrases } = phrases;
-
-  const breadcrumbs = [
-    {
-      text: "Home",
-      href: "/"
-    }
-  ];
+  const {
+    title,
+    description,
+    searchPhrases,
+    ctaLabText,
+    ctaCategoriesText
+  } = phrases;
 
   return (
     <Layout title={title}>
@@ -29,7 +35,7 @@ const GamesPage = props => {
           <div className="games-page__cta">
             <Link
               iconName="beaker"
-              text="Check out the lab"
+              text={ctaLabText}
               href="/experimental"
               theme={Link.themes.cta}
             />
@@ -38,6 +44,15 @@ const GamesPage = props => {
         <Content>
           <div className="games-page__list">
             <FilteredGamesList games={games} phrases={searchPhrases} />
+          </div>
+        </Content>
+        <Content>
+          <div className="games-page__cta">
+            <Link
+              text={ctaCategoriesText}
+              href="/categories"
+              theme={Link.themes.cta}
+            />
           </div>
         </Content>
       </div>

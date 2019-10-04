@@ -137,8 +137,8 @@ const Header = ({ hideSearchBar }) => (
   </>
 );
 
-Header.propTypes = {};
-
-Header.defaultProps = {};
+Header.propTypes = {
+  hideSearchBar: PropTypes.bool
+};
 
 export default Header;

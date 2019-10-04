@@ -14,7 +14,15 @@ import CategoriesList from "./categories-list";
 
 const FrontPage = props => {
   const { pageTitle, heading, highlightedGames, games, categories } = props;
-  const { lead, highlightsHeading, categoriesHeading, gamesHeading } = phrases;
+  const {
+    lead,
+    highlightsHeading,
+    categoriesHeading,
+    gamesHeading,
+    readMoreCategoriesText,
+    readMoreGamesText,
+    ctaLabText
+  } = phrases;
   // const [hasLoaded, setHasLoaded] = useState(false);
 
   // useEffect(() => {
@@ -55,7 +63,7 @@ const FrontPage = props => {
           <CategoriesList categories={categories} />
           <div className="front-page__actions">
             <Link
-              text="Browse more categories"
+              text={readMoreCategoriesText}
               href="/categories"
               theme={Link.themes.inverted}
             />
@@ -72,7 +80,7 @@ const FrontPage = props => {
           </List>
           <div className="front-page__actions">
             <Link
-              text="See even more games"
+              text={readMoreGamesText}
               href="/games"
               theme={Link.themes.inverted}
             />
@@ -81,7 +89,7 @@ const FrontPage = props => {
         <Content>
           <div className="front-page__cta">
             <Link
-              text="Check out the lab"
+              text={ctaLabText}
               iconName="beaker"
               href="/experimental"
               theme={Link.themes.cta}

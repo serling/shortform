@@ -5,6 +5,9 @@
     "lead": "Welcome to our curated list of short form games. This site is updated with relevant info as games are tested and played. We consider this place a catalogue of experiences.",
     "highlightsHeading": "Random highlights",
     "categoriesHeading": "Check out some categories",
-    "gamesHeading": "Or just browse games..."
+    "gamesHeading": "Or just browse games...",
+    "readMoreCategoriesText": "Browse more categories",
+    "readMoreGamesText": "See even more games",
+    "ctaLabText": "Check out the lab"
   }
 }
