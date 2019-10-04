@@ -130,6 +130,7 @@ const SiteSearch = ({
     >
       <div className="site-search__search">
         <Search
+          iconName="magnifying-glass"
           hideSubmitButton={true}
           id={searchInputId}
           onKeyPress={handleOnSearchStringKeyPress}

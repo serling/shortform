@@ -60,6 +60,7 @@ const FilteredGamesList = ({ games, phrases }) => {
             id="filtered-games-search-0"
             theme={Search.themes.slim}
             labelText={searchLabel}
+            iconName="magnifying-glass"
             placeholderText={searchPlaceholder}
             value={searchString}
             onChange={handleOnChange}

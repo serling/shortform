@@ -17,6 +17,7 @@ const Search = ({
   onKeyPress,
   onClickDelete,
   theme,
+  iconName,
   onSubmit,
   hideSubmitButton,
   labelText,
@@ -47,6 +48,7 @@ const Search = ({
   return (
     <div
       className={cn("search", {
+        "search--icon": iconName,
         [`search--${themes[theme]}`]: themes[theme]
       })}
     >
@@ -58,9 +60,11 @@ const Search = ({
       </label>
       <div className="search__wrapper">
         <div className="search__bar">
-          <div className="search__icon">
-            <Icon name="magnifying-glass" size={Icon.sizes.small} />
-          </div>
+          {iconName && (
+            <div className="search__icon">
+              <Icon name={iconName} size={Icon.sizes.small} />
+            </div>
+          )}
           <div className="search__field">
             <input
               ref={textInput}
@@ -129,6 +133,12 @@ const Search = ({
             }
           }
 
+          &--icon {
+            #{$self}__input {
+              padding-left: 2.5rem;
+            }
+          }
+
           &--slim {
             #{$self}__input {
               font-size: 1rem;
@@ -136,8 +146,7 @@ const Search = ({
           }
 
           &__input {
-            padding: 0.5rem 2.5rem 0.5rem 2.5rem;
-            /* width: 100%; */
+            padding: 0.5rem 2.5rem 0.5rem 0.5rem;
             font-size: 0.8rem;
 
             @media screen and (min-width: $break-at-sm) {
@@ -156,7 +165,6 @@ const Search = ({
 
           &__bar {
             position: relative;
-            /* width: 100%; */
           }
 
           &__clear {
@@ -226,12 +234,8 @@ Search.propTypes = {
   placeholderText: PropTypes.string,
   value: PropTypes.string,
   shouldAutoFocus: PropTypes.bool,
-  isDisabled: PropTypes.bool
-};
-
-Search.defaultProps = {
-  labelText: "",
-  placeholderText: ""
+  isDisabled: PropTypes.bool,
+  iconName: PropTypes.string
 };
 
 Search.themes = themes;
