@@ -2,6 +2,7 @@
   "phrases": {
     "lead": "Browse related games in the list below",
     "searchPhrases": {
+      "clearButtonText": "clear search string",
       "searchLabel": "Optionally, throw in a keyword to shorten it:",
       "searchPlaceholder": "e.g. move, director, etc",
       "noMatchesText": "No matches found"

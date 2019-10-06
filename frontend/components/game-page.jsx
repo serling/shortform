@@ -48,10 +48,10 @@ const GamePage = props => {
     }
   ];
 
-  const improlabLink = {
-    text: "lab",
-    href: "/experimental"
-  };
+  // const improlabLink = {
+  //   text: "lab",
+  //   href: "/experimental"
+  // };
 
   return (
     <Layout title={title}>
@@ -59,7 +59,8 @@ const GamePage = props => {
         <Content color={Content.colors.white}>
           <Breadcrumbs
             links={
-              isExperimental ? [...breadcrumbs, improlabLink] : breadcrumbs
+              breadcrumbs
+              // isExperimental ? [...breadcrumbs, improlabLink] : breadcrumbs
             }
           />
           <div className="game-page__header">

@@ -20,9 +20,9 @@ const Header = ({ hideSearchBar }) => (
             <div className="header__action">
               <Link href="/categories">Categories</Link>
             </div>
-            <div className="header__action header__action--improlab">
+            {/* <div className="header__action header__action--improlab">
               <Link text="lab" href="/experimental" iconName="beaker" />
-            </div>
+            </div> */}
           </div>
           {!hideSearchBar && (
             <div className="header__search">
@@ -31,6 +31,8 @@ const Header = ({ hideSearchBar }) => (
                 placeholderText=""
                 phrases={{
                   placeholderText: "",
+                  searchLabel: "",
+                  clearButtonText: "clear search string",
                   labelText: "find games or categories..."
                 }}
                 labelText="find games or categories..."

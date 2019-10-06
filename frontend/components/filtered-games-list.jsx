@@ -8,7 +8,13 @@ import Search from "./search";
 //TODO: LOAD MORE
 
 const FilteredGamesList = ({ games, phrases }) => {
-  const { searchLabel, searchPlaceholder, noMatchesText } = phrases;
+  const {
+    searchLabel,
+    clearButtonText,
+    searchPlaceholder,
+    noMatchesText
+  } = phrases;
+
   const [filteredGames, setFilteredGames] = useState(games);
   const [searchString, setSearchString] = useState("");
   const [activeFilters, setActiveFilters] = useState({});
@@ -60,6 +66,7 @@ const FilteredGamesList = ({ games, phrases }) => {
             id="filtered-games-search-0"
             theme={Search.themes.slim}
             labelText={searchLabel}
+            clearButtonText={clearButtonText}
             iconName="magnifying-glass"
             placeholderText={searchPlaceholder}
             value={searchString}

@@ -5,6 +5,7 @@ import cn from "classnames";
 import Icon from "./icon";
 import Button from "./button";
 import Spinner from "./page-loader";
+import VisuallyHidden from "./visually-hidden";
 
 const themes = {
   transparent: "transparent",
@@ -21,6 +22,7 @@ const Search = ({
   onSubmit,
   hideSubmitButton,
   labelText,
+  clearButtonText,
   hideLabel,
   isDisabled,
   placeholderText,
@@ -90,9 +92,7 @@ const Search = ({
                   onClick={onHandleClickDelete}
                   className="search__clear-button"
                 >
-                  <span className="search__clear-label">
-                    clear search string
-                  </span>
+                  <VisuallyHidden>{clearButtonText}</VisuallyHidden>
                   <Icon name="close" size={Icon.sizes.tiny} />
                 </button>
               </div>
@@ -172,10 +172,6 @@ const Search = ({
             position: absolute;
             right: 0;
             top: 0;
-          }
-
-          &__clear-label {
-            display: none;
           }
 
           &__clear-button {

@@ -29,7 +29,12 @@ const SiteSearch = ({
   defaultIsAudience,
   defaultPlayerCount
 }) => {
-  const { placeholderText, labelText, complexHeading } = phrases;
+  const {
+    placeholderText,
+    clearButtonText,
+    labelText,
+    complexHeading
+  } = phrases;
 
   const [searchString, setSearchString] = useState(defaultSearchValue);
   const [isExperimental, setIsExperimental] = useState(defaultIsExperimental);
@@ -133,6 +138,7 @@ const SiteSearch = ({
           iconName="magnifying-glass"
           hideSubmitButton={true}
           id={searchInputId}
+          clearButtonText={clearButtonText}
           onKeyPress={handleOnSearchStringKeyPress}
           theme={Search.themes.transparent}
           isDisabled={isLoading}

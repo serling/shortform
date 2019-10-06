@@ -6,6 +6,7 @@
     "hitsHeading": "Matching games:",
     "searchPhrases": {
       "placeholderText": "",
+      "clearButtonText": "clear search string",
       "labelText": "find games or categories...",
       "complexHeading": "Try fiddling with some more buttons:"
     }

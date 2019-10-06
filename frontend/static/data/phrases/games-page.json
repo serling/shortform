@@ -6,6 +6,7 @@
     "ctaLabText": "Check out the lab",
     "ctaCategoriesText": "Or: browse by category",
     "searchPhrases": {
+      "clearButtonText": "clear search string",
       "searchLabel": "Optionally, throw in a keyword to shorten the list:",
       "searchPlaceholder": "e.g. li nes, story, etc",
       "noMatchesText": "No matches found"
