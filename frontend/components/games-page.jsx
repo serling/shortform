@@ -19,6 +19,7 @@ const GamesPage = props => {
   const { games } = props;
   const {
     title,
+    lead,
     description,
     searchPhrases,
     ctaLabText,
@@ -43,6 +44,7 @@ const GamesPage = props => {
         </Content>
         <Content>
           <div className="games-page__list">
+            <p className="games-page__lead">{lead}</p>
             <FilteredGamesList games={games} phrases={searchPhrases} />
           </div>
         </Content>
@@ -63,6 +65,10 @@ const GamesPage = props => {
           $break-at-lg: 64rem; //1024px
 
           padding-top: 2rem;
+
+          &__lead {
+            font-size: 1.5rem;
+          }
 
           &__cta {
             font-size: 1.5rem;

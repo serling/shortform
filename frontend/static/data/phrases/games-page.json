@@ -2,11 +2,12 @@
   "phrases": {
     "title": "Games",
     "description": "Browse our selection of games, or use the categories section to narrow what you're looking for. Or check out the lab for crazy ideas for games we haven't tested yet.",
+    "lead": "Browse the games below",
     "ctaLabText": "Check out the lab",
     "ctaCategoriesText": "Or: browse by category",
     "searchPhrases": {
       "searchLabel": "Optionally, throw in a keyword to shorten the list:",
-      "searchPlaceholder": "e.g. library, hospital, etc",
+      "searchPlaceholder": "e.g. li nes, story, etc",
       "noMatchesText": "No matches found"
     }
   }

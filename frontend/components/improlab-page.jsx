@@ -19,7 +19,7 @@ const breadcrumbs = [
 ];
 
 const ImprolabPage = ({ games }) => {
-  const { title, description, searchPhrases } = phrases;
+  const { title, description, lead, searchPhrases } = phrases;
 
   return (
     <Layout title={title}>
@@ -29,6 +29,7 @@ const ImprolabPage = ({ games }) => {
         </Content>
         <Content>
           <div className="improlab-page__list">
+            <p className="improlab-page__lead">{lead}</p>
             <FilteredGamesList games={games} phrases={searchPhrases} />
           </div>
         </Content>
@@ -36,6 +37,10 @@ const ImprolabPage = ({ games }) => {
       <style jsx>{`
         .improlab-page {
           padding-top: 2rem;
+
+          &__lead {
+            font-size: 1.5rem;
+          }
         }
       `}</style>
     </Layout>
