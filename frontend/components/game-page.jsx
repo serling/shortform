@@ -67,12 +67,13 @@ const GamePage = props => {
             <h1 className="game-page__heading">{title}</h1>
             {categories && (
               <div className="game-page__categories">
+                <span className="game-page__categories-label">Categories:</span>
                 <Grid theme={Grid.themes.auto}>
                   {categories.map(({ slug, title }) => (
                     <Link
                       href={`/categories/${slug}`}
                       key={title}
-                      theme={Link.themes.label}
+                      theme={Link.themes.inverted}
                     >
                       {title}
                     </Link>
@@ -215,6 +216,11 @@ const GamePage = props => {
 
           &__description {
             margin-bottom: 2rem;
+          }
+
+          &__categories-label {
+            display: block;
+            margin-bottom: 0.5rem;
           }
 
           &__setup {
