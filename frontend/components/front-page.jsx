@@ -37,16 +37,7 @@ const FrontPage = props => {
       <div className="front-page">
         <Content>
           <h1 className="front-page__heading">{heading}</h1>
-          <p className="front-page__lead">
-            {lead}
-            <br />
-            <br />
-            <span>Please see our</span>
-            <span style={{ marginLeft: "0.2em" }}>
-              <Icon name="beaker" />
-            </span>
-            <span>lab for games considered work-in-progress</span>
-          </p>
+          <p className="front-page__lead">{lead}</p>
         </Content>
         <Content>
           <h2 className="front-page__subheading">{highlightsHeading}</h2>
@@ -86,7 +77,7 @@ const FrontPage = props => {
             />
           </div>
         </Content>
-        <Content>
+        {/* <Content>
           <div className="front-page__cta">
             <Link
               text={ctaLabText}
@@ -95,7 +86,7 @@ const FrontPage = props => {
               theme={Link.themes.cta}
             />
           </div>
-        </Content>
+        </Content> */}
       </div>
       <style jsx>{`
         .front-page {

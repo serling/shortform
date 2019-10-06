@@ -32,7 +32,7 @@ const GamesPage = props => {
         <Content>
           <Intro breadcrumbs={breadcrumbs} title={title} lead={description} />
         </Content>
-        <Content>
+        {/* <Content>
           <div className="games-page__cta">
             <Link
               iconName="beaker"
@@ -41,7 +41,7 @@ const GamesPage = props => {
               theme={Link.themes.cta}
             />
           </div>
-        </Content>
+        </Content> */}
         <Content>
           <div className="games-page__list">
             <p className="games-page__lead">{lead}</p>

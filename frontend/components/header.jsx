@@ -37,14 +37,14 @@ const Header = ({ hideSearchBar }) => (
               />
             </div>
           )}
-          <div className="header__actions header__actions--post">
-            {/* <div className="header__action">
+          {/* <div className="header__actions header__actions--post">
+            <div className="header__action">
               <Link href="/random">Random</Link>
-            </div> */}
+            </div>
             <div className="header__action">
               <Link text="lab" href="/experimental" iconName="beaker" />
             </div>
-          </div>
+          </div> */}
         </div>
       </Content>
     </div>
