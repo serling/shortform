@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import cn from "classnames";
 import keys from "../utilities/keys";
 import { options } from "../static/data/player-count-options";
+import { getInitialData } from "../utilities/api-helper";
 
 import Search from "./search";
 import Checkbox from "./checkbox";
 import Select from "./select/select";
 import Button from "./button";
+import Grid from "./grid";
+import Link from "./link";
+import Game from "./game";
+import PageLoader from "./page-loader";
 
 const themes = {
   complex: "complex",
@@ -21,6 +26,7 @@ const queryBooleans = {
 };
 
 const SiteSearch = ({
+  games,
   theme,
   phrases,
   searchInputId,
@@ -33,26 +39,39 @@ const SiteSearch = ({
     placeholderText,
     clearButtonText,
     labelText,
-    complexHeading
+    complexHeading,
+    hitsHeading
   } = phrases;
 
   const [searchString, setSearchString] = useState(defaultSearchValue);
   const [isExperimental, setIsExperimental] = useState(defaultIsExperimental);
   const [isAudience, setIsAudience] = useState(defaultIsAudience);
   const [playerCount, setPlayerCount] = useState(defaultPlayerCount);
-  const [showComplexity, setShowComplexity] = useState(false);
+  const [showComplexity, setShowComplexity] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [activeGames, setActiveGames] = useState(games);
+  const [queries, setQueries] = useState({});
 
-  const router = useRouter();
+  // const router = useRouter();
 
-  useEffect(() => {
-    if (
-      defaultIsAudience ||
-      defaultIsExperimental ||
-      defaultPlayerCount !== "0"
-    )
-      setShowComplexity(true);
-  }, [defaultIsAudience, defaultPlayerCount, defaultIsExperimental]);
+  const setQueryObject = (key, value) => {
+    let activeQueries = queries;
+
+    activeQueries[key] = value;
+
+    console.log("active queries:", activeQueries);
+
+    setQueries(activeQueries);
+  };
+
+  // useEffect(() => {
+  //   if (
+  //     defaultIsAudience ||
+  //     defaultIsExperimental ||
+  //     defaultPlayerCount !== "0"
+  //   )
+  //     setShowComplexity(true);
+  // }, [defaultIsAudience, defaultPlayerCount, defaultIsExperimental]);
 
   const handleOnSearchStringKeyPress = e => {
     const { key } = e;
@@ -62,20 +81,43 @@ const SiteSearch = ({
     }
   };
 
+  const serializeQueries = queryObject => {
+    return Object.keys(queryObject)
+      .map(function(key) {
+        if (!queryObject[key]) return null;
+
+        return key + "=" + queryObject[key];
+      })
+      .filter(item => item != null)
+      .join("&");
+  };
+
   const handleOnSearchStringChange = e => {
     const { target } = e;
 
     setSearchString(target.value);
+
+    if (searchString) setQueries({ ...queries, q: searchString });
   };
 
-  const handleOnExperimentalChange = e => {
+  const handleOnExperimentalChange = () => {
     setIsExperimental(
       isExperimental ? queryBooleans.false : queryBooleans.true
     );
+
+    setQueryObject("lab", isExperimental);
   };
 
-  const handleOnAudienceChange = e => {
+  const handleOnAudienceChange = () => {
     setIsAudience(isAudience ? queryBooleans.false : queryBooleans.true);
+
+    setQueryObject("audience", isAudience);
+  };
+
+  const handleOnPlayerCountChange = value => {
+    setPlayerCount(value);
+
+    setQueryObject("players", playerCount);
   };
 
   const handleOnExperimentalKeyPress = e => {
@@ -94,29 +136,36 @@ const SiteSearch = ({
     handleOnSearchSubmit();
   };
 
-  const handleOnPlayerCountChange = value => {
-    setPlayerCount(value);
-  };
-
-  const handleOnSearchSubmit = () => {
-    if (!searchString) return;
+  const handleOnSearchSubmit = async () => {
+    // if (!searchString) return;
 
     setIsLoading(true);
 
-    let queries = {};
+    console.log("calling", "/api/search", serializeQueries(queries));
 
-    if (searchString) queries["q"] = searchString;
+    history.replaceState(null, null, "/search?" + serializeQueries(queries));
 
-    if (isExperimental) queries["lab"] = isExperimental;
+    await getInitialData(null, "/api/search", null, queries)
+      .then(({ payload, error }) => {
+        if (error) {
+          console.log("error", error);
+          return;
+        }
 
-    if (isAudience) queries["audience"] = isAudience;
+        const { games } = payload;
 
-    if (playerCount > 0) queries["players"] = playerCount;
+        setActiveGames(games);
+        setIsLoading(false);
 
-    router.push({
-      pathname: `/search`,
-      query: queries
-    });
+        return;
+      })
+      .catch(error => {
+        console.log("error", error);
+
+        setIsLoading(false);
+
+        return;
+      });
   };
 
   const handleOnShowComplexityClick = () => {
@@ -216,6 +265,27 @@ const SiteSearch = ({
               />
             </div>
           </div>
+          <div className="site-search__results">
+            <PageLoader isActive={isLoading} />
+            {games.length > 0 && (
+              <>
+                <h2 className="site-search__subheading">{hitsHeading}</h2>
+                <Grid>
+                  {activeGames.map(game => {
+                    const { _id } = game;
+                    return <Game key={_id} {...game} />;
+                  })}
+                </Grid>
+                <div className="site-search__cta">
+                  <Link
+                    text="Browse all games"
+                    href="/games"
+                    theme={Link.themes.inverted}
+                  />
+                </div>
+              </>
+            )}
+          </div>
         </div>
       )}
       <style jsx>{`
@@ -281,6 +351,23 @@ const SiteSearch = ({
             justify-content: flex-end;
             border-top: 1px solid #d8d7d7;
             padding-top: 1rem;
+          }
+
+          &__subheading {
+            font-size: 2rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #eaeaea;
+            padding-bottom: 1rem;
+          }
+
+          &__cta {
+            margin-top: 2rem;
+            text-align: right;
+          }
+
+          &__results {
+            position: relative;
           }
         }
       `}</style>

@@ -4,10 +4,7 @@ import { phrases } from "../static/data/phrases/search-page";
 
 import Layout from "./layout";
 import Content from "./content";
-import Grid from "./grid";
 import Intro from "./intro";
-import Link from "./link";
-import Game from "./game";
 import SiteSearch from "./site-search";
 
 const breadcrumbs = [
@@ -18,13 +15,7 @@ const breadcrumbs = [
 ];
 
 const SearchPage = ({ games, queryValues }) => {
-  const {
-    title,
-    description,
-    noMatchText,
-    hitsHeading,
-    searchPhrases
-  } = phrases;
+  const { title, description, noMatchText, searchPhrases } = phrases;
 
   return (
     <Layout title={title} hideSearchBar={true}>
@@ -40,54 +31,17 @@ const SearchPage = ({ games, queryValues }) => {
             searchInputId="search-page-0"
             theme={SiteSearch.themes.complex}
             phrases={searchPhrases}
+            games={games}
             {...queryValues}
           />
-        </Content>
-        <Content>
-          <div className="search-page__lists">
-            {games.length > 0 && (
-              <div className="search-page__list">
-                <h2 className="search-page__subheading">{hitsHeading}</h2>
-                <Grid>
-                  {games.map(game => {
-                    const { _id } = game;
-                    return <Game key={_id} {...game} />;
-                  })}
-                </Grid>
-                <div className="search-page__actions">
-                  <Link
-                    text="Browse all games"
-                    href="/games"
-                    theme={Link.themes.inverted}
-                  />
-                </div>
-              </div>
-            )}
-          </div>
         </Content>
       </div>
       <style jsx>{`
         .search-page {
           padding-top: 2rem;
 
-          &__subheading {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            border-bottom: 1px solid #eaeaea;
-            padding-bottom: 1rem;
-          }
-
           &__message {
             margin-bottom: 0.5rem;
-          }
-
-          &__list {
-            margin-bottom: 4rem;
-          }
-
-          &__actions {
-            margin-top: 2rem;
-            text-align: right;
           }
         }
       `}</style>

@@ -3,8 +3,8 @@
     "title": "Search Results",
     "description": "Search through all the games we've catalogued.",
     "noMatchText": "Sorry, we couldn't find anything matching:",
-    "hitsHeading": "Matching games:",
     "searchPhrases": {
+      "hitsHeading": "Matching games:",
       "placeholderText": "",
       "clearButtonText": "clear search string",
       "labelText": "find games or categories...",
