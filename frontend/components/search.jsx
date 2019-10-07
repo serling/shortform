@@ -80,11 +80,9 @@ const Search = ({
               className="search__input"
               placeholder={placeholderText}
             />
-            {isDisabled && (
-              <div className="search__spinner">
-                <Spinner theme={Spinner.themes.small} />
-              </div>
-            )}
+            <div className="search__spinner">
+              <Spinner theme={Spinner.themes.small} isActive={isDisabled} />
+            </div>
             {inputHasText && !isDisabled && (
               <div className="search__clear">
                 <button
