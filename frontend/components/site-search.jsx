@@ -56,8 +56,6 @@ const SiteSearch = ({
 
     activeQueries[key] = value;
 
-    // console.log("active queries:", activeQueries);
-
     setQueries(activeQueries);
   };
 
@@ -82,6 +80,10 @@ const SiteSearch = ({
     setQueryObject("players", playerCount !== "0" && playerCount);
   }, [playerCount]);
 
+  useEffect(() => {
+    setQueryObject("q", searchString);
+  }, [searchString]);
+
   const handleOnSearchStringKeyPress = e => {
     const { key } = e;
 
@@ -94,8 +96,6 @@ const SiteSearch = ({
     const { target } = e;
 
     setSearchString(target.value);
-
-    if (searchString) setQueries({ ...queries, q: searchString });
   };
 
   const handleOnExperimentalChange = () => {
@@ -133,18 +133,11 @@ const SiteSearch = ({
 
     setIsLoading(true);
 
-    let url = "/search";
+    let url = window.location.pathname;
 
-    if (queries) {
-      console.log("appending", queries);
-      url = url + "?" + serializeQueryObject(queries);
-    }
+    if (queries) url = url + "?" + serializeQueryObject(queries);
 
-    // history.replaceState(null, null, "/search");
-
-    history.replaceState(null, null, url); //TODO: .pushState?
-
-    // console.log("calling", "/api/search", serializeQueries(queries));
+    history.pushState(null, null, url);
 
     await getInitialData(null, "/api/search", null, queries)
       .then(({ payload, error }) => {
