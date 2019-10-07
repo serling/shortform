@@ -25,7 +25,7 @@ const getGamesQuery = (q, lab, audience, players, difficulty) => {
   if (players) string = string.concat(` && playerCount match "*${players}*"`);
 
   if (difficulty)
-    string = string.concat(` && difficultyLevel <= ${difficulty}`); //TODO number value parsing?!
+    string = string.concat(` && difficultyLevel <= ${difficulty}`); //TODO: fix string/number comparrison
 
   console.log("query:", string);
 
@@ -40,32 +40,35 @@ export default async (req, res) => {
   await client
     .fetch(
       `* 
-     []{
-        "queryValues": {
-          "defaultSearchValue": "${q || ""}",
-          "defaultIsExperimental": "${lab || ""}",
-          "defaultIsAudience": "${audience || ""}",
-          "defaultPlayerCount": "${players || "0"}",
-          "defaultDifficultyLevel": "${difficulty || "0"}"
-        },
-         "games": *[${getGamesQuery(q, lab, audience, players, difficulty)}]
-         {
-            _id, 
-            title,
-            description,
-            playerCount,
-            difficultyLevel,
-            "slug": slug.current,
-            alternateTitles,
-            isExperimental,
-            "lastUpdated": _updatedAt,
-            categories[]-> { title, "slug": slug.current },  
-         }
-     }[0]`
+      [${getGamesQuery(q, lab, audience, players, difficulty)}]{
+        _id, 
+        title,
+        description,
+        playerCount,
+        difficultyLevel,
+        "slug": slug.current,
+        alternateTitles,
+        isExperimental,
+        "lastUpdated": _updatedAt,
+        categories[]-> { title, "slug": slug.current }
+      }`
     )
     .then(response => {
+      console.log(response);
       if (response) {
-        res.status(200).json({ success: true, payload: response });
+        res.status(200).json({
+          success: true,
+          payload: {
+            games: response,
+            queryValues: {
+              defaultSearchValue: q || "",
+              defaultIsExperimental: lab || "",
+              defaultIsAudience: audience || "",
+              defaultPlayerCount: players || "0",
+              defaultDifficultyLevel: difficulty || "0"
+            }
+          }
+        });
         return;
       }
 

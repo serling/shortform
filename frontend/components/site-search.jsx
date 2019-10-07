@@ -249,6 +249,8 @@ const SiteSearch = ({
                   isDisabled={isLoading}
                 />
               </div>
+              {/* checkbox: requires some pre-prep  */}
+              {/* new category: narration/storytelling? */}
             </div>
             <div className="site-search__actions">
               <div className="site-search__action">

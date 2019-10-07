@@ -10,6 +10,12 @@ export default {
       validation: Rule => Rule.required()
     },
     {
+      name: "value",
+      title: "Value",
+      type: "number",
+      validation: Rule => Rule.required()
+    },
+    {
       name: "slug",
       title: "Slug",
       type: "slug",
