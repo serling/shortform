@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import Content from "./content";
 import Link from "./link";
-import SiteSearch from "./site-search";
+import QuickSearch from "./quick-search";
 
 const Header = ({ hideSearchBar }) => (
   <>
@@ -26,16 +26,14 @@ const Header = ({ hideSearchBar }) => (
           </div>
           {!hideSearchBar && (
             <div className="header__search">
-              <SiteSearch
+              <QuickSearch
                 searchInputId="header-search-0"
-                placeholderText=""
                 phrases={{
                   placeholderText: "",
                   searchLabel: "",
                   clearButtonText: "clear search string",
                   labelText: "find games or categories..."
                 }}
-                labelText="find games or categories..."
               />
             </div>
           )}
