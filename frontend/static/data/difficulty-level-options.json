@@ -1,0 +1,27 @@
+{
+  "options": [
+    {
+      "id": "zero-0",
+      "label": "Irrelevant",
+      "value": "0"
+    },
+    {
+      "id": "easy-0",
+      "label": "Only the simplest games",
+      "value": "1",
+      "text": "Games that require no rehersal or prior knowledge. Easy to explain, great for audience members to join."
+    },
+    {
+      "id": "medium-0",
+      "label": "All but the most complicated games",
+      "value": "2",
+      "text": "Games that require either no or some experience from the players. Good for jams."
+    },
+    {
+      "id": "hard-0",
+      "label": "All the games",
+      "value": "3",
+      "text": "Show everything, even the ones that require dicipline and knowledge about rules or rythm. Good for rehersed shows."
+    }
+  ]
+}

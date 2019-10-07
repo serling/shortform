@@ -25,9 +25,6 @@ const SelectOptions = ({ options, onClick, activeValue }) => (
           background: white;
           min-width: 100%;
           z-index: 10;
-          max-height: 300px;
-          overflow-y: scroll;
-          white-space: nowrap;
           box-shadow: -5px 3px 9px -3px rgba(214, 214, 214, 0.5);
         }
       `}

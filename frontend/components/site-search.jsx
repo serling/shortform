@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
-import keys from "../utilities/keys";
-import { options } from "../static/data/player-count-options";
 import { getInitialData, serializeQueryObject } from "../utilities/api-helper";
+
+import { options as playerCountOptions } from "../static/data/player-count-options";
+import { options as difficultyLevelOptions } from "../static/data/difficulty-level-options";
+import keys from "../utilities/keys";
 
 import Search from "./search";
 import Checkbox from "./checkbox";
@@ -32,6 +34,7 @@ const SiteSearch = ({
   defaultSearchValue,
   defaultIsExperimental,
   defaultIsAudience,
+  defaultDifficultyLevel,
   defaultPlayerCount
 }) => {
   const {
@@ -46,6 +49,9 @@ const SiteSearch = ({
   const [isExperimental, setIsExperimental] = useState(defaultIsExperimental);
   const [isAudience, setIsAudience] = useState(defaultIsAudience);
   const [playerCount, setPlayerCount] = useState(defaultPlayerCount);
+  const [difficultyLevel, setDifficultyLevel] = useState(
+    defaultDifficultyLevel
+  );
   const [showComplexity, setShowComplexity] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [activeGames, setActiveGames] = useState(games);
@@ -81,6 +87,10 @@ const SiteSearch = ({
   }, [playerCount]);
 
   useEffect(() => {
+    setQueryObject("difficulty", difficultyLevel !== "0" && difficultyLevel);
+  }, [difficultyLevel]);
+
+  useEffect(() => {
     setQueryObject("q", searchString);
   }, [searchString]);
 
@@ -110,6 +120,10 @@ const SiteSearch = ({
 
   const handleOnPlayerCountChange = value => {
     setPlayerCount(value);
+  };
+
+  const handleOnDifficultyLevelChange = value => {
+    setDifficultyLevel(value);
   };
 
   const handleOnExperimentalKeyPress = e => {
@@ -243,8 +257,18 @@ const SiteSearch = ({
                   id="player-count-0"
                   name="players"
                   onChange={handleOnPlayerCountChange}
-                  options={options}
+                  options={playerCountOptions}
                   defaultSelectedValue={playerCount}
+                />
+              </div>
+              <div className="site-search__action">
+                <Select
+                  labelText="How complicated should the games be?"
+                  id="game-difficulty-0"
+                  name="difficulty"
+                  onChange={handleOnDifficultyLevelChange}
+                  options={difficultyLevelOptions}
+                  defaultSelectedValue={difficultyLevel}
                 />
               </div>
             </div>
@@ -301,8 +325,10 @@ const SiteSearch = ({
 
           &__action {
             margin-bottom: 1rem;
+            width: 100%;
 
             @media screen and (min-width: $break-at-md) {
+              flex: 0 0 calc(50% - 1rem);
               margin-left: 1rem;
               margin-top: 1rem;
               margin-bottom: 0;

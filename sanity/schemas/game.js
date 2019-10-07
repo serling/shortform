@@ -66,6 +66,20 @@ export default {
       validation: Rule => Rule.required()
     },
     {
+      name: "difficultyLevel",
+      title: "Difficulty Level",
+      description: "How complicated is the game to introduce and play?",
+      type: "string",
+      options: {
+        list: [
+          { value: "1", title: "Easy" },
+          { value: "2", title: "Medium" },
+          { value: "3", title: "Hard" }
+        ]
+      },
+      validation: Rule => Rule.required()
+    },
+    {
       name: "description",
       title: "Description",
       description: "A short summary or pitch of the game",

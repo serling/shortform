@@ -12,8 +12,8 @@ const SelectOption = ({ isActive, onClick, value, label, text }) => {
       tabIndex={value && 0}
     >
       <span
-        className={cn("select-option__text", {
-          "select-option__text--diffuse": text
+        className={cn("select-option__label", {
+          "select-option__label--heading": text
         })}
       >
         {label}
@@ -35,12 +35,16 @@ const SelectOption = ({ isActive, onClick, value, label, text }) => {
               background-color: #d8d7d7;
             }
 
-            &__text {
-              margin-left: 0.5rem;
-
-              &--diffuse {
-                color: black;
+            &__label {
+              &--heading {
+                font-weight: 700;
               }
+            }
+
+            &__text {
+              display: block;
+              margin-top: 0.25rem;
+              font-size: 0.8rem;
             }
           }
         `}

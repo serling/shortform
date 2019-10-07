@@ -10,7 +10,7 @@ const dataErrorObject = {
   title: "No response from fetch request"
 };
 
-const getGamesQuery = (q, lab, audience, players) => {
+const getGamesQuery = (q, lab, audience, players, difficulty) => {
   let string = `_type == "game"`;
 
   if (q) string = string.concat(`&& [title, description] match "${q}*"`);
@@ -24,6 +24,9 @@ const getGamesQuery = (q, lab, audience, players) => {
 
   if (players) string = string.concat(` && playerCount match "*${players}*"`);
 
+  if (difficulty)
+    string = string.concat(` && difficultyLevel <= ${difficulty}`); //TODO number value parsing?!
+
   console.log(string);
 
   return string;
@@ -32,7 +35,7 @@ const getGamesQuery = (q, lab, audience, players) => {
 export default async (req, res) => {
   const { query } = req;
 
-  const { q, lab, audience, players } = query;
+  const { q, lab, audience, players, difficulty } = query;
 
   await client
     .fetch(
@@ -42,14 +45,16 @@ export default async (req, res) => {
           "defaultSearchValue": "${q || ""}",
           "defaultIsExperimental": "${lab || ""}",
           "defaultIsAudience": "${audience || ""}",
-          "defaultPlayerCount": "${players || "0"}"
-          },
-         "games": *[${getGamesQuery(q, lab, audience, players)}]
+          "defaultPlayerCount": "${players || "0"}",
+          "defaultDifficultyLevel": "${difficulty || "0"}"
+        },
+         "games": *[${getGamesQuery(q, lab, audience, players, difficulty)}]
          {
             _id, 
             title,
             description,
             playerCount,
+            difficultyLevel,
             "slug": slug.current,
             alternateTitles,
             isExperimental,
