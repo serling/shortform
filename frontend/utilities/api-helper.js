@@ -27,22 +27,31 @@ function absoluteUrl(req, localHost = LOCAL_HOST) {
   };
 }
 
+const serializeQueryObject = queryObject => {
+  return Object.keys(queryObject)
+    .map(key => {
+      if (!queryObject[key]) return null;
+
+      return key + "=" + queryObject[key];
+    })
+    .filter(item => item != null)
+    .join("&");
+};
+
 const getInitialData = async (req, apiRoute, resourceId, query) => {
   const { protocol, host } = absoluteUrl(req);
 
-  if (query) {
-    var queryString = Object.keys(query)
-      .map(function(key) {
-        return key + "=" + query[key];
-      })
-      .join("&");
-  }
+  let queryString = "";
+
+  if (query) queryString = serializeQueryObject(query);
 
   let endpoint = `${protocol}//${host}${apiRoute}`;
 
   if (resourceId) endpoint = `${endpoint}/${resourceId}`;
 
   if (queryString) endpoint = `${endpoint}?${queryString}`;
+
+  console.log("calling:", endpoint);
 
   const response = await fetch(endpoint);
 
@@ -73,5 +82,6 @@ const getInitialData = async (req, apiRoute, resourceId, query) => {
 };
 
 module.exports = {
-  getInitialData
+  getInitialData,
+  serializeQueryObject
 };

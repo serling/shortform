@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-// import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import cn from "classnames";
 import keys from "../utilities/keys";
 import { options } from "../static/data/player-count-options";
-import { getInitialData } from "../utilities/api-helper";
+import { getInitialData, serializeQueryObject } from "../utilities/api-helper";
 
 import Search from "./search";
 import Checkbox from "./checkbox";
@@ -52,14 +51,12 @@ const SiteSearch = ({
   const [activeGames, setActiveGames] = useState(games);
   const [queries, setQueries] = useState({});
 
-  // const router = useRouter();
-
   const setQueryObject = (key, value) => {
     let activeQueries = queries;
 
     activeQueries[key] = value;
 
-    console.log("active queries:", activeQueries);
+    // console.log("active queries:", activeQueries);
 
     setQueries(activeQueries);
   };
@@ -73,23 +70,24 @@ const SiteSearch = ({
   //     setShowComplexity(true);
   // }, [defaultIsAudience, defaultPlayerCount, defaultIsExperimental]);
 
+  useEffect(() => {
+    setQueryObject("audience", isAudience);
+  }, [isAudience]);
+
+  useEffect(() => {
+    setQueryObject("lab", isExperimental);
+  }, [isExperimental]);
+
+  useEffect(() => {
+    setQueryObject("players", playerCount !== "0" && playerCount);
+  }, [playerCount]);
+
   const handleOnSearchStringKeyPress = e => {
     const { key } = e;
 
     if (key === keys.Enter) {
       handleOnSearchSubmit();
     }
-  };
-
-  const serializeQueries = queryObject => {
-    return Object.keys(queryObject)
-      .map(function(key) {
-        if (!queryObject[key]) return null;
-
-        return key + "=" + queryObject[key];
-      })
-      .filter(item => item != null)
-      .join("&");
   };
 
   const handleOnSearchStringChange = e => {
@@ -104,20 +102,14 @@ const SiteSearch = ({
     setIsExperimental(
       isExperimental ? queryBooleans.false : queryBooleans.true
     );
-
-    setQueryObject("lab", isExperimental);
   };
 
   const handleOnAudienceChange = () => {
     setIsAudience(isAudience ? queryBooleans.false : queryBooleans.true);
-
-    setQueryObject("audience", isAudience);
   };
 
   const handleOnPlayerCountChange = value => {
     setPlayerCount(value);
-
-    setQueryObject("players", playerCount);
   };
 
   const handleOnExperimentalKeyPress = e => {
@@ -141,9 +133,18 @@ const SiteSearch = ({
 
     setIsLoading(true);
 
-    console.log("calling", "/api/search", serializeQueries(queries));
+    let url = "/search";
 
-    history.replaceState(null, null, "/search?" + serializeQueries(queries));
+    if (queries) {
+      console.log("appending", queries);
+      url = url + "?" + serializeQueryObject(queries);
+    }
+
+    // history.replaceState(null, null, "/search");
+
+    history.replaceState(null, null, url); //TODO: .pushState?
+
+    // console.log("calling", "/api/search", serializeQueries(queries));
 
     await getInitialData(null, "/api/search", null, queries)
       .then(({ payload, error }) => {
