@@ -129,8 +129,6 @@ const SiteSearch = ({
   };
 
   const handleOnSearchSubmit = async () => {
-    // if (!searchString) return;
-
     setIsLoading(true);
 
     let url = window.location.pathname;
