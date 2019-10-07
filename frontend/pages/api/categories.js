@@ -16,20 +16,20 @@ export default async (req, res) => {
   await client
     .fetch(
       `* 
-      []
+      [_type == "category"]
       {
-        "categories": *[_type == "category"]{ 
-          _id,
-          title,
-          image,
-          description,
-          "slug": slug.current
-      }
-    }[0]`
+        _id,
+        title,
+        image,
+        description,
+        "slug": slug.current
+    } | order(title asc)`
     )
     .then(response => {
       if (response) {
-        res.status(200).json({ success: true, payload: response });
+        res
+          .status(200)
+          .json({ success: true, payload: { categories: response } });
         return;
       }
 

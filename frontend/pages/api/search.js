@@ -27,7 +27,7 @@ const getGamesQuery = (q, lab, audience, players, difficulty) => {
   if (difficulty)
     string = string.concat(` && difficultyLevel <= ${difficulty}`); //TODO number value parsing?!
 
-  console.log(string);
+  console.log("query:", string);
 
   return string;
 };

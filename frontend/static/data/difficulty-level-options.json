@@ -15,13 +15,13 @@
       "id": "medium-0",
       "label": "All but the most complicated games",
       "value": "2",
-      "text": "Games that require either no or some experience from the players. Good for jams."
+      "text": "Games that require either no or some experience from the players. E.g. for jams."
     },
     {
       "id": "hard-0",
       "label": "All the games",
       "value": "3",
-      "text": "Show everything, even the ones that require dicipline and knowledge about rules or rythm. Good for rehersed shows."
+      "text": "Show everything, even the ones that require dicipline and knowledge about rules or rythm. E.g. for rehersed shows."
     }
   ]
 }

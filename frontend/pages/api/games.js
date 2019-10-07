@@ -16,24 +16,22 @@ export default async (req, res) => {
   await client
     .fetch(
       `* 
-      []
+      [_type == "game"]
       {
-        "games": *[_type == "game"]{
-            _id, 
-            title,
-            description,
-            playerCount,
-            "slug": slug.current,
-            alternateTitles,
-            isExperimental,
-            "lastUpdated": _updatedAt,
-            categories[]-> { title, "slug": slug.current },
-      }
-    }[0]`
+        _id, 
+        title,
+        description,
+        playerCount,
+        "slug": slug.current,
+        alternateTitles,
+        isExperimental,
+        "lastUpdated": _updatedAt,
+        categories[]-> { title, "slug": slug.current },
+    } | order(title asc)`
     )
     .then(response => {
       if (response) {
-        res.status(200).json({ success: true, payload: response });
+        res.status(200).json({ success: true, payload: { games: response } });
         return;
       }
 
