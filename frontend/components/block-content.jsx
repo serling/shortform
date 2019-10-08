@@ -9,7 +9,7 @@ const BlockContent = ({ content }) => {
       <div className="block-content">
         <BlockContentToReact
           blocks={content}
-          serializers={defaultSerializers}
+          serializers={defaultSerializers()}
         />
       </div>
       <style jsx global>{`

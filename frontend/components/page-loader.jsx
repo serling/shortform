@@ -36,14 +36,13 @@ const PageLoader = ({ theme, isActive }) => {
             width: 100%;
             height: 100%;
             position: absolute;
+            top: 0;
+            left: 0;
 
             #{$self}__spinner {
               position: absolute;
               left: 50%;
               top: 50%;
-              margin-left: auto;
-              margin-right: auto;
-              margin-top: 40px;
             }
           }
 
