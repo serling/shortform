@@ -9,13 +9,13 @@
       "id": "easy-0",
       "label": "Only the simplest games",
       "value": "1",
-      "text": "Games that require no rehersal or prior knowledge. Easy to explain, great for audience members to join."
+      "text": "Games that require no rehersal or prior knowledge. Easy to explain and invite audience members to play."
     },
     {
       "id": "medium-0",
       "label": "All but the most complicated games",
       "value": "2",
-      "text": "Games that require either no or some experience from the players. E.g. for jams."
+      "text": "Games that require either no or some experience from the players. E.g. jams."
     },
     {
       "id": "hard-0",
