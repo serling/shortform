@@ -10,6 +10,7 @@ import category from "./category";
 import game from "./game";
 import difficultyLevel from "./difficulty-level";
 import page from "./page";
+import video from "./video";
 import author from "./author";
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -23,6 +24,7 @@ export default createSchema({
     // in the studio.
     game,
     page,
+    video,
     author,
     difficultyLevel,
     category,

@@ -1,4 +1,5 @@
 import Image from "../components/image";
+import Video from "../components/video";
 
 const defaultSerializers = {
   marks: {},
@@ -18,6 +19,14 @@ const defaultSerializers = {
       const { align } = node;
 
       return <Image image={node} />;
+    },
+    video: data => {
+      const { node } = data;
+      const { youtubeVideoId, description } = node;
+
+      return (
+        <Video youtubeVideoId={youtubeVideoId} description={description} />
+      );
     }
   }
 };
