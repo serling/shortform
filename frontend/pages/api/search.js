@@ -10,12 +10,14 @@ const dataErrorObject = {
   title: "No response from fetch request"
 };
 
-const getGamesQuery = (q, lab, audience, players, difficulty) => {
+const getGamesQuery = (q, lab, audience, players, difficulty, preperation) => {
   let string = `_type == "game"`;
 
   if (q) string = string.concat(`&& [title, description] match "${q}*"`);
 
   if (lab) string = string.concat(` && isExperimental == false`);
+
+  if (preperation) string = string.concat(` && requiresPreperation == false`);
 
   if (audience)
     string = string.concat(
@@ -35,12 +37,12 @@ const getGamesQuery = (q, lab, audience, players, difficulty) => {
 export default async (req, res) => {
   const { query } = req;
 
-  const { q, lab, audience, players, difficulty } = query;
+  const { q, lab, audience, players, difficulty, preperation } = query;
 
   await client
     .fetch(
       `* 
-      [${getGamesQuery(q, lab, audience, players, difficulty)}]{
+      [${getGamesQuery(q, lab, audience, players, difficulty, preperation)}]{
         _id, 
         title,
         description,
@@ -54,7 +56,7 @@ export default async (req, res) => {
       }`
     )
     .then(response => {
-      console.log(response);
+      // console.log(response);
       if (response) {
         res.status(200).json({
           success: true,

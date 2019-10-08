@@ -33,6 +33,7 @@ const SiteSearch = ({
   searchInputId,
   defaultSearchValue,
   defaultIsExperimental,
+  defaultIsPreperation,
   defaultIsAudience,
   defaultDifficultyLevel,
   defaultPlayerCount
@@ -47,6 +48,7 @@ const SiteSearch = ({
 
   const [searchString, setSearchString] = useState(defaultSearchValue);
   const [isExperimental, setIsExperimental] = useState(defaultIsExperimental);
+  const [isPreperation, setIsPreperation] = useState(defaultIsPreperation);
   const [isAudience, setIsAudience] = useState(defaultIsAudience);
   const [playerCount, setPlayerCount] = useState(defaultPlayerCount);
   const [difficultyLevel, setDifficultyLevel] = useState(
@@ -65,18 +67,13 @@ const SiteSearch = ({
     setQueries(activeQueries);
   };
 
-  // useEffect(() => {
-  //   if (
-  //     defaultIsAudience ||
-  //     defaultIsExperimental ||
-  //     defaultPlayerCount !== "0"
-  //   )
-  //     setShowComplexity(true);
-  // }, [defaultIsAudience, defaultPlayerCount, defaultIsExperimental]);
-
   useEffect(() => {
     setQueryObject("audience", isAudience);
   }, [isAudience]);
+
+  useEffect(() => {
+    setQueryObject("preperation", isPreperation);
+  }, [isPreperation]);
 
   useEffect(() => {
     setQueryObject("lab", isExperimental);
@@ -135,6 +132,16 @@ const SiteSearch = ({
   const handleOnAudienceKeyPress = e => {
     if (e.key === keys.Enter && !isLoading) {
       handleOnAudienceChange();
+    }
+  };
+
+  const handleOnPreperationChange = () => {
+    setIsPreperation(isPreperation ? queryBooleans.false : queryBooleans.true);
+  };
+
+  const handleOnPreperationKeyPress = e => {
+    if (e.key === keys.Enter && !isLoading) {
+      handleOnPreperationChange();
     }
   };
 
@@ -240,6 +247,17 @@ const SiteSearch = ({
               </div>
               <div className="site-search__action">
                 <Checkbox
+                  id="preperation-0"
+                  labelText="No prep work required"
+                  labelDescription="Don't show games that require preperation or logistics (pre-written notes, props, etc.)"
+                  onChange={handleOnPreperationChange}
+                  onKeyPress={handleOnPreperationKeyPress}
+                  isChecked={!!isPreperation}
+                  isDisabled={isLoading}
+                />
+              </div>
+              <div className="site-search__action">
+                <Checkbox
                   id="audience-0"
                   labelText="Audience friendly"
                   labelDescription="Only show games where audience members can join?"
@@ -249,8 +267,8 @@ const SiteSearch = ({
                   isDisabled={isLoading}
                 />
               </div>
-              {/* checkbox: requires some pre-prep  */}
-              {/* new category: narration/storytelling? */}
+              {/* new category: narration/storyteller? */}
+              {/* update game schema with RequiresPreperation */}
             </div>
             <div className="site-search__actions">
               <div className="site-search__action">
