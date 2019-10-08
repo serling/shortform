@@ -11,9 +11,9 @@ const dataErrorObject = {
 };
 
 const getGamesQuery = (q, lab, audience, players, complexity, preperation) => {
-  let string = `_type == "game" `;
+  let string = `_type == "game"`;
 
-  if (q) string = string.concat(`&& [title, description] match "${q}*"`);
+  if (q) string = string.concat(` && [title, description] match "${q}*"`);
 
   if (lab) string = string.concat(` && isExperimental == false`);
 

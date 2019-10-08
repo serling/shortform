@@ -5,6 +5,8 @@ import cn from "classnames";
 import Icon from "../icon";
 import SelectOptions from "./select-options";
 
+//TODO: fix click handler on label
+
 const get = (object, key, fallback) => {
   try {
     return object[key];
