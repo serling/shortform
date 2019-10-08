@@ -4,7 +4,7 @@ import cn from "classnames";
 import { getInitialData, serializeQueryObject } from "../utilities/api-helper";
 
 import { options as playerCountOptions } from "../static/data/player-count-options";
-import { options as difficultyLevelOptions } from "../static/data/difficulty-level-options";
+import { options as complexityLevelOptions } from "../static/data/complexity-level-options";
 import keys from "../utilities/keys";
 
 import Search from "./search";
@@ -35,7 +35,7 @@ const SiteSearch = ({
   defaultIsExperimental,
   defaultIsPreperation,
   defaultIsAudience,
-  defaultDifficultyLevel,
+  defaultComplexityLevel,
   defaultPlayerCount
 }) => {
   const {
@@ -51,8 +51,8 @@ const SiteSearch = ({
   const [isPreperation, setIsPreperation] = useState(defaultIsPreperation);
   const [isAudience, setIsAudience] = useState(defaultIsAudience);
   const [playerCount, setPlayerCount] = useState(defaultPlayerCount);
-  const [difficultyLevel, setDifficultyLevel] = useState(
-    defaultDifficultyLevel
+  const [complexityLevel, setComplexityLevel] = useState(
+    defaultComplexityLevel
   );
   const [showComplexity, setShowComplexity] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
@@ -84,8 +84,8 @@ const SiteSearch = ({
   }, [playerCount]);
 
   useEffect(() => {
-    setQueryObject("difficulty", difficultyLevel !== "0" && difficultyLevel);
-  }, [difficultyLevel]);
+    setQueryObject("complexity", complexityLevel !== "0" && complexityLevel);
+  }, [complexityLevel]);
 
   useEffect(() => {
     setQueryObject("q", searchString);
@@ -119,8 +119,8 @@ const SiteSearch = ({
     setPlayerCount(value);
   };
 
-  const handleOnDifficultyLevelChange = value => {
-    setDifficultyLevel(value);
+  const handleOnComplexityLevelChange = value => {
+    setComplexityLevel(value);
   };
 
   const handleOnExperimentalKeyPress = e => {
@@ -284,11 +284,11 @@ const SiteSearch = ({
               <div className="site-search__action">
                 <Select
                   labelText="How complicated should the games be?"
-                  id="game-difficulty-0"
-                  name="difficulty"
-                  onChange={handleOnDifficultyLevelChange}
-                  options={difficultyLevelOptions}
-                  defaultSelectedValue={difficultyLevel}
+                  id="game-complexity-0"
+                  name="complexity"
+                  onChange={handleOnComplexityLevelChange}
+                  options={complexityLevelOptions}
+                  defaultSelectedValue={complexityLevel}
                 />
               </div>
             </div>

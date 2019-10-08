@@ -10,14 +10,14 @@ const dataErrorObject = {
   title: "No response from fetch request"
 };
 
-const getGamesQuery = (q, lab, audience, players, difficulty, preperation) => {
-  let string = `_type == "game"`;
+const getGamesQuery = (q, lab, audience, players, complexity, preperation) => {
+  let string = `_type == "game" `;
 
   if (q) string = string.concat(`&& [title, description] match "${q}*"`);
 
   if (lab) string = string.concat(` && isExperimental == false`);
 
-  if (preperation) string = string.concat(` && requiresPreperation == false`);
+  if (preperation) string = string.concat(` && isPreperation == false`);
 
   if (audience)
     string = string.concat(
@@ -26,8 +26,8 @@ const getGamesQuery = (q, lab, audience, players, difficulty, preperation) => {
 
   if (players) string = string.concat(` && playerCount match "*${players}*"`);
 
-  if (difficulty)
-    string = string.concat(` && difficultyLevel <= ${difficulty}`); //TODO: fix string/number comparrison
+  if (complexity)
+    string = string.concat(` && complexityLevel->value <= ${complexity}`);
 
   console.log("query:", string);
 
@@ -37,17 +37,17 @@ const getGamesQuery = (q, lab, audience, players, difficulty, preperation) => {
 export default async (req, res) => {
   const { query } = req;
 
-  const { q, lab, audience, players, difficulty, preperation } = query;
+  const { q, lab, audience, players, complexity, preperation } = query;
 
   await client
     .fetch(
       `* 
-      [${getGamesQuery(q, lab, audience, players, difficulty, preperation)}]{
+      [${getGamesQuery(q, lab, audience, players, complexity, preperation)}]{
         _id, 
         title,
         description,
         playerCount,
-        difficultyLevel,
+        complexityLevel->{value},
         "slug": slug.current,
         alternateTitles,
         isExperimental,
@@ -67,7 +67,7 @@ export default async (req, res) => {
               defaultIsExperimental: lab || "",
               defaultIsAudience: audience || "",
               defaultPlayerCount: players || "0",
-              defaultDifficultyLevel: difficulty || "0"
+              defaultComplexityLevel: complexity || "0"
             }
           }
         });

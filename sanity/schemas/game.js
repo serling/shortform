@@ -1,4 +1,3 @@
-//fields: requiresPreperation
 export default {
   name: "game",
   title: "Game",
@@ -51,6 +50,20 @@ export default {
       description:
         "Experimental. Considered part of the improv lab. Not tested yet.",
       type: "boolean",
+      options: {
+        layout: "checkbox"
+      },
+      validation: Rule => Rule.required()
+    },
+    {
+      name: "isPreperation",
+      title: "Requires Preperation",
+      description:
+        "Does this game require preperation, logistics, props or other pre-planning measures?",
+      type: "boolean",
+      options: {
+        layout: "checkbox"
+      },
       validation: Rule => Rule.required()
     },
     {
@@ -66,17 +79,11 @@ export default {
       validation: Rule => Rule.required()
     },
     {
-      name: "difficultyLevel",
-      title: "Difficulty Level",
+      name: "complexityLevel",
+      title: "Complexity Level",
       description: "How complicated is the game to introduce and play?",
-      type: "string",
-      options: {
-        list: [
-          { value: "1", title: "Easy" },
-          { value: "2", title: "Medium" },
-          { value: "3", title: "Hard" }
-        ]
-      },
+      type: "reference",
+      to: [{ type: "difficulty" }],
       validation: Rule => Rule.required()
     },
     {
