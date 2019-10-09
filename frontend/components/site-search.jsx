@@ -268,7 +268,6 @@ const SiteSearch = ({
                 />
               </div>
               {/* new category: narration/storyteller? */}
-              {/* update game schema with RequiresPreperation */}
             </div>
             <div className="site-search__actions">
               <div className="site-search__action">
