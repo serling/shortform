@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import cn from "classnames";
 import { getInitialData, serializeQueryObject } from "../utilities/api-helper";
 
-import { options as playerCountOptions } from "../static/data/player-count-options";
-import { options as complexityLevelOptions } from "../static/data/complexity-level-options";
+import { options as playerCountOptions } from "../public/static/data/player-count-options";
+import { options as complexityLevelOptions } from "../public/static/data/complexity-level-options";
 import keys from "../utilities/keys";
 
 import Search from "./search";

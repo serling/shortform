@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { phrases } from "../static/data/phrases/search-page";
+import { phrases } from "../public/static/data/phrases/search-page";
 
 import Layout from "./layout";
 import Content from "./content";

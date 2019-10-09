@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { phrases } from "../static/data/phrases/improlab-page";
+import { phrases } from "../public/static/data/phrases/improlab-page";
 
 import Layout from "./layout";
 import Intro from "./intro";
