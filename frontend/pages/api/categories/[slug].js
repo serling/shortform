@@ -26,7 +26,7 @@ export default async (req, res) => {
           "slug": slug.current,
           title, 
           playerCount,
-          isExperimental,
+          "isExperimental": coalesce(isExperimental, false, true),
           alternateTitles,
           description, 
           categories[]->

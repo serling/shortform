@@ -50,7 +50,7 @@ export default async (req, res) => {
         complexityLevel->{value},
         "slug": slug.current,
         alternateTitles,
-        isExperimental,
+        "isExperimental": coalesce(isExperimental, false, true),
         "lastUpdated": _updatedAt,
         categories[]-> { title, "slug": slug.current }
       }`

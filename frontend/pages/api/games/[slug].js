@@ -23,13 +23,13 @@ export default async (req, res) => {
       description,
       playerCount,
       alternateTitles,
-      isExperimental,
+      "isExperimental": coalesce(isExperimental, false, true),
       relatedGames[]->{ 
         _id, 
         "slug": slug.current, 
         title, 
         alternateTitles,
-        isExperimental,
+        isExperimental: coalesce(isExperimental, false),
         description, 
         categories[]->
       },

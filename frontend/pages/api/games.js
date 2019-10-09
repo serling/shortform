@@ -24,7 +24,7 @@ export default async (req, res) => {
         playerCount,
         "slug": slug.current,
         alternateTitles,
-        isExperimental,
+        "isExperimental": coalesce(isExperimental, false, true),
         "lastUpdated": _updatedAt,
         categories[]-> { title, "slug": slug.current },
     } | order(title asc)`
