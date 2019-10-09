@@ -303,9 +303,14 @@ const SiteSearch = ({
           </div>
           <div className="site-search__results">
             <PageLoader isActive={isLoading} />
-            {games.length > 0 && (
+            {activeGames.length > 0 && (
               <>
-                <h2 className="site-search__subheading">{hitsHeading}</h2>
+                <h2 className="site-search__subheading">
+                  <span>{hitsHeading}</span>
+                  <span className="site-search__count">
+                    ({activeGames.length})
+                  </span>
+                </h2>
                 <Grid>
                   {activeGames.map(game => {
                     const { _id } = game;
@@ -406,6 +411,11 @@ const SiteSearch = ({
 
           &__results {
             position: relative;
+          }
+
+          &__count {
+            margin-left: 0.5em;
+            font-size: 0.8rem;
           }
         }
       `}</style>
