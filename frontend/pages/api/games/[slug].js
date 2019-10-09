@@ -10,6 +10,11 @@ const dataErrorObject = {
   title: "No response from fetch request"
 };
 
+//TODO: prepwork as model: bool and description for quick overview
+//TODO: playerCount as model: number value and text for human readable (array of number values?)
+//TODO: rename search param names/models/schemas/etc
+//TODO: exercises tab
+
 export default async (req, res) => {
   const { query } = req;
 
