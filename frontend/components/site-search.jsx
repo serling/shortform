@@ -41,9 +41,11 @@ const SiteSearch = ({
   const {
     placeholderText,
     clearButtonText,
+    searchButtonText,
     labelText,
     complexHeading,
-    hitsHeading
+    hitsHeading,
+    loadMoreText
   } = phrases;
 
   const [searchString, setSearchString] = useState(defaultSearchValue);
@@ -56,6 +58,7 @@ const SiteSearch = ({
   );
   const [showComplexity, setShowComplexity] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [activeGames, setActiveGames] = useState(games);
   const [queries, setQueries] = useState({});
 
@@ -293,7 +296,7 @@ const SiteSearch = ({
             </div>
             <div className="site-search__submit">
               <Button
-                text="Look harder"
+                text={searchButtonText}
                 theme={Button.themes.primary}
                 onClick={handleOnSubmitButtonClick}
                 disabled={isLoading}
@@ -317,11 +320,23 @@ const SiteSearch = ({
                   })}
                 </Grid>
                 <div className="site-search__cta">
-                  <Link
+                  {!isLoadingMore && (
+                    <Button
+                      onClick={handleOnLoadMore}
+                      theme={Button.themes.primary}
+                    >
+                      {loadMoreText}
+                      {/* <PageLoader
+                      isLoading={true}
+                      theme={PageLoader.themes.small}
+                    /> */}
+                    </Button>
+                  )}
+                  {/* <Link
                     text="Browse all games"
                     href="/games"
                     theme={Link.themes.inverted}
-                  />
+                  /> */}
                 </div>
               </>
             )}
@@ -405,7 +420,8 @@ const SiteSearch = ({
 
           &__cta {
             margin-top: 2rem;
-            text-align: right;
+            display: flex;
+            justify-content: flex-end;
           }
 
           &__results {
